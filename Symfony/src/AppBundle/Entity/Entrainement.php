@@ -90,7 +90,7 @@ class Entrainement
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Utilisateur", mappedBy="identrainement")
      */
-    private $idutilisateur;
+    private $id;
 
     /**
      * Constructor
@@ -98,7 +98,7 @@ class Entrainement
     public function __construct()
     {
         $this->idprogramme = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->idutilisateur = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->id = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 }

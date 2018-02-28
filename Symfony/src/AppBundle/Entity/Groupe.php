@@ -33,14 +33,14 @@ class Groupe
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Utilisateur", mappedBy="idgroupe")
      */
-    private $idutilisateur;
+    private $id;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->idutilisateur = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->id = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 }

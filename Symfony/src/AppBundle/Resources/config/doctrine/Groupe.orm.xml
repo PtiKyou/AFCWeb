@@ -9,6 +9,6 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-many field="idutilisateur" target-entity="Utilisateur" mapped-by="idgroupe" fetch="LAZY"/>
+    <many-to-many field="id" target-entity="Utilisateur" mapped-by="idgroupe" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Statistiques
  *
- * @ORM\Table(name="Statistiques", indexes={@ORM\Index(name="FK_Statistiques_IDUtilisateur", columns={"IDUtilisateur"})})
+ * @ORM\Table(name="Statistiques", indexes={@ORM\Index(name="FK_Statistiques_id", columns={"id"})})
  * @ORM\Entity
  */
 class Statistiques
@@ -96,10 +96,10 @@ class Statistiques
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDUtilisateur", referencedColumnName="IDUtilisateur")
+     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
      */
-    private $idutilisateur;
+    private $id;
 
 
 }

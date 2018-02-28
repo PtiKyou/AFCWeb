@@ -38,6 +38,6 @@
       </join-table>
     </many-to-many>
     <many-to-many field="identrainement" target-entity="Entrainement" mapped-by="idprogramme" fetch="LAZY"/>
-    <many-to-many field="idutilisateur" target-entity="Utilisateur" mapped-by="idprogramme" fetch="LAZY"/>
+    <many-to-many field="id" target-entity="Utilisateur" mapped-by="idprogramme" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

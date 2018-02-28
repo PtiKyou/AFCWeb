@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Utilisateur", uniqueConstraints={@ORM\UniqueConstraint(name="emailUtilisateur", columns={"emailUtilisateur"})}, indexes={@ORM\Index(name="FK_Utilisateur_IDStat", columns={"IDStat"})})
  * @ORM\Entity
  */
-class Utilisateur
+class Utilisateur extends BaseUser
 {
     /**
      * @var string
@@ -127,11 +128,11 @@ class Utilisateur
     /**
      * @var integer
      *
-     * @ORM\Column(name="IDUtilisateur", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idutilisateur;
+    protected $id;
 
     /**
      * @var \AppBundle\Entity\Statistiques
@@ -146,25 +147,25 @@ class Utilisateur
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Utilisateur", inversedBy="idutilisateur")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Utilisateur", inversedBy="id")
      * @ORM\JoinTable(name="amis",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="IDUtilisateur", referencedColumnName="IDUtilisateur")
+     *     @ORM\JoinColumn(name="id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="IDUtilisateur_1", referencedColumnName="IDUtilisateur")
+     *     @ORM\JoinColumn(name="id_Utilisateur", referencedColumnName="id")
      *   }
      * )
      */
-    private $idutilisateur1;
+    private $idUtilisateur;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Groupe", inversedBy="idutilisateur")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Groupe", inversedBy="id")
      * @ORM\JoinTable(name="appartientg",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="IDUtilisateur", referencedColumnName="IDUtilisateur")
+     *     @ORM\JoinColumn(name="id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="IDGroupe", referencedColumnName="IDGroupe")
@@ -176,10 +177,10 @@ class Utilisateur
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Entrainement", inversedBy="idutilisateur")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Entrainement", inversedBy="id")
      * @ORM\JoinTable(name="faite",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="IDUtilisateur", referencedColumnName="IDUtilisateur")
+     *     @ORM\JoinColumn(name="id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="IDEntrainement", referencedColumnName="IDEntrainement")
@@ -191,10 +192,10 @@ class Utilisateur
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Programme", inversedBy="idutilisateur")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Programme", inversedBy="id")
      * @ORM\JoinTable(name="faitp",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="IDUtilisateur", referencedColumnName="IDUtilisateur")
+     *     @ORM\JoinColumn(name="id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="IDProgramme", referencedColumnName="IDProgramme")
@@ -208,11 +209,12 @@ class Utilisateur
      */
     public function __construct()
     {
-        $this->idutilisateur1 = new \Doctrine\Common\Collections\ArrayCollection();
+
+        parent::__construct();
+        $this->idUtilisateur = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idgroupe = new \Doctrine\Common\Collections\ArrayCollection();
         $this->identrainement = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idprogramme = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 }
-

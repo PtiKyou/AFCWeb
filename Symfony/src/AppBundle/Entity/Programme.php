@@ -79,7 +79,7 @@ class Programme
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Utilisateur", mappedBy="idprogramme")
      */
-    private $idutilisateur;
+    private $id;
 
     /**
      * Constructor
@@ -88,7 +88,7 @@ class Programme
     {
         $this->idnutrition = new \Doctrine\Common\Collections\ArrayCollection();
         $this->identrainement = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->idutilisateur = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->id = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 }

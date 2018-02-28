@@ -7,7 +7,7 @@
     <unique-constraints>
       <unique-constraint name="emailUtilisateur" columns="emailUtilisateur"/>
     </unique-constraints>
-    <id name="idutilisateur" type="integer" column="IDUtilisateur">
+    <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="emailutilisateur" type="string" column="emailUtilisateur" length="50" nullable="true">
@@ -63,40 +63,40 @@
         <join-column name="IDStat" referenced-column-name="IDStat"/>
       </join-columns>
     </many-to-one>
-    <many-to-many field="idutilisateur1" target-entity="Utilisateur" inversed-by="idutilisateur" fetch="LAZY">
+    <many-to-many field="idUtilisateur" target-entity="Utilisateur" inversed-by="id" fetch="LAZY">
       <join-table name="amis">
         <join-columns>
-          <join-column name="IDUtilisateur" referenced-column-name="IDUtilisateur"/>
+          <join-column name="id" referenced-column-name="id"/>
         </join-columns>
         <inverse-join-columns>
-          <join-column name="IDUtilisateur_1" referenced-column-name="IDUtilisateur"/>
+          <join-column name="id_Utilisateur" referenced-column-name="id"/>
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="idgroupe" target-entity="Groupe" inversed-by="idutilisateur" fetch="LAZY">
+    <many-to-many field="idgroupe" target-entity="Groupe" inversed-by="id" fetch="LAZY">
       <join-table name="appartientg">
         <join-columns>
-          <join-column name="IDUtilisateur" referenced-column-name="IDUtilisateur"/>
+          <join-column name="id" referenced-column-name="id"/>
         </join-columns>
         <inverse-join-columns>
           <join-column name="IDGroupe" referenced-column-name="IDGroupe"/>
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="identrainement" target-entity="Entrainement" inversed-by="idutilisateur" fetch="LAZY">
+    <many-to-many field="identrainement" target-entity="Entrainement" inversed-by="id" fetch="LAZY">
       <join-table name="faite">
         <join-columns>
-          <join-column name="IDUtilisateur" referenced-column-name="IDUtilisateur"/>
+          <join-column name="id" referenced-column-name="id"/>
         </join-columns>
         <inverse-join-columns>
           <join-column name="IDEntrainement" referenced-column-name="IDEntrainement"/>
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="idprogramme" target-entity="Programme" inversed-by="idutilisateur" fetch="LAZY">
+    <many-to-many field="idprogramme" target-entity="Programme" inversed-by="id" fetch="LAZY">
       <join-table name="faitp">
         <join-columns>
-          <join-column name="IDUtilisateur" referenced-column-name="IDUtilisateur"/>
+          <join-column name="id" referenced-column-name="id"/>
         </join-columns>
         <inverse-join-columns>
           <join-column name="IDProgramme" referenced-column-name="IDProgramme"/>
