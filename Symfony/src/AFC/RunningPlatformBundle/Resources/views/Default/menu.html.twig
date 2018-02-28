@@ -11,12 +11,24 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <!-- Menu partie gauche -->
         <ul class="nav navbar-nav">
-          {% for menu in listMenus %}
+          {% for menu in listMenusLeft %}
             <li>
                 <a href="#">{{ menu.title }}</a>
             </li>
           {% endfor %}
+        </ul>
+
+        <!-- Menu partie droite -->
+        <ul class="nav navbar-nav navbar-right">
+          {% for menu in listMenusRight %}
+            <li>
+                <a href="#">{{ menu.title }}</a>
+            </li>
+          {% endfor %}
+				</ul>
     </div>
     <!-- /.navbar-collapse -->
 </div>

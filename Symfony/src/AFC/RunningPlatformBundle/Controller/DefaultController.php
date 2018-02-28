@@ -1,5 +1,5 @@
 <?php
-# TEST 
+# TEST
 namespace AFC\RunningPlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -17,15 +17,21 @@ class DefaultController extends Controller
     public function menuAction()
     {
 
-      $listMenus = array(
+      $listMenusLeft = array(
         array('id' => 1, 'title' => 'Profil'),
         array('id' => 2, 'title' => 'Stats'),
         array('id' => 3, 'title' => 'Social'),
         array('id' => 4, 'title' => 'admin')
       );
 
+      $listMenusRight = array(
+        array('id' => 1, 'title' => 'Login'),
+        array('id' => 2, 'title' => 'Signup'),
+        array('id' => 3, 'title' => 'Logout')
+      );
+
       return $this->render('AFCRunningPlatformBundle:Default:menu.html.twig', array(
-        'listMenus' => $listMenus
+        'listMenusLeft' => $listMenusLeft, 'listMenusRight' => $listMenusRight
       ));
     }
 }
