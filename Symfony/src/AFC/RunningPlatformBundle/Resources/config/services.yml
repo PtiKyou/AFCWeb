@@ -1,0 +1,4 @@
+services:
+#    afc_running_platform.example:
+#        class: AFC\RunningPlatformBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

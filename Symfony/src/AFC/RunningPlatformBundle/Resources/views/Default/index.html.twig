@@ -1,0 +1,52 @@
+{# src/OC/PlatformBundle/Resources/views/Default/index.html.twig #}
+
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+
+{% block container %}
+  <!-- Contenu principal de la page -->
+      <div class="row">
+    <div class="col-md-8">
+      <h2>Historique des entraînements :</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-10">03/04/18 - Muscu 30 min</div>
+            <div class="col-md-2 btn btn-historique-entrainement btn-primary">Afficher</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-10">01/02/18 - Vélo 1H</div>
+            <div class="col-md-2 btn btn-historique-entrainement btn-primary">Afficher</div>
+          </div>
+        </li>
+        <li class="list-group-item">...</li>
+        <li class="list-group-item">...</li>
+        <li class="list-group-item">...</li>
+      </ul>
+      <nav>
+        <ul class="pagination">
+          <li><a arial-label="Previous"><<</a></li>
+          <li><a>1</a></li>
+          <li><a>2</a></li>
+          <li><a>3</a></li>
+          <li><a>4</a></li>
+          <li><a>5</a></li>
+          <li><a arial-label="Previous">>></a></li>
+        </ul>
+      <nav>
+    </div>
+
+
+    <!--  -->
+    <div class="col-md-4">
+      <div class="jumbotron">
+        <h2>Heading</h2>
+        <p style="word-wrap: break-word">Actus/défis/conseil nutrition...</p>
+      </div>
+    </div>
+
+      </div>
+      <!-- /.row -->
+{% endblock %}

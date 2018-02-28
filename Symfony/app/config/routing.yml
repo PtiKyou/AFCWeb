@@ -1,0 +1,7 @@
+afc_running_platform:
+    resource: "@AFCRunningPlatformBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
