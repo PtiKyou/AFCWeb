@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Groupe" table="Groupe">
+    <id name="idgroupe" type="integer" column="IDGroupe">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomgroupe" type="string" column="nomGroupe" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-many field="idutilisateur" target-entity="Utilisateur" mapped-by="idgroupe" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>

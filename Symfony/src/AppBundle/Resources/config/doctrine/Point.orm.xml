@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Point" table="Point">
+    <indexes>
+      <index name="FK_Point_IDParcours" columns="IDParcours"/>
+    </indexes>
+    <id name="ordrepoints" type="string" column="ordrePoints" length="25">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="longitudepoint" type="integer" column="longitudePoint" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="latitudepoint" type="integer" column="latitudePoint" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="datepoint" type="date" column="datePoint" nullable="true"/>
+    <field name="altitudepoint" type="integer" column="altitudePoint" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idparcours" target-entity="Parcours" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDParcours" referenced-column-name="IDParcours"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

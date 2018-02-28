@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Entrainement" table="Entrainement">
+    <id name="identrainement" type="integer" column="IDEntrainement">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomentrainement" type="string" column="nomEntrainement" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datedebutentrainement" type="date" column="dateDebutEntrainement" nullable="true"/>
+    <field name="datefinentrainement" type="date" column="dateFinEntrainement" nullable="true"/>
+    <field name="descriptionentrainement" type="string" column="descriptionEntrainement" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="niveaudifficulte" type="integer" column="niveauDifficulte" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="recordentrainement" type="datetime" column="recordEntrainement" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="estvisible" type="boolean" column="estVisible" nullable="true"/>
+    <many-to-many field="idprogramme" target-entity="Programme" inversed-by="identrainement" fetch="LAZY">
+      <join-table name="contient">
+        <join-columns>
+          <join-column name="IDEntrainement" referenced-column-name="IDEntrainement"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="IDProgramme" referenced-column-name="IDProgramme"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="idutilisateur" target-entity="Utilisateur" mapped-by="identrainement" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>

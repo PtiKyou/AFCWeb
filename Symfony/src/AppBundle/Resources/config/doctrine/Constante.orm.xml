@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Constante" table="Constante">
+    <indexes>
+      <index name="FK_Constante_IDSport" columns="IDSport"/>
+    </indexes>
+    <id name="idconstante" type="integer" column="IDConstante">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="caloriesterrainplat" type="integer" column="CaloriesTerrainPlat" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idsport" target-entity="Sport" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDSport" referenced-column-name="IDSport"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

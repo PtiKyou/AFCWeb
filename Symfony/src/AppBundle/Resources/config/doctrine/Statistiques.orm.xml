@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Statistiques" table="Statistiques">
+    <indexes>
+      <index name="FK_Statistiques_IDUtilisateur" columns="IDUtilisateur"/>
+    </indexes>
+    <id name="idstat" type="integer" column="IDStat">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="tempsmoyenstat" type="datetime" column="tempsMoyenStat" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="tempsmoyenstatestvisible" type="boolean" column="tempsMoyenStatEstVisible" nullable="true"/>
+    <field name="vitessemoyennnestat" type="integer" column="vitesseMoyennneStat" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="vitessemoyennnestatestvisible" type="boolean" column="vitesseMoyennneStatEstVisible" nullable="true"/>
+    <field name="vitessemaxstat" type="integer" column="VitesseMaxStat" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="vitessemaxstatestvisible" type="boolean" column="VitesseMaxStatEstVisible" nullable="true"/>
+    <field name="distancetotaleparcourue" type="integer" column="distanceTotaleParcourue" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="distancetotaleparcourueestvisible" type="boolean" column="distanceTotaleParcourueEstVisible" nullable="true"/>
+    <field name="distancemoyenneparcourue" type="integer" column="distanceMoyenneParcourue" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="distancemoyenneparcourueestvisible" type="boolean" column="distanceMoyenneParcourueEstVisible" nullable="true"/>
+    <many-to-one field="idutilisateur" target-entity="Utilisateur" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDUtilisateur" referenced-column-name="IDUtilisateur"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

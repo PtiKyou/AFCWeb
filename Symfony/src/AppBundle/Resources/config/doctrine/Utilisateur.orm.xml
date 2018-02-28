@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Utilisateur" table="Utilisateur">
+    <indexes>
+      <index name="FK_Utilisateur_IDStat" columns="IDStat"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="emailUtilisateur" columns="emailUtilisateur"/>
+    </unique-constraints>
+    <id name="idutilisateur" type="integer" column="IDUtilisateur">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="emailutilisateur" type="string" column="emailUtilisateur" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="emailestvisible" type="boolean" column="emailEstVisible" nullable="true"/>
+    <field name="nomutilisateur" type="string" column="nomUtilisateur" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nomestvisible" type="boolean" column="nomEstVisible" nullable="true"/>
+    <field name="prenomutilisateur" type="string" column="prenomUtilisateur" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prenomestvisible" type="boolean" column="prenomEstVisible" nullable="true"/>
+    <field name="ageuilisateur" type="integer" column="ageUilisateur" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="ageestvisible" type="boolean" column="ageEstVisible" nullable="true"/>
+    <field name="sexeutilisateur" type="boolean" column="sexeUtilisateur" nullable="true"/>
+    <field name="sexeestvisible" type="boolean" column="sexeEstVisible" nullable="true"/>
+    <field name="tailleutilisateur" type="integer" column="tailleUtilisateur" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tailleestvisible" type="boolean" column="tailleEstVisible" nullable="true"/>
+    <field name="poidsutilisateur" type="integer" column="poidsUtilisateur" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="poidsestvisible" type="boolean" column="poidsEstVisible" nullable="true"/>
+    <field name="pseudoutilisateur" type="string" column="pseudoUtilisateur" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="motdepasseutilisateur" type="string" column="motDePasseUtilisateur" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idstat" target-entity="Statistiques" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDStat" referenced-column-name="IDStat"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="idutilisateur1" target-entity="Utilisateur" inversed-by="idutilisateur" fetch="LAZY">
+      <join-table name="amis">
+        <join-columns>
+          <join-column name="IDUtilisateur" referenced-column-name="IDUtilisateur"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="IDUtilisateur_1" referenced-column-name="IDUtilisateur"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="idgroupe" target-entity="Groupe" inversed-by="idutilisateur" fetch="LAZY">
+      <join-table name="appartientg">
+        <join-columns>
+          <join-column name="IDUtilisateur" referenced-column-name="IDUtilisateur"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="IDGroupe" referenced-column-name="IDGroupe"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="identrainement" target-entity="Entrainement" inversed-by="idutilisateur" fetch="LAZY">
+      <join-table name="faite">
+        <join-columns>
+          <join-column name="IDUtilisateur" referenced-column-name="IDUtilisateur"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="IDEntrainement" referenced-column-name="IDEntrainement"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="idprogramme" target-entity="Programme" inversed-by="idutilisateur" fetch="LAZY">
+      <join-table name="faitp">
+        <join-columns>
+          <join-column name="IDUtilisateur" referenced-column-name="IDUtilisateur"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="IDProgramme" referenced-column-name="IDProgramme"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

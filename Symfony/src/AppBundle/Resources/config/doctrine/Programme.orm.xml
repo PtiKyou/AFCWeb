@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Programme" table="Programme">
+    <indexes>
+      <index name="FK_Programme_IDSport" columns="IDSport"/>
+    </indexes>
+    <id name="idprogramme" type="integer" column="IDProgramme">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomprogramme" type="string" column="nomProgramme" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dureetotaleprogramme" type="integer" column="dureeTotaleProgramme" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="typeprogramme" type="string" column="typeProgramme" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idsport" target-entity="Sport" fetch="LAZY">
+      <join-columns>
+        <join-column name="IDSport" referenced-column-name="IDSport"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="idnutrition" target-entity="Nutrition" inversed-by="idprogramme" fetch="LAZY">
+      <join-table name="conseil">
+        <join-columns>
+          <join-column name="IDProgramme" referenced-column-name="IDProgramme"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="IDNutrition" referenced-column-name="IDNutrition"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="identrainement" target-entity="Entrainement" mapped-by="idprogramme" fetch="LAZY"/>
+    <many-to-many field="idutilisateur" target-entity="Utilisateur" mapped-by="idprogramme" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>
