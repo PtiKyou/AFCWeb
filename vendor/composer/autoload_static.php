@@ -43,7 +43,6 @@ class ComposerStaticInit8d4f8b485c2a7d4cd8dbb5a84ee59c28
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\Config\\' => 25,
             'Symfony\\Component\\Cache\\' => 24,
-            'Symfony\\Component\\Asset\\' => 24,
             'Symfony\\Bundle\\SecurityBundle\\' => 30,
             'Symfony\\Bundle\\FrameworkBundle\\' => 31,
         ),
@@ -163,10 +162,6 @@ class ComposerStaticInit8d4f8b485c2a7d4cd8dbb5a84ee59c28
         'Symfony\\Component\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/cache',
-        ),
-        'Symfony\\Component\\Asset\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/asset',
         ),
         'Symfony\\Bundle\\SecurityBundle\\' => 
         array (

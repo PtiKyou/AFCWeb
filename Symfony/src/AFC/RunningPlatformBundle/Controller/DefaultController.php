@@ -1,5 +1,5 @@
 <?php
-# TEST
+
 namespace AFC\RunningPlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

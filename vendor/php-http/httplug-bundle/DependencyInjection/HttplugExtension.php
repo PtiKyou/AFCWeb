@@ -12,8 +12,10 @@ use Http\Client\HttpClient;
 use Http\Message\Authentication\BasicAuth;
 use Http\Message\Authentication\Bearer;
 use Http\Message\Authentication\Wsse;
+use Http\Mock\Client as MockClient;
 use Psr\Http\Message\UriInterface;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -40,6 +42,9 @@ class HttplugExtension extends Extension
 
         $loader->load('services.xml');
         $loader->load('plugins.xml');
+        if (\class_exists(MockClient::class)) {
+            $loader->load('mock-client.xml');
+        }
 
         // Register default services
         foreach ($config['classes'] as $service => $class) {
@@ -50,7 +55,7 @@ class HttplugExtension extends Extension
 
         // Set main aliases
         foreach ($config['main_alias'] as $type => $id) {
-            $container->setAlias(sprintf('httplug.%s', $type), $id);
+            $container->setAlias(sprintf('httplug.%s', $type), new Alias($id, true));
         }
 
         // Configure toolbar
@@ -127,8 +132,6 @@ class HttplugExtension extends Extension
             if ($this->isConfigEnabled($container, $pluginConfig)) {
                 $def = $container->getDefinition($pluginId);
                 $this->configurePluginByName($name, $def, $pluginConfig, $container, $pluginId);
-            } else {
-                $container->removeDefinition($pluginId);
             }
         }
     }
@@ -197,9 +200,18 @@ class HttplugExtension extends Extension
             /* client specific plugins */
 
             case 'add_host':
-                $uriService = $serviceId.'.host_uri';
-                $this->createUri($container, $uriService, $config['host']);
-                $definition->replaceArgument(0, new Reference($uriService));
+                $hostUriService = $serviceId.'.host_uri';
+                $this->createUri($container, $hostUriService, $config['host']);
+                $definition->replaceArgument(0, new Reference($hostUriService));
+                $definition->replaceArgument(1, [
+                    'replace' => $config['replace'],
+                ]);
+
+                break;
+            case 'base_uri':
+                $baseUriService = $serviceId.'.base_uri';
+                $this->createUri($container, $baseUriService, $config['uri']);
+                $definition->replaceArgument(0, new Reference($baseUriService));
                 $definition->replaceArgument(1, [
                     'replace' => $config['replace'],
                 ]);
