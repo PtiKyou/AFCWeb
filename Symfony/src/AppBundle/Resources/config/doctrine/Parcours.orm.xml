@@ -27,5 +27,6 @@
         <join-column name="IDEntrainement" referenced-column-name="IDEntrainement"/>
       </join-columns>
     </many-to-one>
+    <many-to-many field="iddefis" target-entity="Defis" mapped-by="idparcours" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

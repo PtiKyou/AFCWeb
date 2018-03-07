@@ -77,3 +77,11 @@ fos_user:
     from_email:
         address: "testapp@testapp.com"
         sender_name: "testapp@testapp.com"
+
+#hwi_oauth: # list of names of the firewalls in which this bundle is active, this setting MUST be set
+#    firewall_names: [secured_area]
+#    resource_owners:
+#        any_name:
+#            type:                facebook
+#            client_id:           '%fb_client_id%'
+#            client_secret:       '%fb_secret_id%'

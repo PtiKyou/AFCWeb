@@ -52,6 +52,20 @@ class Parcours
      */
     private $identrainement;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Defis", mappedBy="idparcours")
+     */
+    private $iddefis;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->iddefis = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 }
 

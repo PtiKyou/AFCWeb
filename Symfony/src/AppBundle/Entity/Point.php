@@ -15,21 +15,28 @@ class Point
     /**
      * @var integer
      *
-     * @ORM\Column(name="longitudePoint", type="integer", nullable=true)
+     * @ORM\Column(name="ordrePoints", type="integer", nullable=true)
+     */
+    private $ordrepoints;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="longitudePoint", type="float", precision=10, scale=0, nullable=true)
      */
     private $longitudepoint;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="latitudePoint", type="integer", nullable=true)
+     * @ORM\Column(name="latitudePoint", type="float", precision=10, scale=0, nullable=true)
      */
     private $latitudepoint;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datePoint", type="date", nullable=true)
+     * @ORM\Column(name="datePoint", type="datetime", nullable=true)
      */
     private $datepoint;
 
@@ -41,13 +48,13 @@ class Point
     private $altitudepoint;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="ordrePoints", type="string", length=25)
+     * @ORM\Column(name="IDPoint", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $ordrepoints;
+    private $idpoint;
 
     /**
      * @var \AppBundle\Entity\Parcours

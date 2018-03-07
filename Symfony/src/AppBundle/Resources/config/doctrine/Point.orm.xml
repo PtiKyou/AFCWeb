@@ -4,20 +4,17 @@
     <indexes>
       <index name="FK_Point_IDParcours" columns="IDParcours"/>
     </indexes>
-    <id name="ordrepoints" type="string" column="ordrePoints" length="25">
+    <id name="idpoint" type="integer" column="IDPoint">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="longitudepoint" type="integer" column="longitudePoint" nullable="true">
+    <field name="ordrepoints" type="integer" column="ordrePoints" nullable="true">
       <options>
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="latitudepoint" type="integer" column="latitudePoint" nullable="true">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
-    <field name="datepoint" type="date" column="datePoint" nullable="true"/>
+    <field name="longitudepoint" type="float" column="longitudePoint" precision="10" scale="0" nullable="true"/>
+    <field name="latitudepoint" type="float" column="latitudePoint" precision="10" scale="0" nullable="true"/>
+    <field name="datepoint" type="datetime" column="datePoint" nullable="true"/>
     <field name="altitudepoint" type="integer" column="altitudePoint" nullable="true">
       <options>
         <option name="unsigned"/>

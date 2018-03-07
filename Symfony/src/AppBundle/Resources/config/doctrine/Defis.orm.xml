@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Defis" table="Defis">
+    <id name="iddefis" type="integer" column="IDDefis">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="temps" type="integer" column="temps" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="distance" type="integer" column="distance" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-many field="idparcours" target-entity="Parcours" inversed-by="iddefis" fetch="LAZY">
+      <join-table name="contientparcours">
+        <join-columns>
+          <join-column name="IDDefis" referenced-column-name="IDDefis"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="IDParcours" referenced-column-name="IDParcours"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

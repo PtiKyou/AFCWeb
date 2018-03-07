@@ -2,24 +2,17 @@
 
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * Utilisateur
  *
- * @ORM\Table(name="Utilisateur", uniqueConstraints={@ORM\UniqueConstraint(name="emailUtilisateur", columns={"emailUtilisateur"})}, indexes={@ORM\Index(name="FK_Utilisateur_IDStat", columns={"IDStat"})})
+ * @ORM\Table(name="Utilisateur")
  * @ORM\Entity
  */
 class Utilisateur extends BaseUser
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="emailUtilisateur", type="string", length=50, nullable=true)
-     */
-    private $emailutilisateur;
-
     /**
      * @var boolean
      *
@@ -114,16 +107,23 @@ class Utilisateur extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="pseudoUtilisateur", type="string", length=25, nullable=true)
+     * @ORM\Column(name="photo", type="string", length=100, nullable=true)
      */
-    private $pseudoutilisateur;
+    private $photo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="motDePasseUtilisateur", type="string", length=25, nullable=true)
+     * @ORM\Column(name="facebookId", type="string", length=50, nullable=true)
      */
-    private $motdepasseutilisateur;
+    private $facebookid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="googleId", type="string", length=50, nullable=true)
+     */
+    private $googleid;
 
     /**
      * @var integer
@@ -133,16 +133,6 @@ class Utilisateur extends BaseUser
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
-
-    /**
-     * @var \AppBundle\Entity\Statistiques
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Statistiques")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="IDStat", referencedColumnName="IDStat")
-     * })
-     */
-    private $idstat;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -209,7 +199,6 @@ class Utilisateur extends BaseUser
      */
     public function __construct()
     {
-
         parent::__construct();
         $this->idUtilisateur = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idgroupe = new \Doctrine\Common\Collections\ArrayCollection();

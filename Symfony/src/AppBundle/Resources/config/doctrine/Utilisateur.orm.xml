@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="AppBundle\Entity\Utilisateur" table="Utilisateur">
-    <indexes>
-      <index name="FK_Utilisateur_IDStat" columns="IDStat"/>
-    </indexes>
-    <unique-constraints>
-      <unique-constraint name="emailUtilisateur" columns="emailUtilisateur"/>
-    </unique-constraints>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="emailutilisateur" type="string" column="emailUtilisateur" length="50" nullable="true">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
     <field name="emailestvisible" type="boolean" column="emailEstVisible" nullable="true"/>
     <field name="nomutilisateur" type="string" column="nomUtilisateur" length="25" nullable="true">
       <options>
@@ -48,21 +37,21 @@
       </options>
     </field>
     <field name="poidsestvisible" type="boolean" column="poidsEstVisible" nullable="true"/>
-    <field name="pseudoutilisateur" type="string" column="pseudoUtilisateur" length="25" nullable="true">
+    <field name="photo" type="string" column="photo" length="100" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="motdepasseutilisateur" type="string" column="motDePasseUtilisateur" length="25" nullable="true">
+    <field name="facebookid" type="string" column="facebookId" length="50" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="idstat" target-entity="Statistiques" fetch="LAZY">
-      <join-columns>
-        <join-column name="IDStat" referenced-column-name="IDStat"/>
-      </join-columns>
-    </many-to-one>
+    <field name="googleid" type="string" column="googleId" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <many-to-many field="idUtilisateur" target-entity="Utilisateur" inversed-by="id" fetch="LAZY">
       <join-table name="amis">
         <join-columns>
