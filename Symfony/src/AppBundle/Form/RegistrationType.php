@@ -16,33 +16,72 @@ class RegistrationType extends AbstractType
   public function buildForm(FormBuilderInterface $builder, array $options)
   {
       $builder
-      ->add('emailEstVisible', CheckboxType::class, array(
-    'label'    => 'Rendre votre Email Visible par les autres utilisateurs ?',
-    'required' => false))
+      ->add('emailEstVisible', ChoiceType::class, array(
+      'label'    => 'Visibilité du mail',
+      'choices'  => array(
+              'Privé' => 0,
+              'Amis' => 1,
+              'Public' => 2,
+      )))
     ->add('prenomUtilisateur', TextType::class, array(
     'label'    => 'Prénom'))
-    ->add('prenomEstVisible', CheckboxType::class, array(
-    'label'    => 'Rendre votre Prénom Visible par les autres utilisateurs * ?',
-    'required' => false))
+    ->add('prenomEstVisible', ChoiceType::class, array(
+    'label'    => 'Visibilité du Prénom',
+    'choices'  => array(
+            'Privé' => 0,
+            'Amis' => 1,
+            'Public' => 2,
+    )))
     ->add('nomUtilisateur', TextType::class, array(
     'label'    => 'Nom'))
-    ->add('nomEstVisible', CheckboxType::class, array(
-    'label'    => 'Rendre votre Prénom Visible par les autres utilisateurs ?',
-    'required' => false))
+    ->add('nomEstVisible', ChoiceType::class, array(
+    'label'    => 'Visibilité du nom',
+    'choices'  => array(
+            'Privé' => 0,
+            'Amis' => 1,
+            'Public' => 2,
+    )))
     ->add('ageUilisateur', TextType::class, array(
     'label'    => 'Âge'))
-    ->add('ageEstVisible', CheckboxType::class, array(
-    'label'    => 'Rendre votre Âge Visible par les autres utilisateurs ?',
-    'required' => false))
+    ->add('ageEstVisible', ChoiceType::class, array(
+    'label'    => 'Visibilité de l\'âge',
+    'choices'  => array(
+            'Privé' => 0,
+            'Amis' => 1,
+            'Public' => 2,
+    )))
     ->add('sexeUtilisateur', ChoiceType::class, array(
     'label'    => 'Sexe',
-    'choices'  => array(      //to do : AJOUTER TAILLE ET POIDS 
+    'choices'  => array(
             'Homme' => 0,
             'Femme' => 1,
+            'Neutre' => 2,
     )))
-    ->add('sexeEstVisible', CheckboxType::class, array(
-    'label'    => 'Rendre votre Sexe Visible par les autres utilisateurs ?',
-    'required' => false))
+    ->add('sexeEstVisible', ChoiceType::class, array(
+    'label'    => 'Visibilité du Sexe',
+    'choices'  => array(
+            'Privé' => 0,
+            'Amis' => 1,
+            'Public' => 2,
+    )))
+    ->add('tailleUtilisateur', TextType::class, array(
+    'label'    => 'Taille'))
+    ->add('tailleEstVisible', ChoiceType::class, array(
+    'label'    => 'Visibilité de la Taille',
+    'choices'  => array(
+            'Privé' => 0,
+            'Amis' => 1,
+            'Public' => 2,
+    )))
+    ->add('poidsUtilisateur', TextType::class, array(
+    'label'    => 'Poids'))
+    ->add('poidsEstVisible', ChoiceType::class, array(
+    'label'    => 'Visibilité du Poid',
+    'choices'  => array(
+            'Privé' => 0,
+            'Amis' => 1,
+            'Public' => 2,
+    )))
       ;
   }
 
