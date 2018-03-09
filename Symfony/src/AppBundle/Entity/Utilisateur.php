@@ -763,39 +763,6 @@ class Utilisateur extends BaseUser
     }
 
 
-/**
- * Add AgeUtilisateur
- *
- * @param \AppBundle\Entity\Programme $AgeUtilisateur
- *
- * @return Utilisateur
- */
-public function addAgeUtilisateur(\AppBundle\Entity\Programme $ageuilisateur)
-{
-    $this->$ageuilisateur[] = $ageuilisateur;
-
-    return $this;
-}
-
-/**
- * Remove ageUtilisateur
- *
- * @param \AppBundle\Entity\Programme $ageUtilisateur
- */
-public function removeAgeUtilisateur(\AppBundle\Entity\Programme $ageuilisateur)
-{
-    $this->$ageuilisateur->removeElement($ageUtilisateur);
-}
-
-/**
- * Get ageUtilisateur
- *
- * @return \Doctrine\Common\Collections\Collection
- */
-public function getAgeUtilisateur()
-{
-    return $this->ageuilisateur;
-}
 
 
 

@@ -29,14 +29,14 @@ class RegistrationType extends AbstractType
     ->add('nomEstVisible', CheckboxType::class, array(
     'label'    => 'Rendre votre Prénom Visible par les autres utilisateurs ?',
     'required' => false))
-    ->add('ageUtilisateur', TextType::class, array(
+    ->add('ageUilisateur', TextType::class, array(
     'label'    => 'Âge'))
     ->add('ageEstVisible', CheckboxType::class, array(
     'label'    => 'Rendre votre Âge Visible par les autres utilisateurs ?',
     'required' => false))
     ->add('sexeUtilisateur', ChoiceType::class, array(
     'label'    => 'Sexe',
-    'choices'  => array(
+    'choices'  => array(      //to do : AJOUTER TAILLE ET POIDS 
             'Homme' => 0,
             'Femme' => 1,
     )))
