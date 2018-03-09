@@ -1,52 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
+{% extends 'base.html.twig' %}
 
-  <head>
+{% block content %}
 
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="">
-      <meta name="author" content="">
+  {% block container %}
 
-      <title>{% block title %}AFC Running{% endblock %}</title>
+  {% endblock %}
 
-      <!-- Bootstrap Core CSS -->
-      <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
-
-      <!-- Custom CSS -->
-      <link rel="stylesheet" href="{{ asset('css/template.css') }}" />
-
-  </head>
-
-  <body>
-
-      <!-- Navigation -->
-      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        {{ render(controller("AFCRunningPlatformBundle:Default:menu")) }}
-      </nav>
-
-      <!-- Page Content -->
-      <div class="container">
-        {% block container %}
-        {% endblock %}
-
-        <hr>
-        <!-- Footer -->
-        <footer>
-        {% block footer %}
-        {% endblock %}
-        </footer>
-
-      </div>
-      <!-- /.container -->
-
-      <!-- jQuery -->
-      <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
-
-      <!-- Bootstrap Core JavaScript -->
-      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
-  </body>
-
-</html>
+{% endblock %}
