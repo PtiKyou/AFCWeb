@@ -1,0 +1,92 @@
+{# src/OC/PlatformBundle/Resources/views/Default/profilUser.html.twig #}
+
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block container %}
+  <h2 class="row">Profil : { user.pseudo }</h2>
+  <br/>
+  <div class="row">
+    {# mettre user.photo en source de l'image #}
+    <img class="col-md-2" src="https://puu.sh/zBRjP/7d12355314.png" alt="photo de profil" height="100" width="100">
+    <div class="col-md-10">
+      <table class="table table-bordered profil_table">
+        <tr>
+          <td>
+            <ul class="list-unstyled">
+              <li>
+                Nom : {user.nom}
+              </li>
+              <li>
+                Prénom : {user.prénom}
+              </li>
+              <li>
+                Email : {user.email}
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <ul class="list-unstyled">
+              <li>
+                Pseudo : {user.pseudo}
+              </li>
+              <li>
+                Sexe : {user.sexe}
+              </li>
+              <li>
+                Age : {user.age}
+              </li>
+              <li>
+                Taille : {user.taille}
+              </li>
+              <li>
+                Poid : {user.poid}
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <!-- /.row presentation user-->
+
+  <hr/>
+
+  <div class="row">
+    <h2>Derniers entraînements :</h2>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-md-10">03/04/18 - Muscu 30 min</div>
+          <div class="col-md-2 btn btn_historique_entrainement btn-primary">Afficher</div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-md-10">01/02/18 - Vélo 1H</div>
+          <div class="col-md-2 btn btn_historique_entrainement btn-primary">Afficher</div>
+        </div>
+      </li>
+      <li class="list-group-item">...</li>
+      <li class="list-group-item">...</li>
+      <li class="list-group-item">...</li>
+    </ul>
+    <div class="row">
+      <nav class="col-md-6">
+        <ul class="pagination no_margin">
+          <li><a arial-label="Previous"><<</a></li>
+          <li><a>1</a></li>
+          <li><a>2</a></li>
+          <li><a>3</a></li>
+          <li><a>4</a></li>
+          <li><a>5</a></li>
+          <li><a arial-label="Previous">>></a></li>
+        </ul>
+      </nav>
+
+      <a id="btn_profilUser" class="btn btn-primary col-md-offset-4 col-md-2">Stats</a>
+    </div>
+  </div>
+  <!-- /.row  tableau entrainements-->
+{% endblock %}

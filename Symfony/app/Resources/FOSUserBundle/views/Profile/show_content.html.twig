@@ -1,6 +1,68 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+{% block name %}
+  <div class="row">
+     <span class="text-info">
+         <h1 class="name_title">Profil</h1>
+     </span>
+   </div>
+{% endblock name %}
+
 <div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <div class="row">
+      {# mettre user.photo en source de l'image #}
+      <img src="{{ user.photo }}" alt="photo de profil" height="100" width="100">
+    </div>
+    <br/>
+    <div class="row">
+      <table class="table table-bordered profil_table">
+        <tr>
+          <td>
+            <ul class="list-unstyled">
+              <li>
+                  Nom : {{ user.nomUtilisateur }}
+              </li>
+              <li>
+                Prénom : {{ user.prenomUtilisateur }}
+              </li>
+              <li>
+                Email : {{ user.email }}
+                </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <ul class="list-unstyled">
+                <li>
+                Pseudo : {{ user.username }}
+              </li>
+              <li>
+                Sexe :
+                {% if user.sexeUtilisateur == 0 %}
+                  Homme
+                {% elseif user.sexeUtilisateur == 0%}
+                  Femme
+                {% else %}
+                  Autre
+                {% endif %}
+              </li>
+              <li>
+                Age : {{ user.ageUilisateur }}
+                </li>
+              <li>
+                Taille : {{user.tailleUtilisateur }}
+              </li>
+                <li>
+                Poid : {{user.poidsUtilisateur }}
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <a class="btn btn-primary profil_btn" href="./edit">Modifier profil</a>
+      <a class="btn btn-primary profil_btn">Modifier mot de passe</a>
+      <a class="btn btn-danger profil_btn">Supprimer le compte</a>
+    </div>
+    <!-- /.row -->
 </div>

@@ -1,0 +1,67 @@
+{# src/OC/PlatformBundle/Resources/views/Default/profil.html.twig #}
+{#
+Fichier de test pour l'affichage du profil,
+fichier final ===> Symfony\app\Resources\FOSUserBundle\views\Profile\profile.html.twig 
+#}
+
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block name %}
+  <div class="row">
+     <span class="text-info">
+         <h1 class="name_title">Profil</h1>
+     </span>
+   </div>
+{% endblock name %}
+
+{% block container %}
+  <div class="row">
+    {# mettre user.photo en source de l'image #}
+    <img src="https://puu.sh/zBRjP/7d12355314.png" alt="photo de profil" height="100" width="100">
+  </div>
+  <br/>
+  <div class="row">
+    <table class="table table-bordered profil_table">
+      <tr>
+        <td>
+          <ul class="list-unstyled">
+            <li>
+                Nom : {user.nom}
+            </li>
+            <li>
+              Prénom : {user.prénom}
+            </li>
+            <li>
+              Email : {user.email}
+              </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="list-unstyled">
+              <li>
+              Pseudo : {user.pseudo}
+            </li>
+            <li>
+              Sexe : {user.sexe}
+            </li>
+            <li>
+              Age : {user.age}
+              </li>
+            <li>
+              Taille : {user.taille}
+            </li>
+              <li>
+              Poid : {user.poid}
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+    <a class="btn btn-primary profil_btn">Modifier profil</a>
+    <a class="btn btn-primary profil_btn">Modifier mot de passe</a>
+    <a class="btn btn-danger profil_btn">Supprimer le compte</a>
+  </div>
+  <!-- /.row -->
+{% endblock %}
