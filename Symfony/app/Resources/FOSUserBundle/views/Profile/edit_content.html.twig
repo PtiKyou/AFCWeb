@@ -1,16 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-    {#{ form_widget(form) }#}
-
-    {% block name %}
-      <div class="row">
-         <span class="text-info">
-             <h1 class="name_title">Profil : modifications</h1>
-         </span>
-       </div>
-    {% endblock name %}
-
 
     {% block container %}
       <div class="row">
@@ -154,7 +144,7 @@
             <a class="btn btn-primary profil_btn col-md-2" href="/profile">Retour</a>
           </div>
 
-          {{ form_rest(form) }} 
+          {{ form_rest(form) }}
 
         </form>
       </div>

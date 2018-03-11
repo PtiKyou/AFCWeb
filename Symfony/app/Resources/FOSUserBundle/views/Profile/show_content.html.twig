@@ -1,13 +1,5 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block name %}
-  <div class="row">
-     <span class="text-info">
-         <h1 class="name_title">Profil</h1>
-     </span>
-   </div>
-{% endblock name %}
-
 <div class="fos_user_user_show">
     <div class="row">
       {# mettre user.photo en source de l'image #}
@@ -41,7 +33,7 @@
                 Sexe :
                 {% if user.sexeUtilisateur == 0 %}
                   Homme
-                {% elseif user.sexeUtilisateur == 0%}
+                {% elseif user.sexeUtilisateur == 1 %}
                   Femme
                 {% else %}
                   Autre
@@ -61,8 +53,8 @@
         </tr>
       </table>
       <a class="btn btn-primary profil_btn" href="./edit">Modifier profil</a>
-      <a class="btn btn-primary profil_btn">Modifier mot de passe</a>
-      <a class="btn btn-danger profil_btn">Supprimer le compte</a>
+      <a class="btn btn-primary profil_btn" href="./change-password">Modifier mot de passe</a>
+      <a class="btn btn-danger profil_btn" href="#">Supprimer le compte</a>
     </div>
     <!-- /.row -->
 </div>

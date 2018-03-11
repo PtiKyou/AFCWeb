@@ -1,8 +1,5 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-
-<h2 class="row">Connexion :</h2>
-<br/>
 <div class="row">
   <form class="form-horizontal" action="{{ path("fos_user_security_check") }}" method="post">
       {% if csrf_token %}
@@ -35,7 +32,8 @@
 
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <input type="submit" id="_submit" class="btn btn-default" name="_submit" value="Valider{#{ 'security.login.submit'|trans }#}" />
+          <input type="submit" id="_submit" class="btn btn-primary" name="_submit" value="Valider{#{ 'security.login.submit'|trans }#}" />
+          <a class="btn btn-default" href="/register">Créer un compte</a>
         </div>
       </div>
 
