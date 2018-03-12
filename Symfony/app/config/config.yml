@@ -83,5 +83,5 @@ fos_user:
         form:
             type: AppBundle\Form\RegistrationType
     profile:
-      form:
-        type: AppBundle\Form\ProfileFormType
+        form:
+            type: AppBundle\Form\ProfileFormType

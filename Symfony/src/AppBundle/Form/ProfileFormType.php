@@ -1,5 +1,6 @@
 <?php
 
+
 //namespace FOS\UserBundle\Form\Type;
 
 namespace AppBundle\Form;
@@ -10,7 +11,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Validator\Constraints\NotBlank;
-
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class ProfileFormType extends AbstractType
 {
+
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
