@@ -1,3 +1,7 @@
 afc_running_platform_homepage:
     path:     /
     defaults: { _controller: AFCRunningPlatformBundle:Default:index }
+
+test_vues:
+    path: /test
+    defaults: { _controller: AFCRunningPlatformBundle:Default:testView }

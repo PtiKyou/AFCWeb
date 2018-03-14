@@ -2,24 +2,112 @@
  * Start Bootstrap - Blog Home (http://startbootstrap.com/)
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ *
+ * Nommage des class et id :
+ * xxx-xxx = Bootstrap
+ * xxx_xxx = css perso
  */
 
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
-
 footer {
     margin: 50px 0;
 }
 
 
+/* profil.html.twig */
+.profil_table tr{
+  font-size: medium;
+  border: solid 2px black;
+}
+.profil_btn{
+  margin: 5px;
+}
+.profil_table{
+    width: 75%;
+}
 
 
-/*smartphones et tablettes*/
-.btn-historique-entrainement{
+/* profilUser.html.twig */
+#btn_profilUser{
+  left: 15px;
+}
+
+
+/* profilSettings.html.twig */
+#fos_user_profile_form_sexeUtilisateur .radio{
+  margin-right: 10px;
+}
+#input_profilSettings_photo{
+  top: 20px;
+  left: -15px;
+}
+#profilSettings_table tr{
+  font-size: medium;
+  border: solid 2px black;
+}
+#profilSettings_table th{
+  text-align: center;
+}
+#profilSettings_table td{
+  vertical-align: middle;
+}
+.profilSettings_checkbox{
+  text-align: center;
+}
+
+
+/* menu */
+#menu_navbar_header{
+  margin-left: -15px;
+}
+.btn_logout{
+  color: white !important;
+  background-color: #d9534f;
+}
+.btn_logout:hover{
+  color: white !important;
+  background-color: #d9534fcc !important;
+}
+.btn_login{
+  color: white !important;
+  background-color: #337ab7;
+}
+.btn_login:hover{
+  color: white !important;
+  background-color: #286090 !important;
+}
+
+/* tableau de l'historique des entrainements */
+.btn_historique_entrainement{
 	right: -10px;
 }
 
+
+
+#base_alert{
+  border: solid 1px;
+  padding-left: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.name_title{
+  margin-bottom: 25px;
+}
+.no_margin{
+  margin: 0px;
+}
+.no_border{
+  border-style: none !important;
+}
+
+
+/*
+ * modifications de Bootstrap
+ */
 .pagination{
 	cursor: pointer;
 }
@@ -27,8 +115,13 @@ footer {
 
 /*spécialement pour les grands écrans de PC*/
 @media (min-width:970px) {
-	.btn-historique-entrainement{
+	.btn_historique_entrainement{
 		right: 10px;
 	}
-	
+
+  .btn_profilUser{
+    left: -15px;
+  }
+
+
 }

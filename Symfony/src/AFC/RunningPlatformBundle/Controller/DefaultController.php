@@ -8,7 +8,12 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AFCRunningPlatformBundle:Default:index.html.twig');
+      if( $this->isGranted('IS_AUTHENTICATED_FULLY') ){
+        // page pour un utilisateur authentifié
+        return $this->render('AFCRunningPlatformBundle:Default:indexAuth.html.twig');
+      }
+      //page d'accueil pour un visiteur
+      return $this->render('AFCRunningPlatformBundle:Default:index.html.twig');
     }
 
     /**
@@ -16,22 +21,26 @@ class DefaultController extends Controller
     **/
     public function menuAction()
     {
+      return $this->render('AFCRunningPlatformBundle:Default:menu.html.twig');
+    }
 
-      $listMenusLeft = array(
-        array('id' => 1, 'title' => 'Profil'),
-        array('id' => 2, 'title' => 'Stats'),
-        array('id' => 3, 'title' => 'Social'),
-        array('id' => 4, 'title' => 'admin')
-      );
+    /**
+    ** Panneau à droite de la page
+    **/
+    public function rightPanelAction()
+    {
+      $content = array('title' => "Titre du panel", 'text' => "Contenu du panel, TODO > AFCRunningPlatformBundle:Default:rightPanelAction()");
 
-      $listMenusRight = array(
-        array('id' => 1, 'title' => 'Login'),
-        array('id' => 2, 'title' => 'Signup'),
-        array('id' => 3, 'title' => 'Logout')
-      );
-
-      return $this->render('AFCRunningPlatformBundle:Default:menu.html.twig', array(
-        'listMenusLeft' => $listMenusLeft, 'listMenusRight' => $listMenusRight
+      return $this->render('AFCRunningPlatformBundle:Default:rightPanel.html.twig', array(
+        'content' => $content
       ));
+    }
+
+    /**
+    ** function pour afficher les vues à tester pour /test
+    **/
+    public function testViewAction()
+    {
+      return $this->render('AFCRunningPlatformBundle:Default:profilSettings.html.twig');
     }
 }

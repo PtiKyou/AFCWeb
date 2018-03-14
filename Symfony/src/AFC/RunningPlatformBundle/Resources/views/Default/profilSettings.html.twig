@@ -1,0 +1,279 @@
+{# src/OC/PlatformBundle/Resources/views/Default/profilSettings.html.twig #}
+{#
+Fichier de test pour l'affichage de la modification de profil,
+fichier final ===> Symfony\app\Resources\FOSUserBundle\views\Profile\edit_content.html.twig
+#}
+
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block name %}
+  <div class="row">
+     <span class="text-info">
+         <h1 class="name_title">Profil : modifications</h1>
+     </span>
+   </div>
+{% endblock name %}
+
+{% block container %}
+  <div class="row">
+    {# mettre user.photo en source de l'image #}
+    <img class="col-md-2" src="https://puu.sh/zBRjP/7d12355314.png" alt="photo de profil" height="100" width="100">
+    <div class="form-group col-md-8" id="input_profilSettings_photo">
+      <label for="photoInput">Lien de l'image</label>
+      <input type="text" class="form-control" id="photoInput" value="{user.photo} (url)">
+    </div>
+    <!--a id="btn_profilSettings_photo" class="btn btn-primary">Parcourir</a -->
+  </div>
+  <br/>
+  <div class="row ">
+    <form>
+      <table id="profilSettings_table" class="table table-bordered">
+        <!-- header -->
+        <tr>
+          <th class="no_border"></th>
+          <th class="no_border"></th>
+          <th>Public</th>
+        </tr>
+
+        <!-- nom -->
+        <tr>
+          <td>
+            Nom
+          </td>
+          <td>
+            <input type="text" class="form-control" id="nomInput" value="{user.nom}">
+          </td>
+          <td>
+            <select id="nomInputVisibility" class="form-control">
+              <option value="0"
+              {# if user.nomVisibility == 0 #}
+                selected
+              {# endif #}
+              >Privé</option>
+              <option value="1"
+              {# if user.nomVisibility == 1 #}
+                selected
+              {# endif #}
+              >Amis seulement</option>
+              <option value="2"
+              {# if user.nomVisibility == 2 #}
+                selected
+              {# endif #}
+              >Public</option>
+            </select>
+          </td>
+        </tr>
+
+        <!-- prénom -->
+        <tr>
+          <td>
+            Prénom
+          </td>
+          <td>
+            <input type="text" class="form-control" id="prénomInput" value="{user.prénom}">
+          </td>
+          <td>
+            <select id="prénomInputVisibility" class="form-control">
+              <option value="0"
+              {# if user.prénomVisibility == 0 #}
+                selected
+              {# endif #}
+              >Privé</option>
+              <option value="1"
+              {# if user.prénomVisibility == 1 #}
+                selected
+              {# endif #}
+              >Amis seulement</option>
+              <option value="2"
+              {# if user.prénomVisibility == 2 #}
+                selected
+              {# endif #}
+              >Public</option>
+            </select>
+          </td>
+        </tr>
+
+        <!-- mail -->
+        <tr>
+          <td>
+            Email
+          </td>
+          <td>
+            <input type="email" class="form-control" id="emailInput" value="{user.prénom}">
+          </td>
+          <td>
+            <select id="emailInputVisibility" class="form-control">
+              <option value="0"
+              {# if user.emailVisibility == 0 #}
+                selected
+              {# endif #}
+              >Privé</option>
+              <option value="1"
+              {# if user.emailVisibility == 1 #}
+                selected
+              {# endif #}
+              >Amis seulement</option>
+              <option value="2"
+              {# if user.emailVisibility == 2 #}
+                selected
+              {# endif #}
+              >Public</option>
+            </select>
+          </td>
+        </tr>
+
+        <!-- Pseudo -->
+        <tr>
+          <td>
+            Pseudo
+          </td>
+          <td>
+            <input type="text" class="form-control" id="pseudoInput" value="{user.pseudo}">
+          </td>
+          <td class="profilSettings_checkbox">
+            Toujours visible
+          </td>
+        </tr>
+
+        <!-- sexe -->
+        <tr>
+          <td>
+            Sexe
+          </td>
+          <td>
+            <label class="radio-inline">
+              <input type="radio" name="sexeInput" id="sexeInput2" value="0"
+              {# if user.sexe == 0 #}
+                checked
+              {# endif #}
+              > Homme
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="sexeInput" id="sexeInput1" value="1"
+              {# if user.sexe == 1 #}
+                checked
+              {# endif #}
+              > Femme
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="sexeInput" id="sexeInput2" value="2"
+              {# if user.sexe == 2 #}
+                checked
+              {# endif #}
+              > Autre
+            </label>
+          </td>
+          <td>
+            <select id="sexeInputVisibility" class="form-control">
+              <option value="0"
+              {# if user.sexeVisibility == 0 #}
+                selected
+              {# endif #}
+              >Privé</option>
+              <option value="1"
+              {# if user.sexeVisibility == 1 #}
+                selected
+              {# endif #}
+              >Amis seulement</option>
+              <option value="2"
+              {# if user.sexeVisibility == 2 #}
+                selected
+              {# endif #}
+              >Public</option>
+            </select>
+          </td>
+        </tr>
+
+        <!-- Age -->
+        <tr>
+          <td>
+            Age
+          </td>
+          <td class="form-inline">
+            <input type="number" min="0" class="form-control" id="ageInput" value="{user.age}"> ans
+          </td>
+          <td>
+            <select id="ageInputVisibility" class="form-control">
+              <option value="0"
+              {# if user.ageVisibility == 0 #}
+                selected
+              {# endif #}
+              >Privé</option>
+              <option value="1"
+              {# if user.ageVisibility == 1 #}
+                selected
+              {# endif #}
+              >Amis seulement</option>
+              <option value="2"
+              {# if user.ageVisibility == 2 #}
+                selected
+              {# endif #}
+              >Public</option>
+            </select>
+          </td>
+        </tr>
+
+        <!-- Taille -->
+        <tr>
+          <td>
+            Taille
+          </td>
+          <td class="form-inline">
+            <input type="number" min="0" class="form-control" id="tailleInput" value="{user.taille}"> cm
+          </td>
+          <td>
+            <select id="tailleInputVisibility" class="form-control">
+              <option value="0"
+              {# if user.tailleVisibility == 0 #}
+                selected
+              {# endif #}
+              >Privé</option>
+              <option value="1"
+              {# if user.tailleVisibility == 1 #}
+                selected
+              {# endif #}
+              >Amis seulement</option>
+              <option value="2"
+              {# if user.tailleVisibility == 2 #}
+                selected
+              {# endif #}
+              >Public</option>
+            </select>
+          </td>
+        </tr>
+
+        <!-- Poid -->
+        <tr>
+          <td>
+            Poid
+          </td>
+          <td class="form-inline">
+            <input type="number" min="0" class="form-control" id="poidInput" value="{user.poid}"> kg
+          </td>
+          <td>
+            <select id="poidInputVisibility" class="form-control">
+              <option value="0"
+              {# if user.poidVisibility == 0 #}
+                selected
+              {# endif #}
+              >Privé</option>
+              <option value="1"
+              {# if user.poidVisibility == 1 #}
+                selected
+              {# endif #}
+              >Amis seulement</option>
+              <option value="2"
+              {# if user.poidVisibility == 2 #}
+                selected
+              {# endif #}
+              >Public</option>
+            </select>
+          </td>
+        </tr>
+
+      </table>
+      <a class="btn btn-primary profil_btn">Valider</a>
+      <a class="btn btn-primary profil_btn">Retour</a>
+    </form>
+  </div>
+{% endblock %}

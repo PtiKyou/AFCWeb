@@ -1,0 +1,155 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+
+    {% block container %}
+      <div class="row">
+        {# mettre user.photo en source de l'image #}
+        <img class="col-md-2" src="https://puu.sh/zBRjP/7d12355314.png" alt="photo de profil" height="100" width="100">
+        <div class="form-group col-md-8" id="input_profilSettings_photo">
+          <label for="photoInput">Lien de l'image</label>
+          {{ form_widget(form.photo) }}
+        </div>
+        <!--a id="btn_profilSettings_photo" class="btn btn-primary">Parcourir</a -->
+      </div>
+      <br/>
+      <div class="row ">
+        <form>
+          <table id="profilSettings_table" class="table table-bordered">
+            <!-- header -->
+            <tr>
+              <th class="no_border"></th>
+              <th class="no_border"></th>
+              <th>Public</th>
+            </tr>
+
+            <!-- nom -->
+            <tr>
+              <td>
+                Nom
+              </td>
+              <td>
+                {{ form_widget(form.nomUtilisateur) }}
+              </td>
+              <td>
+                {{ form_widget(form.nomEstVisible) }}
+              </td>
+            </tr>
+
+            <!-- prénom -->
+            <tr>
+              <td>
+                Prénom
+              </td>
+              <td>
+                {{ form_widget(form.prenomUtilisateur) }}
+              </td>
+              <td>
+                {{ form_widget(form.prenomEstVisible) }}
+              </td>
+            </tr>
+
+            <!-- mail -->
+            <tr>
+              <td>
+                Email
+              </td>
+              <td>
+                {{ form_widget(form.email) }}
+              </td>
+              <td>
+                {{ form_widget(form.emailEstVisible) }}
+              </td>
+            </tr>
+
+            <!-- Pseudo -->
+            <tr>
+              <td>
+                Pseudo
+              </td>
+              <td>
+                {{ form_widget(form.username) }}
+
+              </td>
+              <td class="profilSettings_checkbox">
+                Toujours visible
+              </td>
+            </tr>
+
+            <!-- sexe -->
+            <tr>
+              <td>
+                Sexe
+              </td>
+              <td>
+                <div class="form-inline" id="input_profilSettings_sexe">
+                  {{ form_widget(form.sexeUtilisateur) }}
+                </div>
+              </td>
+              <td>
+                {{ form_widget(form.sexeEstVisible) }}
+              </td>
+            </tr>
+
+            <!-- Age -->
+            <tr>
+              <td>
+                Age
+              </td>
+              <td class="form-inline">
+                {{ form_widget(form.ageUilisateur) }} ans
+              </td>
+              <td>
+                {{ form_widget(form.ageEstVisible) }}
+              </td>
+            </tr>
+
+            <!-- Taille -->
+            <tr>
+              <td>
+                Taille
+              </td>
+              <td class="form-inline">
+                {{ form_widget(form.tailleUtilisateur) }} cm
+              </td>
+              <td>
+                {{ form_widget(form.tailleEstVisible) }}
+              </td>
+            </tr>
+
+            <!-- Poid -->
+            <tr>
+              <td>
+                Poid
+              </td>
+              <td class="form-inline">
+                {{ form_widget(form.poidsUtilisateur) }} kg
+              </td>
+              <td>
+                {{ form_widget(form.poidsEstVisible) }}
+              </td>
+            </tr>
+
+          </table>
+
+          <div class="row">
+            <div class="col-md-8">
+              <strong>Veuillez taper votre mot de passe actuel :</strong>
+              {{ form_widget(form.current_password) }}
+            </div>
+          </div>
+          <br/>
+          <div class="row">
+            <input class="btn btn-primary profil_btn col-md-2" type="submit" value="Valider" />
+            <a class="btn btn-primary profil_btn col-md-2" href="/profile">Retour</a>
+          </div>
+
+          {{ form_rest(form) }}
+
+        </form>
+      </div>
+    {% endblock %}
+
+
+
+{{ form_end(form) }}
