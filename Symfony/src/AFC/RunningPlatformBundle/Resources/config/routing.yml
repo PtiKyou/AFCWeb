@@ -2,6 +2,10 @@ afc_running_platform_homepage:
     path:     /
     defaults: { _controller: AFCRunningPlatformBundle:Default:index }
 
+afc_running_platform_admin:
+    path:     /admin
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:index }
+
 test_vues:
     path: /test
     defaults: { _controller: AFCRunningPlatformBundle:Default:testView }

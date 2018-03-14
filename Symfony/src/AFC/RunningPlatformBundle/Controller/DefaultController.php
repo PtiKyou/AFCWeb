@@ -29,7 +29,7 @@ class DefaultController extends Controller
     **/
     public function rightPanelAction()
     {
-      $content = array('title' => "Titre du panel", 'text' => "Contenu du panel, TODO > AFCRunningPlatformBundle:Default:rightPanelAction()");
+      $content = array('title' => "Titre du panel", 'text' => "5555555, TODO > AFCRunningPlatformBundle:Default:rightPanelAction()");
 
       return $this->render('AFCRunningPlatformBundle:Default:rightPanel.html.twig', array(
         'content' => $content
