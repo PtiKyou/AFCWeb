@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\Security\Core\Authorization;
 
-use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage as BaseExpressionLanguage;
 
 if (!class_exists(BaseExpressionLanguage::class)) {
@@ -29,7 +28,7 @@ if (!class_exists(BaseExpressionLanguage::class)) {
         /**
          * {@inheritdoc}
          */
-        public function __construct(CacheItemPoolInterface $cache = null, array $providers = array())
+        public function __construct($cache = null, array $providers = array())
         {
             // prepend the default provider to let users override it easily
             array_unshift($providers, new ExpressionLanguageProvider());

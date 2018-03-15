@@ -12,6 +12,7 @@
 namespace Symfony\Component\Form\Extension\Core\DataTransformer;
 
 use Symfony\Component\Form\Exception\TransformationFailedException;
+use Symfony\Component\Form\Exception\UnexpectedTypeException;
 
 /**
  * Transforms between a normalized time and a localized time string/array.
@@ -30,8 +31,10 @@ class DateTimeToArrayTransformer extends BaseDateTimeTransformer
      * @param string $outputTimezone The output timezone
      * @param array  $fields         The date fields
      * @param bool   $pad            Whether to use padding
+     *
+     * @throws UnexpectedTypeException if a timezone is not a string
      */
-    public function __construct(string $inputTimezone = null, string $outputTimezone = null, array $fields = null, bool $pad = false)
+    public function __construct($inputTimezone = null, $outputTimezone = null, array $fields = null, $pad = false)
     {
         parent::__construct($inputTimezone, $outputTimezone);
 
@@ -40,7 +43,7 @@ class DateTimeToArrayTransformer extends BaseDateTimeTransformer
         }
 
         $this->fields = $fields;
-        $this->pad = $pad;
+        $this->pad = (bool) $pad;
     }
 
     /**

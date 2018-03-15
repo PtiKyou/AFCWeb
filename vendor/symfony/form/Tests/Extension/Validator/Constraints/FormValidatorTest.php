@@ -646,7 +646,14 @@ class FormValidatorTest extends ConstraintValidatorTestCase
         return $context;
     }
 
-    private function getBuilder(string $name = 'name', string $dataClass = null, array $options = array()): FormBuilder
+    /**
+     * @param string $name
+     * @param string $dataClass
+     * @param array  $options
+     *
+     * @return FormBuilder
+     */
+    private function getBuilder($name = 'name', $dataClass = null, array $options = array())
     {
         $options = array_replace(array(
             'constraints' => array(),

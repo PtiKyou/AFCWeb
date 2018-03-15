@@ -105,7 +105,7 @@ final class Forms
      *
      * @return FormFactoryInterface The form factory
      */
-    public static function createFormFactory(): FormFactoryInterface
+    public static function createFormFactory()
     {
         return self::createFormFactoryBuilder()->getFormFactory();
     }
@@ -115,7 +115,7 @@ final class Forms
      *
      * @return FormFactoryBuilderInterface The form factory builder
      */
-    public static function createFormFactoryBuilder(): FormFactoryBuilderInterface
+    public static function createFormFactoryBuilder()
     {
         $builder = new FormFactoryBuilder();
         $builder->addExtension(new CoreExtension());

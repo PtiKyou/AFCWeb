@@ -9,3 +9,7 @@ afc_running_platform_admin:
 test_vues:
     path: /test
     defaults: { _controller: AFCRunningPlatformBundle:Default:testView }
+    
+test_defis:
+    path:    /defis
+    defaults: { _controller: AFCRunningPlatformBundle:Defis:index }
