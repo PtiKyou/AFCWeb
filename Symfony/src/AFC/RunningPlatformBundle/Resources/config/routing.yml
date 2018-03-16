@@ -10,6 +10,14 @@ test_vues:
     path: /test
     defaults: { _controller: AFCRunningPlatformBundle:Default:testView }
     
-test_defis:
+afc_defis:
     path:    /defis
     defaults: { _controller: AFCRunningPlatformBundle:Defis:index }
+    
+creer_defis:
+    path:    /defis/creerdefis
+    defaults: { _controller: AFCRunningPlatformBundle:Defis:creerDefis}
+
+afficher_defis:
+    path:    /defis/afficherdefis
+    defaults: { _controller: AFCRunningPlatformBundle:Defis:afficherDefis}
