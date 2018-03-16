@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\Statistiques;
 use AppBundle\Entity\Utilisateur;
+use AppBundle\Entity\Nutrition;
 use AppBundle\Form\StatsType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -35,7 +36,13 @@ class DefaultController extends Controller
     **/
     public function rightPanelAction()
     {
-      $content = array('title' => "Titre du panel", 'text' => "5555555, TODO > AFCRunningPlatformBundle:Default:rightPanelAction()");
+      $em = $this->getDoctrine()->getManager();
+      $conseils = $em->getRepository(Nutrition::class)->findAll();
+      $choice = rand(0, sizeof($conseils)-1);
+
+      $conseilToShow = $conseils[$choice];
+
+      $content = array('title' => "Conseils", 'text' => $conseilToShow->getConseil());
 
       return $this->render('AFCRunningPlatformBundle:Default:rightPanel.html.twig', array(
         'content' => $content

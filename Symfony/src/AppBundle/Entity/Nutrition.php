@@ -43,5 +43,15 @@ class Nutrition
         $this->idprogramme = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-}
 
+    /**
+     * Get conseil
+     *
+     * @return string
+     */
+    public function getConseil()
+    {
+        return $this->conseil;
+    }
+
+}
