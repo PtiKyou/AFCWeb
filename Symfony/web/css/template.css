@@ -9,17 +9,62 @@
  */
 
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+  padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+  font-size: medium;
 }
+
 footer {
     margin: 50px 0;
 }
+
+#contenu_page{
+  background-color: white;
+}
+#aside1{
+  position: fixed;
+  height: 100%;
+  width: 16%;
+  top: 25px;
+
+  background-image: url("https://puu.sh/zHuAH/2e5bc6cc3a.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: -230px;
+
+  border-right: solid 1px #0472e9;
+
+  z-index: -10;
+}
+#aside2{
+  position: fixed;
+  height: 100%;
+  width: 16%;
+  top: 25px;
+
+  background-image: url("https://puu.sh/zHuOA/82f8d58725.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: -195px;
+  left: 84%;
+
+  border-left: solid 1px #0472e9;
+
+  z-index: -10;
+}
+
+#right_panel{
+  margin-right: -15px;
+}
+
+
+
+
 
 
 /* profil.html.twig */
 .profil_table tr{
   font-size: medium;
-  border: solid 2px black;
+  border: solid 1px black;
 }
 .profil_btn{
   margin: 5px;
@@ -59,6 +104,10 @@ footer {
 
 
 /* menu */
+#menu{
+  background-color: #007aff;
+  border-color: #0472e9;
+}
 #menu_navbar_header{
   margin-left: -15px;
 }
@@ -103,6 +152,9 @@ footer {
 .no_border{
   border-style: none !important;
 }
+.color_white{
+  color: white !important;
+}
 
 
 /*
@@ -119,7 +171,7 @@ footer {
 		right: 10px;
 	}
 
-  .btn_profilUser{
+  #btn_profilUser{
     left: -15px;
   }
 

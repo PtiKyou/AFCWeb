@@ -4,6 +4,12 @@ namespace AFC\RunningPlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+
+use AppBundle\Entity\Statistiques;
+use AppBundle\Entity\Utilisateur;
+use AppBundle\Form\StatsType;
+use Symfony\Component\HttpFoundation\Request;
+
 class DefaultController extends Controller
 {
     public function indexAction()
@@ -39,8 +45,17 @@ class DefaultController extends Controller
     /**
     ** function pour afficher les vues à tester pour /test
     **/
-    public function testViewAction()
+    public function testViewAction(Request $request, $id)
     {
-      return $this->render('AFCRunningPlatformBundle:Default:profilSettings.html.twig');
+      //on recupere l'utilisateur et ses stats
+      $em = $this->getDoctrine()->getManager();
+      $user = $em->getRepository(Utilisateur::class)->findById($id);
+      $user = $user[0];
+      $stats = $em->getRepository(Statistiques::class)->findById($id);
+      $stats = $stats[0];
+
+      return $this->render('AFCRunningPlatformBundle:Profile:statsUser.html.twig',array(
+          'user' => $user, 'userStats' => $stats
+      ));
     }
 }

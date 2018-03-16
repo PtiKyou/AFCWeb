@@ -2,25 +2,31 @@
 
 {% extends "AFCRunningPlatformBundle::layout.html.twig" %}
 
-{% block container %}
-  <h2 class="row">Profil : { user.pseudo }</h2>
-  <br/>
+{% block name %}
   <div class="row">
-    {# mettre user.photo en source de l'image #}
-    <img class="col-md-2" src="https://puu.sh/zBRjP/7d12355314.png" alt="photo de profil" height="100" width="100">
+   <span class="text-info">
+       <h1>Profil de {{ user.username }}</h1>
+   </span>
+   <hr/>
+ </div>
+{% endblock name %}
+
+{% block container %}
+  <div class="row">
+    <img class="col-md-2" src="{{ user.photo }}" alt="[ photo de profil ]" height="100" width="100">
     <div class="col-md-10">
       <table class="table table-bordered profil_table">
         <tr>
           <td>
             <ul class="list-unstyled">
               <li>
-                Nom : {user.nom}
+                Nom : {{ user.nomUtilisateur }}
               </li>
               <li>
-                Prénom : {user.prénom}
+                Prénom : {{ user.prenomUtilisateur }}
               </li>
               <li>
-                Email : {user.email}
+                Email : {{ user.email }}
               </li>
             </ul>
           </td>
@@ -29,19 +35,26 @@
           <td>
             <ul class="list-unstyled">
               <li>
-                Pseudo : {user.pseudo}
+                Pseudo : {{ user.username }}
               </li>
               <li>
-                Sexe : {user.sexe}
+                Sexe :
+                {% if user.sexeUtilisateur == 0 %}
+                  Homme
+                {% elseif user.sexeUtilisateur == 1 %}
+                  Femme
+                {% else %}
+                  Autre
+                {% endif %}
               </li>
               <li>
-                Age : {user.age}
+                Age : {{ user.ageUtilisateur }} ans
               </li>
               <li>
-                Taille : {user.taille}
+                Taille : {{ user.tailleUtilisateur }} cm
               </li>
               <li>
-                Poid : {user.poid}
+                Poid : {{ user.poidsUtilisateur }} kg
               </li>
             </ul>
           </td>
@@ -85,7 +98,7 @@
         </ul>
       </nav>
 
-      <a id="btn_profilUser" class="btn btn-primary col-md-offset-4 col-md-2">Stats</a>
+      <a id="btn_profilUser" class="btn btn-primary col-md-offset-4 col-md-2" href="/profile/user/{{user.id}}/stats">Stats</a>
     </div>
   </div>
   <!-- /.row  tableau entrainements-->
