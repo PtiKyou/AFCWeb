@@ -52,17 +52,11 @@ class DefaultController extends Controller
     /**
     ** function pour afficher les vues à tester pour /test
     **/
-    public function testViewAction(Request $request, $id)
+    public function testViewAction()
     {
-      //on recupere l'utilisateur et ses stats
-      $em = $this->getDoctrine()->getManager();
-      $user = $em->getRepository(Utilisateur::class)->findById($id);
-      $user = $user[0];
-      $stats = $em->getRepository(Statistiques::class)->findById($id);
-      $stats = $stats[0];
-
-      return $this->render('AFCRunningPlatformBundle:Profile:statsUser.html.twig',array(
-          'user' => $user, 'userStats' => $stats
+      $user = $this->getUser();
+      return $this->render('AFCRunningPlatformBundle:Default:social.html.twig', array(
+        'user' => $user
       ));
     }
 }

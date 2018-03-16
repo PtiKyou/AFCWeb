@@ -84,21 +84,20 @@ footer {
 #fos_user_profile_form_sexeUtilisateur .radio{
   margin-right: 10px;
 }
-#input_profilSettings_photo{
+#input_profil_settings_photo{
   top: 20px;
   left: -15px;
 }
-#profilSettings_table tr{
+#profil_settings_table tr{
   font-size: medium;
-  border: solid 2px black;
 }
-#profilSettings_table th{
+#profil_settings_table th{
   text-align: center;
 }
-#profilSettings_table td{
+#profil_settings_table td{
   vertical-align: middle;
 }
-.profilSettings_checkbox{
+.profil_settings_checkbox{
   text-align: center;
 }
 
@@ -109,7 +108,20 @@ footer {
   border-color: #0472e9;
 }
 #menu_navbar_header{
-  margin-left: -15px;
+  margin-left: -5%;
+}
+#menu_navbar_header_title{
+  font-size: xx-large;
+  display: inline-flex;
+}
+#menu_navbar_header_img{
+  width: auto;
+  position: relative;
+  top: -12px;
+  padding-right: 5px;
+}
+#menu_navbar_left li:hover{
+  background-color: #0071ec !important;
 }
 .btn_logout{
   color: white !important;
@@ -127,6 +139,25 @@ footer {
   color: white !important;
   background-color: #286090 !important;
 }
+
+
+/* social.html.twig */
+#social_end_space{
+  height: 50px;
+}
+#social_photo_nom{
+  padding-top: 8%;
+}
+.social_row{
+  margin-top: 5%;
+}
+.social_row_nav{
+  margin-top: -5%;
+}
+
+
+
+
 
 /* tableau de l'historique des entrainements */
 .btn_historique_entrainement{
