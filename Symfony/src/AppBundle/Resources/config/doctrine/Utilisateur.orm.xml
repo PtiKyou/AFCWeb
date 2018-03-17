@@ -4,39 +4,39 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="emailestvisible" type="boolean" column="emailEstVisible" nullable="true"/>
+    <field name="emailestvisible" type="integer" column="emailEstVisible" nullable="true"/>
     <field name="nomutilisateur" type="string" column="nomUtilisateur" length="25" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="nomestvisible" type="boolean" column="nomEstVisible" nullable="true"/>
+    <field name="nomestvisible" type="integer" column="nomEstVisible" nullable="true"/>
     <field name="prenomutilisateur" type="string" column="prenomUtilisateur" length="25" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="prenomestvisible" type="boolean" column="prenomEstVisible" nullable="true"/>
+    <field name="prenomestvisible" type="integer" column="prenomEstVisible" nullable="true"/>
     <field name="ageuilisateur" type="integer" column="ageUilisateur" nullable="true">
       <options>
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="ageestvisible" type="boolean" column="ageEstVisible" nullable="true"/>
-    <field name="sexeutilisateur" type="boolean" column="sexeUtilisateur" nullable="true"/>
-    <field name="sexeestvisible" type="boolean" column="sexeEstVisible" nullable="true"/>
+    <field name="ageestvisible" type="integer" column="ageEstVisible" nullable="true"/>
+    <field name="sexeutilisateur" type="integer" column="sexeUtilisateur" nullable="true"/>
+    <field name="sexeestvisible" type="integer" column="sexeEstVisible" nullable="true"/>
     <field name="tailleutilisateur" type="integer" column="tailleUtilisateur" nullable="true">
       <options>
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="tailleestvisible" type="boolean" column="tailleEstVisible" nullable="true"/>
+    <field name="tailleestvisible" type="integer" column="tailleEstVisible" nullable="true"/>
     <field name="poidsutilisateur" type="integer" column="poidsUtilisateur" nullable="true">
       <options>
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="poidsestvisible" type="boolean" column="poidsEstVisible" nullable="true"/>
+    <field name="poidsestvisible" type="integer" column="poidsEstVisible" nullable="true"/>
     <field name="photo" type="string" column="photo" length="100" nullable="true">
       <options>
         <option name="fixed"/>
