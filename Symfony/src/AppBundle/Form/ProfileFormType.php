@@ -66,7 +66,7 @@ class ProfileFormType extends AbstractType
               'Amis' => 1,
               'Public' => 2,
       )))
-      ->add('ageUilisateur', IntegerType::class, array(
+      ->add('ageUtilisateur', IntegerType::class, array(
       'label'    => 'Âge'))
       ->add('ageEstVisible', ChoiceType::class, array(
       'label'    => 'Visibilité de l\'âge',

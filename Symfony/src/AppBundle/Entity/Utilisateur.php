@@ -393,7 +393,7 @@ class Utilisateur extends BaseUser
      *
      * @return Utilisateur
      */
-    public function setAgeuilisateur($ageuilisateur)
+    public function setAgeutilisateur($ageuilisateur)
     {
         $this->ageuilisateur = $ageuilisateur;
 
@@ -405,7 +405,7 @@ class Utilisateur extends BaseUser
      *
      * @return integer
      */
-    public function getAgeuilisateur()
+    public function getAgeutilisateur()
     {
         return $this->ageuilisateur;
     }

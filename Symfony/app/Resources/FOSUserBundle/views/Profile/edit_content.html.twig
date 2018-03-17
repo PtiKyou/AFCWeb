@@ -6,7 +6,7 @@
       <div class="row">
         {# mettre user.photo en source de l'image #}
         <img class="col-md-2" src="https://puu.sh/zBRjP/7d12355314.png" alt="photo de profil" height="100" width="100">
-        <div class="form-group col-md-8" id="input_profilSettings_photo">
+        <div class="form-group col-md-8" id="input_profil_settings_photo">
           <label for="photoInput">Lien de l'image</label>
           {{ form_widget(form.photo) }}
         </div>
@@ -15,7 +15,7 @@
       <br/>
       <div class="row ">
         <form>
-          <table id="profilSettings_table" class="table table-bordered">
+          <table id="profil_settings_table" class="table table-bordered">
             <!-- header -->
             <tr>
               <th class="no_border"></th>
@@ -71,7 +71,7 @@
                 {{ form_widget(form.username) }}
 
               </td>
-              <td class="profilSettings_checkbox">
+              <td class="profil_settings_checkbox">
                 Toujours visible
               </td>
             </tr>
@@ -97,7 +97,7 @@
                 Age
               </td>
               <td class="form-inline">
-                {{ form_widget(form.ageUilisateur) }} ans
+                {{ form_widget(form.ageUtilisateur) }} ans
               </td>
               <td>
                 {{ form_widget(form.ageEstVisible) }}

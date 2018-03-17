@@ -44,3 +44,8 @@ services:
         class: AppBundle\Form\ProfileFormType
         tags:
             - { name: form.type, alias: app_user_profile }
+
+    app.stats.form.type:
+        class: AppBundle\Form\StatsType
+        tags:
+            - { name: form.type, alias: appbundle_stats }
