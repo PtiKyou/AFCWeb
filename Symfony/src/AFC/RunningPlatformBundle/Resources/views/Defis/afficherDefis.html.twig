@@ -12,3 +12,14 @@ AFCRunning - Défis
    </span>
    <hr/>
 {% endblock name %}
+
+{% block container %}
+
+    <div class="row">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+    </div>
+
+
+{% endblock %}

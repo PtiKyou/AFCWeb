@@ -18,6 +18,13 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class DefisController extends Controller
 {
@@ -53,20 +60,16 @@ class DefisController extends Controller
       		return $this->render('AFCRunningPlatformBundle:Defis:rightPanel.html.twig', array('content' => $content));
     	}
     	
-    	public function creerDefisAction()
-    	{
-    		return $this->render('AFCRunningPlatformBundle:Defis:creerDefis.html.twig');
-    	}
-    	
     	public function afficherDefisAction()
     	{
     		return $this->render('AFCRunningPlatformBundle:Defis:afficherDefis.html.twig');
     	}
     	
-    	public function addAction(Request $request)
+    	public function addDefisAction(Request $request)
     	{
     		//on crée un objet Defis
     		$defis = new Defis();
+    		$creerdefis = new Creerdefis();
     		
     		//on crée le formbuilder grace au service form factory
     		$formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $defis);
@@ -80,17 +83,19 @@ class DefisController extends Controller
     		
     		//à partir du formBuilder, on génère le formulaire
     		$form = $formBuilder->getForm();
-    		
-    		// On enregistre notre objet $defis dans la base de données
-		$em = $this->getDoctrine()->getManager();
-		$em->persist($defis);
-		$em->flush();
-
-		$request->getSession()->getFlashBag()->add('défis', 'Défi bien enregistrée.');
+		
+		if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+			// On enregistre notre objet $defis dans la base de données
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($defis);
+			$em->flush();
+			$request->getSession()->getFlashBag()->add('défis', 'Défi bien enregistrée.');
+			return $this->redirectToRoute('creer_defis', array('id' => $defis->getIddefis()));
+		}
     		
     		//on passe la méthode createView() du formulaire à la vue
     		//afin qu'elle puisse afficher le formulaire toute seule
-    		return $this->render('AFCRunningPlatformBundle:Defis:add.html.twig', array('form' => $form->createView()));
+    		return $this->render('AFCRunningPlatformBundle:Defis:creerDefis.html.twig', array('form' => $form->createView()));
     	}
 }
 

@@ -14,40 +14,12 @@ AFCRunning - Défis
 {% endblock name %}
 
 {% block container %}
-  <br/>
-  <div class="row ">
-    <form>
-      <table id="creerDefis_table" class="table table-bordered">
 
-        <!-- Temps -->
-        <tr>
-          <td>
-            Temps
-          </td>
-          <td>
-            <input type="text" class="form-control" id="tempsInput">
-          </td>
-          <td>
-            minutes
-          </td>
-        </tr>
+    <div class="row">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+    </div>
 
-	<!-- Distance -->
-        <tr>
-          <td>
-            Distance
-          </td>
-          <td>
-            <input type="text" class="form-control" id="distanceInput">
-          </td>
-          <td>
-            mètres
-          </td>
-        </tr>
 
-      </table>
-      <a class="btn btn-primary profil_btn">Lancer le défi</a>
-      <a class="btn btn-primary profil_btn">Retour</a>
-    </form>
-  </div>
 {% endblock %}

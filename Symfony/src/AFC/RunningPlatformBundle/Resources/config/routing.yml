@@ -16,7 +16,7 @@ afc_defis:
     
 creer_defis:
     path:    /defis/creerdefis
-    defaults: { _controller: AFCRunningPlatformBundle:Defis:add}
+    defaults: { _controller: AFCRunningPlatformBundle:Defis:addDefis}
 
 afficher_defis:
     path:    /defis/afficherdefis
