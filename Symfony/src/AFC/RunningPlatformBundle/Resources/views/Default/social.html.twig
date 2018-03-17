@@ -1,0 +1,110 @@
+{# src/OC/PlatformBundle/Resources/views/Default/social.html.twig #}
+
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block name %}
+  <div class="row">
+   <span class="text-info">
+       <h1>Social</h1>
+   </span>
+   <hr/>
+ </div>
+{% endblock name %}
+
+{% block container %}
+  <div class="row">
+    <img class="col-md-2" src="{{ user.photo }}" alt="[ photo de profil ]" height="100" width="100">
+    <div id="social_photo_nom">{{ user.prenomutilisateur | capitalize }} {{ user.nomutilisateur | upper}}</div>
+  </div>
+
+
+
+  <!-- section amis -->
+  <div class="row social_row">
+
+    <!-- "titre" -->
+    <div class="col-md-2">
+      <h2>Amis</h2>
+      <a class="btn btn-primary" href="#">Voir les amis</a>
+    </div>
+
+    <!-- tableau activités des amis -->
+    <div class="col-md-10">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-10">Pierre : 03/04/18 - Muscu 30 min</div>
+            <div class="col-md-2 btn btn_historique_entrainement btn-primary">Afficher</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-10">Jean : 01/02/18 - Vélo 1H</div>
+            <div class="col-md-2 btn btn_historique_entrainement btn-primary">Afficher</div>
+          </div>
+        </li>
+        <li class="list-group-item">...</li>
+        <li class="list-group-item">...</li>
+        <li class="list-group-item">...</li>
+      </ul>
+      <nav class="social_row_nav">
+        <ul class="pagination">
+          <li><a arial-label="Previous"><<</a></li>
+          <li><a>1</a></li>
+          <li><a>2</a></li>
+          <li><a>3</a></li>
+          <li><a>4</a></li>
+          <li><a>5</a></li>
+          <li><a arial-label="Previous">>></a></li>
+        </ul>
+      <nav>
+    </div>
+  </div>
+
+
+
+  <!-- section groupe -->
+  <div class="row social_row">
+
+    <!-- "titre" -->
+    <div class="col-md-2">
+      <h2>Groupes</h2>
+      <a class="btn btn-primary" href="#">Voir les groupes</a>
+    </div>
+
+    <!-- tableau des défis des groupes -->
+    <div class="col-md-10">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-10">Goupe rando : 03/04/18 - Calanque en 2H</div>
+            <div class="col-md-2 btn btn_historique_entrainement btn-primary">Afficher</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-10">Groupe basket : 01/02/18 - max paniers en 5min</div>
+            <div class="col-md-2 btn btn_historique_entrainement btn-primary">Afficher</div>
+          </div>
+        </li>
+        <li class="list-group-item">...</li>
+        <li class="list-group-item">...</li>
+        <li class="list-group-item">...</li>
+      </ul>
+      <nav class="social_row_nav">
+        <ul class="pagination">
+          <li><a arial-label="Previous"><<</a></li>
+          <li><a>1</a></li>
+          <li><a>2</a></li>
+          <li><a>3</a></li>
+          <li><a>4</a></li>
+          <li><a>5</a></li>
+          <li><a arial-label="Previous">>></a></li>
+        </ul>
+      <nav>
+    </div>
+  </div>
+
+  <!-- permet de faire un peu de place sous la sectino groupe pour pouvoir la center un peu plus -->
+  <div id="social_end_space"></div>
+{% endblock %}
