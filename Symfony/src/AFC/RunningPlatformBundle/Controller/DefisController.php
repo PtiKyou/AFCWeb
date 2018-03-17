@@ -4,11 +4,14 @@
 
 namespace AFC\RunningPlatformBundle\Controller;
 
-use Symfony\src\AppBundle\Entity\Creerdefis;
-use Symfony\src\AppBundle\Entity\Defis;
-use Symfony\src\AppBundle\Entity\Defisacceptes;
+use AppBundle\Entity\Creerdefis;
+use AppBundle\Entity\Defis;
+use AppBundle\Entity\Defisacceptes;
+use AppBundle\Entity\Utilisateur;
+use AppBundle\Form\DefisType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -77,6 +80,13 @@ class DefisController extends Controller
     		
     		//à partir du formBuilder, on génère le formulaire
     		$form = $formBuilder->getForm();
+    		
+    		// On enregistre notre objet $defis dans la base de données
+		$em = $this->getDoctrine()->getManager();
+		$em->persist($defis);
+		$em->flush();
+
+		$request->getSession()->getFlashBag()->add('défis', 'Défi bien enregistrée.');
     		
     		//on passe la méthode createView() du formulaire à la vue
     		//afin qu'elle puisse afficher le formulaire toute seule
