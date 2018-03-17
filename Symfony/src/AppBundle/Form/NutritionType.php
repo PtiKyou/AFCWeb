@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+
 class NutritionType extends AbstractType
 {
     /**
@@ -15,7 +16,7 @@ class NutritionType extends AbstractType
     {
         $builder->add('conseil')->add('idprogramme');
     }
-    
+
     /**
      * {@inheritdoc}
      */

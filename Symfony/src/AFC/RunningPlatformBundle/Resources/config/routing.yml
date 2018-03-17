@@ -9,3 +9,7 @@ afc_running_platform_admin:
 test_vues:
     path: /test
     defaults: { _controller: AFCRunningPlatformBundle:Default:testView }
+
+afc_admin_gdefiAction:
+    path: /admin/gdefi
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }
