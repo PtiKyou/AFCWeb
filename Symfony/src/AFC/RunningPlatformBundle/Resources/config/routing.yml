@@ -21,3 +21,7 @@ profil_user_stats:
 profil_stats:
     path: /stats
     defaults: { _controller: AFCRunningPlatformBundle:Profile:showStats }
+
+afc_admin_gdefiAction:
+    path: /admin/gdefi
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }
