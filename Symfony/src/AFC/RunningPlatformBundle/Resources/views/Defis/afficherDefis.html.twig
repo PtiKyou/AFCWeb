@@ -14,12 +14,23 @@ AFCRunning - Défis
 {% endblock name %}
 
 {% block container %}
-
-    <div class="row">
-      {{ form_start(form) }}
-      {{ form_widget(form) }}
-      {{ form_end(form) }}
-    </div>
-
-
+	<div class = "row">
+		<form>
+			<table class="table table-bordered">
+				<!-- header -->
+				<tr>
+					<th>Défi</th>
+					<th>Temps</th>
+          				<th>Distance</th>
+          			</tr>
+				{% for defi in defis %}
+					<tr>
+						<td>{{defi.iddefis}}</td>
+						<td>{{defi.temps}}min</td>
+						<td>{{defi.distance}}mètres</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</form>
+	</div>	
 {% endblock %}

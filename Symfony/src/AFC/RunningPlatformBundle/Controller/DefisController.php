@@ -62,7 +62,11 @@ class DefisController extends Controller
     	
     	public function afficherDefisAction()
     	{
-    		return $this->render('AFCRunningPlatformBundle:Defis:afficherDefis.html.twig');
+    		//création de la requête
+    		$em = $this->getDoctrine()->getManager();
+    		$request = $em->getRepository(Defis::class)->findAll();
+    		
+    		return $this->render('AFCRunningPlatformBundle:Defis:afficherDefis.html.twig', array('defis' => $request));
     	}
     	
     	public function addDefisAction(Request $request)
