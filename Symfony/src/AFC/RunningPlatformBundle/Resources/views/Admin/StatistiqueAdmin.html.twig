@@ -24,45 +24,47 @@ AFCRunning - {{name.nom}}
     </div>
 {% endif %}
 {% if action == 'view' %}
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Temps moyen</th>
-      <th scope="col">Visibilité Temps moyen</th>
-      <th scope="col">Vitesse Moyenne</th>
-      <th scope="col">Visibilité Vitesse Moyenne</th>
-      <th scope="col">Vitesse Max</th>
-      <th scope="col">Visibilité Vitesse Max</th>
-      <th scope="col">Distance parcourue</th>
-      <th scope="col">Visibilité Distance Parcourue</th>
-      <th scope="col">Distance Moyenne parcourue</th>
-      <th scope="col">Visibilité Vitesse Moyenne parcourue</th>
-      <th scope="col">Id de l'utilisateur</th>
-      <th scope="col">Action</th>
+<div id="div_scroll_admin">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Temps moyen</th>
+        <th scope="col">Visibilité Temps moyen</th>
+        <th scope="col">Vitesse Moyenne</th>
+        <th scope="col">Visibilité Vitesse Moyenne</th>
+        <th scope="col">Vitesse Max</th>
+        <th scope="col">Visibilité Vitesse Max</th>
+        <th scope="col">Distance parcourue</th>
+        <th scope="col">Visibilité Distance Parcourue</th>
+        <th scope="col">Distance Moyenne parcourue</th>
+        <th scope="col">Visibilité Vitesse Moyenne parcourue</th>
+        <th scope="col">Id de l'utilisateur</th>
+        <th scope="col">Action</th>
 
-    </tr>
-  </thead>
-    {% for statistique in statistiques %}
-      <tbody>
-        <tr>
-          <th scope="row">{{statistique.IDStat}}</th>
-          <td>{{statistique.tempsMoyenStat|date('H:i:s')}}</td>
-          <td>{{statistique.tempsMoyenStatEstVisible }}</td>
-          <td>{{statistique.vitesseMoyennneStat }}</td>
-          <td>{{statistique.vitesseMoyennneStatEstVisible }}</td>
-          <td>{{statistique.VitesseMaxStat }}</td>
-          <td>{{statistique.VitesseMaxStatEstVisible }}</td>
-          <td>{{statistique.distanceTotaleParcourue }}</td>
-          <td>{{statistique.distanceTotaleParcourueEstVisible }}</td>
-          <td>{{statistique.distanceMoyenneParcourue }}</td>
-          <td>{{statistique.distanceMoyenneParcourueEstVisible}}</td>
-          <td>{{statistique.id}}</td>
-          <td><button type="button" class="btn btn-danger">Supprimer</button></td>
-        </tr>
-      </tbody>
-    {% endfor %}
-</table>
+      </tr>
+    </thead>
+      {% for statistique in statistiques %}
+        <tbody>
+          <tr>
+            <th scope="row">{{statistique.IDStat}}</th>
+            <td>{{statistique.tempsMoyenStat|date('H:i:s')}}</td>
+            <td>{{statistique.tempsMoyenStatEstVisible }}</td>
+            <td>{{statistique.vitesseMoyennneStat }}</td>
+            <td>{{statistique.vitesseMoyennneStatEstVisible }}</td>
+            <td>{{statistique.VitesseMaxStat }}</td>
+            <td>{{statistique.VitesseMaxStatEstVisible }}</td>
+            <td>{{statistique.distanceTotaleParcourue }}</td>
+            <td>{{statistique.distanceTotaleParcourueEstVisible }}</td>
+            <td>{{statistique.distanceMoyenneParcourue }}</td>
+            <td>{{statistique.distanceMoyenneParcourueEstVisible}}</td>
+            <td>{{statistique.id}}</td>
+            <td><button type="button" class="btn btn-danger">Supprimer</button></td>
+          </tr>
+        </tbody>
+      {% endfor %}
+  </table>
+</div>
 {% endif %}
 
 {% endblock %}

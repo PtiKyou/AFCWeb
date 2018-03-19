@@ -29,7 +29,7 @@
           {% for a in amis %}
             <li class="list-group-item">
               <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-9">
                   {{a.username}}
                   {% if a.nomEstVisible or a.prenomEstVisible %} - {% endif %}
                   {% if a.prenomEstVisible %}
@@ -39,7 +39,8 @@
                     {{ a.nomUtilisateur | upper }}
                   {% endif %}
                 </div>
-                <a class="col-md-2 btn btn_historique_entrainement btn-primary" href="/profile/user/{{a.id}}">Afficher</a>
+                <a class="col-md-2 btn btn_historique_entrainement btn-primary right_15" href="/profile/user/{{a.id}}">Afficher</a>
+                <a class="col-md-1 btn btn_historique_entrainement btn-danger" href="/social/rmAmis/{{a.id}}">X</a>
               </div>
             </li>
           {% endfor %}

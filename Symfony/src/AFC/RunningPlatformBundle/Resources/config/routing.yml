@@ -9,11 +9,11 @@ afc_running_platform_admin:
 test_vues:
     path: /test
     defaults: { _controller: AFCRunningPlatformBundle:Default:testView }
-    
+
 afc_defis:
     path:    /defis
     defaults: { _controller: AFCRunningPlatformBundle:Defis:index }
-    
+
 creer_defis:
     path:    /defis/creerdefis
     defaults: { _controller: AFCRunningPlatformBundle:Defis:addDefis}
@@ -46,6 +46,10 @@ social_add_amis:
     path: /social/addAmis/{id}
     defaults: { _controller: AFCRunningPlatformBundle:Social:addAmis }
 
+social_rm_amis:
+    path: /social/rmAmis/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:removeAmis }
+
 afc_admin_gdefiAction:
     path: /admin/gdefi/{action}
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }
@@ -77,4 +81,3 @@ afc_admin_gParcours:
 afc_admin_gUser:
     path: /admin/gmember/{action}
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gmember }
-

@@ -31,6 +31,15 @@
     <!-- tableau activités des amis (affiche les 5 derniers entrainements)-->
     <div class="col-md-9">
       <ul class="list-group">
+        {% if listeEntrainements|length == 0 %}
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-10">
+                Aucun entrainement disponible.
+              </div>
+            </div>
+          </li>
+        {% endif %}
         {% for l in listeEntrainements %}
           <li class="list-group-item">
             <div class="row">

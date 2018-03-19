@@ -60,6 +60,7 @@ class ProfileController extends Controller
     //on recupere les stats de cet utilisateur
     $stats = $em->getRepository(Statistiques::class)->findById($user->getId());
     $stats = $stats[0];
+    //si erreur : "Notice: Undefined offset: 0" => pas de table Statistiques associé à cette utilisateur
 
     //create form
     $form = $this->createForm(StatsType::class, $stats);

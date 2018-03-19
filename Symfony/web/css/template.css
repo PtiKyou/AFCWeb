@@ -159,13 +159,18 @@ footer {
 .div_scroll {
     height: 220px ;
     overflow: auto;
+}
+
+/*admins*/
+#div_scroll_admin {
+    height: 60vh;
+    overflow: auto;
+    border: solid 1px #dddddd;
+    border-radius: 6px;
 }​
 
 
-
-
-
-/* tableau de l'historique des entrainements */
+/* tableau de l'historique des entrainements + utilisé pour les boutons dans les listes en général */
 .btn_historique_entrainement{
 	right: -10px;
 }
@@ -185,6 +190,9 @@ footer {
 }
 .no_margin{
   margin: 0px;
+}
+.right_15{
+  right: 15px !important;
 }
 .no_border{
   border-style: none !important;
