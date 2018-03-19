@@ -41,3 +41,15 @@ afc_admin_gSports:
 afc_admin_gProgramme:
     path: /admin/gprogramme/{action}
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gprogramme }
+
+afc_admin_gStatistique:
+    path: /admin/gstatistique/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gstatistique }
+
+afc_admin_gParcours:
+    path: /admin/gparcours/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gparcours }
+
+afc_admin_gUser:
+    path: /admin/gmember/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gmember }

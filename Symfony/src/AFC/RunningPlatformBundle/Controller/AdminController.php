@@ -14,9 +14,16 @@ use AppBundle\Entity\Sport;
 use AppBundle\Form\SportType;
 use AppBundle\Entity\Programme;
 use AppBundle\Form\ProgrammeType;
+use AppBundle\Entity\Statistiques;
+use AppBundle\Form\StatistiquesType;
+use AppBundle\Entity\Parcours;
+use AppBundle\Form\ParcoursType;
+use AppBundle\Entity\Utilisateur;
+use AppBundle\Form\UtilisateurType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AdminController extends Controller
 {
@@ -29,8 +36,7 @@ class AdminController extends Controller
         array('url' => 'admin/gprogramme', 'title' => 'Gestion des programmes'),
         array('url' => 'admin/gstatistique', 'title' => 'Gestion des statistiques'),
         array('url' => 'admin/gparcours', 'title' => 'Gestion des parcours'),
-        array('url' => 'admin/gconseil', 'title' => 'Gestion des conseils'),
-        array('url' => 'admin/gmembre', 'title' => 'Gestion des membres')
+        array('url' => 'admin/gmember', 'title' => 'Gestion des membres')
       );
 
 
@@ -190,14 +196,14 @@ class AdminController extends Controller
       $action = $action;
       //Création de la request
       $em = $this->getDoctrine()->getManager();
-      $request = $em->getRepository(Statistique::class)->findAll();
+      $request = $em->getRepository(Statistiques::class)->findAll();
       //definition du nom
       $names = array('nom' => "Gestion des Statistiques");
       //création du formulaire d'ajout
-      $task = new Statistique();
-      $tr= new Statistique();
+      $task = new Statistiques();
+      $tr= new Statistiques();
       $form = $this->createFormBuilder($task)
-      ->add('tempsMoyenStat ', TextType::class, array('label' => 'Temps Moyen'))
+      ->add('tempsMoyenStat', TextType::class, array('label' => 'Temps Moyen'))
       ->add('tempsMoyenStatEstVisible', ChoiceType::class, array(
       'label'    => 'Visibilité du temps moyen',
       'choices'  => array(
@@ -206,15 +212,38 @@ class AdminController extends Controller
               'Public' => 2,
       )))
       ->add('vitesseMoyennneStat', TextType::class, array('label' => 'Durée du Programme'))
-      ->add('vitesseMoyennneStatEstVisible', TextType::class, array('label' => 'Durée du Programme'))
+      ->add('vitesseMoyennneStatEstVisible', ChoiceType::class, array(
+      'label'    => 'Visibilité du temps moyen',
+      'choices'  => array(
+              'Privé' => 0,
+              'Amis' => 1,
+              'Public' => 2,
+      )))
       ->add('VitesseMaxStat', TextType::class, array('label' => 'Durée du Programme'))
-      ->add('VitesseMaxStatEstVisible', TextType::class, array('label' => 'Durée du Programme'))
+      ->add('VitesseMaxStatEstVisible', ChoiceType::class, array(
+      'label'    => 'Visibilité du temps moyen',
+      'choices'  => array(
+              'Privé' => 0,
+              'Amis' => 1,
+              'Public' => 2,
+      )))
       ->add('distanceTotaleParcourue', TextType::class, array('label' => 'Durée du Programme'))
-      ->add('distanceTotaleParcourueEstVisible', TextType::class, array('label' => 'Durée du Programme'))
+      ->add('distanceTotaleParcourueEstVisible', ChoiceType::class, array(
+      'label'    => 'Visibilité du temps moyen',
+      'choices'  => array(
+              'Privé' => 0,
+              'Amis' => 1,
+              'Public' => 2,
+      )))
       ->add('distanceMoyenneParcourue', TextType::class, array('label' => 'Durée du Programme'))
-      ->add('distanceMoyenneParcourueEstVisible', TextType::class, array('label' => 'Durée du Programme'))
+      ->add('distanceMoyenneParcourueEstVisible', ChoiceType::class, array(
+      'label'    => 'Visibilité du temps moyen',
+      'choices'  => array(
+              'Privé' => 0,
+              'Amis' => 1,
+              'Public' => 2,
+      )))
       ->add('id', TextType::class, array('label' => 'Durée du Programme'))
-      ->add('typeProgramme', TextType::class, array('label' => 'Type du programme'))
       ->add('save', SubmitType::class, array('label' => 'Créer'))
       ->getForm();
       //return de la vue
@@ -229,7 +258,7 @@ class AdminController extends Controller
 
 
 
-  public function guserAction($action)
+  public function gmemberAction($action)
   {
       //récupération de l'action
       $action = $action;
@@ -312,16 +341,16 @@ class AdminController extends Controller
       )))
       ->getForm();
       //return de la vue
-      return $this->render('AFCRunningPlatformBundle:Admin:UtilisateurAdmin.html.twig', array(
+      return $this->render('AFCRunningPlatformBundle:Admin:UserAdmin.html.twig', array(
         'listMenus' => $this->listMenus,
         'form' => $form->createView(),
         'name' => $names,
-        'utilisateurs' => $request,
+        'users' => $request,
         'action' => $action,
       ));
 }
 
-public function gparcoursrAction($action)
+public function gparcoursAction($action)
 {
     //récupération de l'action
     $action = $action;
@@ -334,14 +363,15 @@ public function gparcoursrAction($action)
     $task = new Parcours();
     $tr= new Parcours();
     $form = $this->createFormBuilder($task)
-    ->add('nomProgramme', TextType::class, array('label' => 'Nom du Prgramme'))
-    ->add('dureeTotaleProgramme', TextType::class, array('label' => 'Durée du Programme'))
-    ->add('typeProgramme', TextType::class, array('label' => 'Type du programme'))
-    //->add('IdSport', TextType::class, array('label' => 'Id du sport'))                                                       !  !!! !! !! TODO
+    ->add('nomParcours', TextType::class, array('label' => 'Nom du Parcours'))
+    ->add('denivelePosParcours', TextType::class, array('label' => 'Durée du Programme'))
+    ->add('deniveleNegParcours', TextType::class, array('label' => 'Type du programme'))
+    ->add('IDEntrainement', TextType::class, array('label' => 'Type du programme'))
+    //->add('IdSport', TextType::class, array('label' => 'Id du sport'))
     ->add('save', SubmitType::class, array('label' => 'Créer'))
     ->getForm();
     //return de la vue
-    return $this->render('AFCRunningPlatformBundle:Admin:ProgrammeAdmin.html.twig', array(
+    return $this->render('AFCRunningPlatformBundle:Admin:ParcoursAdmin.html.twig', array(
       'listMenus' => $this->listMenus,
       'form' => $form->createView(),
       'name' => $names,
