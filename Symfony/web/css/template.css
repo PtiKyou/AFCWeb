@@ -155,6 +155,12 @@ footer {
   margin-top: -5%;
 }
 
+/*amis*/
+.div_scroll {
+    height: 220px ;
+    overflow: auto;
+}​
+
 
 
 

@@ -12,31 +12,31 @@
         <option name="default">CURRENT_TIMESTAMP</option>
       </options>
     </field>
-    <field name="tempsmoyenstatestvisible" type="boolean" column="tempsMoyenStatEstVisible" nullable="true"/>
+    <field name="tempsmoyenstatestvisible" type="integer" column="tempsMoyenStatEstVisible" nullable="true"/>
     <field name="vitessemoyennnestat" type="integer" column="vitesseMoyennneStat" nullable="true">
       <options>
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="vitessemoyennnestatestvisible" type="boolean" column="vitesseMoyennneStatEstVisible" nullable="true"/>
+    <field name="vitessemoyennnestatestvisible" type="integer" column="vitesseMoyennneStatEstVisible" nullable="true"/>
     <field name="vitessemaxstat" type="integer" column="VitesseMaxStat" nullable="true">
       <options>
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="vitessemaxstatestvisible" type="boolean" column="VitesseMaxStatEstVisible" nullable="true"/>
+    <field name="vitessemaxstatestvisible" type="integer" column="VitesseMaxStatEstVisible" nullable="true"/>
     <field name="distancetotaleparcourue" type="integer" column="distanceTotaleParcourue" nullable="true">
       <options>
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="distancetotaleparcourueestvisible" type="boolean" column="distanceTotaleParcourueEstVisible" nullable="true"/>
+    <field name="distancetotaleparcourueestvisible" type="integer" column="distanceTotaleParcourueEstVisible" nullable="true"/>
     <field name="distancemoyenneparcourue" type="integer" column="distanceMoyenneParcourue" nullable="true">
       <options>
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="distancemoyenneparcourueestvisible" type="boolean" column="distanceMoyenneParcourueEstVisible" nullable="true"/>
+    <field name="distancemoyenneparcourueestvisible" type="integer" column="distanceMoyenneParcourueEstVisible" nullable="true"/>
     <many-to-one field="id" target-entity="Utilisateur" fetch="LAZY">
       <join-columns>
         <join-column name="id" referenced-column-name="id"/>

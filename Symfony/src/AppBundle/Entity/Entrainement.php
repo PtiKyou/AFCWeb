@@ -17,7 +17,7 @@ class Entrainement
      *
      * @ORM\Column(name="nomEntrainement", type="string", length=25, nullable=true)
      */
-    private $nomentrainement;
+    public $nomentrainement;
 
     /**
      * @var \DateTime
@@ -100,7 +100,6 @@ class Entrainement
         $this->idprogramme = new \Doctrine\Common\Collections\ArrayCollection();
         $this->id = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Set nomentrainement

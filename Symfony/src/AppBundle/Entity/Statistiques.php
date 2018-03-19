@@ -20,9 +20,9 @@ class Statistiques
     private $tempsmoyenstat/* = 'CURRENT_TIMESTAMP'*/;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="tempsMoyenStatEstVisible", type="boolean", nullable=true)
+     * @ORM\Column(name="tempsMoyenStatEstVisible", type="integer", nullable=true)
      */
     private $tempsmoyenstatestvisible;
 
@@ -34,7 +34,7 @@ class Statistiques
     private $vitessemoyennnestat;
 
     /**
-     * @var boolean
+     * @var integer
      *
      * @ORM\Column(name="vitesseMoyennneStatEstVisible", type="boolean", nullable=true)
      */
@@ -48,7 +48,7 @@ class Statistiques
     private $vitessemaxstat;
 
     /**
-     * @var boolean
+     * @var integer
      *
      * @ORM\Column(name="VitesseMaxStatEstVisible", type="boolean", nullable=true)
      */
@@ -62,7 +62,7 @@ class Statistiques
     private $distancetotaleparcourue;
 
     /**
-     * @var boolean
+     * @var integer
      *
      * @ORM\Column(name="distanceTotaleParcourueEstVisible", type="boolean", nullable=true)
      */
@@ -76,7 +76,7 @@ class Statistiques
     private $distancemoyenneparcourue;
 
     /**
-     * @var boolean
+     * @var integer
      *
      * @ORM\Column(name="distanceMoyenneParcourueEstVisible", type="boolean", nullable=true)
      */
@@ -244,7 +244,7 @@ class Statistiques
     /**
      * Get tempsmoyenstatestvisible
      *
-     * @return boolean
+     * @return integer
      */
     public function getTempsMoyenStatEstVisible()
     {
@@ -254,7 +254,7 @@ class Statistiques
     /**
      * Set tempsmoyenstatestvisible
      *
-     * @param boolean $tempsmoyenstatestvisible
+     * @param integer $tempsmoyenstatestvisible
      *
      * @return Statistiques
      */
@@ -269,7 +269,7 @@ class Statistiques
     /**
      * Get vitessemoyennnestatestvisible
      *
-     * @return boolean
+     * @return integer
      */
     public function getVitesseMoyennneStatEstVisible()
     {
@@ -279,7 +279,7 @@ class Statistiques
     /**
      * Set vitessemoyennnestatestvisible
      *
-     * @param boolean $vitessemoyennnestatestvisible
+     * @param integer $vitessemoyennnestatestvisible
      *
      * @return Statistiques
      */
@@ -294,7 +294,7 @@ class Statistiques
     /**
      * Get vitessemaxstatestvisible
      *
-     * @return boolean
+     * @return integer
      */
     public function getVitesseMaxStatEstVisible()
     {
@@ -304,7 +304,7 @@ class Statistiques
     /**
      * Set vitessemaxstatestvisible
      *
-     * @param boolean $vitessemaxstatestvisible
+     * @param integer $vitessemaxstatestvisible
      *
      * @return Statistiques
      */
@@ -319,7 +319,7 @@ class Statistiques
     /**
      * Get distancetotaleparcourueestvisible
      *
-     * @return boolean
+     * @return integer
      */
     public function getDistanceTotaleParcourueEstVisible()
     {
@@ -329,7 +329,7 @@ class Statistiques
     /**
      * Set distancetotaleparcourueestvisible
      *
-     * @param boolean $distancetotaleparcourueestvisible
+     * @param integer $distancetotaleparcourueestvisible
      *
      * @return Statistiques
      */
@@ -344,7 +344,7 @@ class Statistiques
     /**
      * Get distancemoyenneparcourueestvisible
      *
-     * @return boolean
+     * @return integer
      */
     public function getDistanceMoyenneParcourueEstVisible()
     {
@@ -354,7 +354,7 @@ class Statistiques
     /**
      * Set distancemoyenneparcourueestvisible
      *
-     * @param boolean distancemoyenneparcourueestvisible
+     * @param integer distancemoyenneparcourueestvisible
      *
      * @return Statistiques
      */

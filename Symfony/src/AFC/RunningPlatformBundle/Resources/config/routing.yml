@@ -31,12 +31,25 @@ profil_user_stats:
     defaults: { _controller: AFCRunningPlatformBundle:Profile:showUserStats }
 
 profil_stats:
-    path: /stats
+    path:   /stats
     defaults: { _controller: AFCRunningPlatformBundle:Profile:showStats }
+
+social_show:
+    path: /social
+    defaults: { _controller: AFCRunningPlatformBundle:Social:index }
+
+social_amis:
+    path: /social/amis
+    defaults: { _controller: AFCRunningPlatformBundle:Social:amis }
+
+social_add_amis:
+    path: /social/addAmis/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:addAmis }
 
 afc_admin_gdefiAction:
     path: /admin/gdefi/{action}
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }
+
 afc_admin_gentrainement:
     path: /admin/gentrainement/{action}
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gentrainement }
@@ -64,3 +77,4 @@ afc_admin_gParcours:
 afc_admin_gUser:
     path: /admin/gmember/{action}
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gmember }
+

@@ -13,7 +13,21 @@
 
 {% block container %}
   <div class="row">
+
     <ul class="list-group">
+      {#affiche les 10 derniers entrainements#}
+      {% for e in entrainements|slice(0, 10) %}
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-10">{{e.dateFinEntrainement}} | {{e.nomEntrainement|upper}} : {{e.descriptionEntrainement}}</div>
+            <div class="col-md-2 btn btn_historique_entrainement btn-primary">Afficher</div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+
+
+    <!--ul class="list-group">
       <li class="list-group-item">
         <div class="row">
           <div class="col-md-10">03/04/18 - Muscu 30 min</div>
@@ -40,6 +54,6 @@
         <li><a>5</a></li>
         <li><a arial-label="Previous">>></a></li>
       </ul>
-    </nav>
+    <nav-->
   </div>
 {% endblock %}

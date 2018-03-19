@@ -14,9 +14,9 @@ use FOS\UserBundle\Model\User as BaseUser;
 class Utilisateur extends BaseUser
 {
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="emailEstVisible", type="boolean", nullable=true)
+     * @ORM\Column(name="emailEstVisible", type="integer", nullable=true)
      */
     private $emailestvisible;
 
@@ -28,9 +28,9 @@ class Utilisateur extends BaseUser
     private $nomutilisateur;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="nomEstVisible", type="boolean", nullable=true)
+     * @ORM\Column(name="nomEstVisible", type="integer", nullable=true)
      */
     private $nomestvisible;
 
@@ -42,9 +42,9 @@ class Utilisateur extends BaseUser
     private $prenomutilisateur;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="prenomEstVisible", type="boolean", nullable=true)
+     * @ORM\Column(name="prenomEstVisible", type="integer", nullable=true)
      */
     private $prenomestvisible;
 
@@ -56,23 +56,23 @@ class Utilisateur extends BaseUser
     private $ageuilisateur;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="ageEstVisible", type="boolean", nullable=true)
+     * @ORM\Column(name="ageEstVisible", type="integer", nullable=true)
      */
     private $ageestvisible;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="sexeUtilisateur", type="boolean", nullable=true)
+     * @ORM\Column(name="sexeUtilisateur", type="integer", nullable=true)
      */
     private $sexeutilisateur;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="sexeEstVisible", type="boolean", nullable=true)
+     * @ORM\Column(name="sexeEstVisible", type="integer", nullable=true)
      */
     private $sexeestvisible;
 
@@ -84,9 +84,9 @@ class Utilisateur extends BaseUser
     private $tailleutilisateur;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="tailleEstVisible", type="boolean", nullable=true)
+     * @ORM\Column(name="tailleEstVisible", type="integer", nullable=true)
      */
     private $tailleestvisible;
 
@@ -98,9 +98,9 @@ class Utilisateur extends BaseUser
     private $poidsutilisateur;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="poidsEstVisible", type="boolean", nullable=true)
+     * @ORM\Column(name="poidsEstVisible", type="integer", nullable=true)
      */
     private $poidsestvisible;
 
@@ -269,7 +269,7 @@ class Utilisateur extends BaseUser
     /**
      * Set emailestvisible
      *
-     * @param boolean $emailestvisible
+     * @param integer $emailestvisible
      *
      * @return Utilisateur
      */
@@ -283,7 +283,7 @@ class Utilisateur extends BaseUser
     /**
      * Get emailestvisible
      *
-     * @return boolean
+     * @return integer
      */
     public function getEmailestvisible()
     {
@@ -317,7 +317,7 @@ class Utilisateur extends BaseUser
     /**
      * Set nomestvisible
      *
-     * @param boolean $nomestvisible
+     * @param integer $nomestvisible
      *
      * @return Utilisateur
      */
@@ -331,7 +331,7 @@ class Utilisateur extends BaseUser
     /**
      * Get nomestvisible
      *
-     * @return boolean
+     * @return integer
      */
     public function getNomestvisible()
     {
@@ -365,7 +365,7 @@ class Utilisateur extends BaseUser
     /**
      * Set prenomestvisible
      *
-     * @param boolean $prenomestvisible
+     * @param integer $prenomestvisible
      *
      * @return Utilisateur
      */
@@ -379,7 +379,7 @@ class Utilisateur extends BaseUser
     /**
      * Get prenomestvisible
      *
-     * @return boolean
+     * @return integer
      */
     public function getPrenomestvisible()
     {
@@ -413,7 +413,7 @@ class Utilisateur extends BaseUser
     /**
      * Set ageestvisible
      *
-     * @param boolean $ageestvisible
+     * @param integer $ageestvisible
      *
      * @return Utilisateur
      */
@@ -427,7 +427,7 @@ class Utilisateur extends BaseUser
     /**
      * Get ageestvisible
      *
-     * @return boolean
+     * @return integer
      */
     public function getAgeestvisible()
     {
@@ -437,7 +437,7 @@ class Utilisateur extends BaseUser
     /**
      * Set sexeutilisateur
      *
-     * @param boolean $sexeutilisateur
+     * @param integer $sexeutilisateur
      *
      * @return Utilisateur
      */
@@ -451,7 +451,7 @@ class Utilisateur extends BaseUser
     /**
      * Get sexeutilisateur
      *
-     * @return boolean
+     * @return integer
      */
     public function getSexeutilisateur()
     {
@@ -461,7 +461,7 @@ class Utilisateur extends BaseUser
     /**
      * Set sexeestvisible
      *
-     * @param boolean $sexeestvisible
+     * @param integer $sexeestvisible
      *
      * @return Utilisateur
      */
@@ -475,7 +475,7 @@ class Utilisateur extends BaseUser
     /**
      * Get sexeestvisible
      *
-     * @return boolean
+     * @return integer
      */
     public function getSexeestvisible()
     {
@@ -509,7 +509,7 @@ class Utilisateur extends BaseUser
     /**
      * Set tailleestvisible
      *
-     * @param boolean $tailleestvisible
+     * @param integer $tailleestvisible
      *
      * @return Utilisateur
      */
@@ -523,7 +523,7 @@ class Utilisateur extends BaseUser
     /**
      * Get tailleestvisible
      *
-     * @return boolean
+     * @return integer
      */
     public function getTailleestvisible()
     {
@@ -557,7 +557,7 @@ class Utilisateur extends BaseUser
     /**
      * Set poidsestvisible
      *
-     * @param boolean $poidsestvisible
+     * @param integer $poidsestvisible
      *
      * @return Utilisateur
      */
@@ -571,7 +571,7 @@ class Utilisateur extends BaseUser
     /**
      * Get poidsestvisible
      *
-     * @return boolean
+     * @return integer
      */
     public function getPoidsestvisible()
     {
