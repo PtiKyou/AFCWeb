@@ -43,7 +43,7 @@ class RegistrationType extends AbstractType
             'Amis' => 1,
             'Public' => 2,
     )))
-    ->add('ageUilisateur', TextType::class, array(
+    ->add('ageUtilisateur', TextType::class, array(
     'label'    => 'Âge'))
     ->add('ageEstVisible', ChoiceType::class, array(
     'label'    => 'Visibilité de l\'âge',

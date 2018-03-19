@@ -1,0 +1,48 @@
+{# src/OC/PlatformBundle/Resources/views/Default/statsUser.html.twig #}
+
+{# page des stats d'un utilisateur #}
+
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block name %}
+  <div class="row">
+   <span class="text-info">
+       <h1>Statistiques de {{ user.username }}</h1>
+   </span>
+   <hr/>
+ </div>
+{% endblock name %}
+
+{% block container %}
+  <div class="row">
+    <h2>Statistiques</h2>
+    <ul>
+      <li>
+        Temps moyen : {{ userStats.tempsmoyenstat | date('d/m/Y - H:i:s') }}
+      </li>
+      <li>
+        Vitesse moyenne : {{ userStats.vitesseMoyennneStat }} km/h
+      </li>
+      <li>
+        Vitesse maximale : {{ userStats.VitesseMaxStat }} km/h
+      </li>
+      <li>
+        Distance moyenne parcourue : {{ userStats.distanceMoyenneParcourue }} km
+      </li>
+      <li>
+        Distance totale parcourue : {{ userStats.distanceTotaleParcourue }} km
+      </li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <br/>
+    <h2>Records</h2>
+    <p>TODO</p>
+  </div>
+
+  <div class="row">
+    <br/>
+    <a class="btn btn-primary profil_btn col-md-2" href="/profile/user/{{user.id}}">Retour</a>
+  </div>
+{% endblock %}

@@ -9,17 +9,62 @@
  */
 
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+  padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+  font-size: medium;
 }
+
 footer {
     margin: 50px 0;
 }
+
+#contenu_page{
+  background-color: white;
+}
+#aside1{
+  position: fixed;
+  height: 100%;
+  width: 16%;
+  top: 25px;
+
+  background-image: url("https://puu.sh/zHuAH/2e5bc6cc3a.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: -230px;
+
+  border-right: solid 1px #0472e9;
+
+  z-index: -10;
+}
+#aside2{
+  position: fixed;
+  height: 100%;
+  width: 16%;
+  top: 25px;
+
+  background-image: url("https://puu.sh/zHuOA/82f8d58725.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: -195px;
+  left: 84%;
+
+  border-left: solid 1px #0472e9;
+
+  z-index: -10;
+}
+
+#right_panel{
+  margin-right: -15px;
+}
+
+
+
+
 
 
 /* profil.html.twig */
 .profil_table tr{
   font-size: medium;
-  border: solid 2px black;
+  border: solid 1px black;
 }
 .profil_btn{
   margin: 5px;
@@ -39,28 +84,44 @@ footer {
 #fos_user_profile_form_sexeUtilisateur .radio{
   margin-right: 10px;
 }
-#input_profilSettings_photo{
+#input_profil_settings_photo{
   top: 20px;
   left: -15px;
 }
-#profilSettings_table tr{
+#profil_settings_table tr{
   font-size: medium;
-  border: solid 2px black;
 }
-#profilSettings_table th{
+#profil_settings_table th{
   text-align: center;
 }
-#profilSettings_table td{
+#profil_settings_table td{
   vertical-align: middle;
 }
-.profilSettings_checkbox{
+.profil_settings_checkbox{
   text-align: center;
 }
 
 
 /* menu */
+#menu{
+  background-color: #007aff;
+  border-color: #0472e9;
+}
 #menu_navbar_header{
-  margin-left: -15px;
+  margin-left: -5%;
+}
+#menu_navbar_header_title{
+  font-size: xx-large;
+  display: inline-flex;
+}
+#menu_navbar_header_img{
+  width: auto;
+  position: relative;
+  top: -12px;
+  padding-right: 5px;
+}
+#menu_navbar_left li:hover{
+  background-color: #0071ec !important;
 }
 .btn_logout{
   color: white !important;
@@ -78,6 +139,25 @@ footer {
   color: white !important;
   background-color: #286090 !important;
 }
+
+
+/* social.html.twig */
+#social_end_space{
+  height: 50px;
+}
+#social_photo_nom{
+  padding-top: 8%;
+}
+.social_row{
+  margin-top: 5%;
+}
+.social_row_nav{
+  margin-top: -5%;
+}
+
+
+
+
 
 /* tableau de l'historique des entrainements */
 .btn_historique_entrainement{
@@ -103,6 +183,9 @@ footer {
 .no_border{
   border-style: none !important;
 }
+.color_white{
+  color: white !important;
+}
 
 
 /*
@@ -119,7 +202,7 @@ footer {
 		right: 10px;
 	}
 
-  .btn_profilUser{
+  #btn_profilUser{
     left: -15px;
   }
 

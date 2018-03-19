@@ -17,7 +17,7 @@ class Statistiques
      *
      * @ORM\Column(name="tempsMoyenStat", type="datetime", nullable=false)
      */
-    private $tempsmoyenstat = 'CURRENT_TIMESTAMP';
+    private $tempsmoyenstat/* = 'CURRENT_TIMESTAMP'*/;
 
     /**
      * @var boolean
@@ -102,5 +102,269 @@ class Statistiques
     private $id;
 
 
-}
 
+
+
+
+    /**
+     * Getters & Setters variables
+     */
+
+    /**
+     * Get tempsmoyenstat
+     *
+     * @return \DateTime
+     */
+    public function getTempsMoyenStat()
+    {
+        return $this->tempsmoyenstat;
+    }
+
+    /**
+     * Set tempsmoyenstat
+     *
+     * @param \DateTime $tempsmoyenstat
+     *
+     * @return Statistiques
+     */
+    public function setTempsMoyenStat(DateTime $tempsmoyenstat)
+    {
+        $this->tempsmoyenstat= $tempsmoyenstat;
+
+        return $this;
+    }
+
+
+    /**
+     * Get vitessemoyennnestat
+     *
+     * @return integer
+     */
+    public function getVitesseMoyennneStat()
+    {
+        return $this->vitessemoyennnestat;
+    }
+
+    /**
+     * Set vitessemoyennnestat
+     *
+     * @param integer $vitessemoyennnestat
+     *
+     * @return Statistiques
+     */
+    public function setVitesseMoyennneStat($vitessemoyennnestat)
+    {
+        $this->vitessemoyennnestat = $vitessemoyennnestat;
+
+        return $this;
+    }
+
+
+    /**
+     * Get vitessemaxstat
+     *
+     * @return integer
+     */
+    public function getVitesseMaxStat()
+    {
+        return $this->vitessemaxstat;
+    }
+
+    /**
+     * Set vitessemaxstat
+     *
+     * @param integer $vitessemaxstat
+     *
+     * @return Statistiques
+     */
+    public function setVitesseMaxStat($vitessemaxstat)
+    {
+        $this->vitessemaxstat = $vitessemaxstat;
+
+        return $this;
+    }
+
+
+    /**
+     * Get distancetotaleparcourue
+     *
+     * @return integer
+     */
+    public function getDistanceTotaleParcourue()
+    {
+        return $this->distancetotaleparcourue;
+    }
+
+    /**
+     * Set distancetotaleparcourue
+     *
+     * @param integer $distancetotaleparcourue
+     *
+     * @return Statistiques
+     */
+    public function setDistanceTotaleParcourue($distancetotaleparcourue)
+    {
+        $this->distancetotaleparcourue = $distancetotaleparcourue;
+
+        return $this;
+    }
+
+
+    /**
+     * Get distancemoyenneparcourue
+     *
+     * @return integer
+     */
+    public function getDistanceMoyenneParcourue()
+    {
+        return $this->distancemoyenneparcourue;
+    }
+
+    /**
+     * Set distancemoyenneparcourue
+     *
+     * @param integer distancemoyenneparcourue
+     *
+     * @return Statistiques
+     */
+    public function setDistanceMoyenneParcourue($distancemoyenneparcourue)
+    {
+        $this->distancemoyenneparcourue = $distancemoyenneparcourue;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Getters & Setters estVisible
+     */
+
+    /**
+     * Get tempsmoyenstatestvisible
+     *
+     * @return boolean
+     */
+    public function getTempsMoyenStatEstVisible()
+    {
+        return $this->tempsmoyenstatestvisible;
+    }
+
+    /**
+     * Set tempsmoyenstatestvisible
+     *
+     * @param boolean $tempsmoyenstatestvisible
+     *
+     * @return Statistiques
+     */
+    public function setTempsMoyenStatEstVisible($tempsmoyenstatestvisible)
+    {
+        $this->tempsmoyenstatestvisible = $tempsmoyenstatestvisible;
+
+        return $this;
+    }
+
+
+    /**
+     * Get vitessemoyennnestatestvisible
+     *
+     * @return boolean
+     */
+    public function getVitesseMoyennneStatEstVisible()
+    {
+        return $this->vitessemoyennnestatestvisible;
+    }
+
+    /**
+     * Set vitessemoyennnestatestvisible
+     *
+     * @param boolean $vitessemoyennnestatestvisible
+     *
+     * @return Statistiques
+     */
+    public function setVitesseMoyennneStatEstVisible($vitessemoyennnestatestvisible)
+    {
+        $this->vitessemoyennnestatestvisible = $vitessemoyennnestatestvisible;
+
+        return $this;
+    }
+
+
+    /**
+     * Get vitessemaxstatestvisible
+     *
+     * @return boolean
+     */
+    public function getVitesseMaxStatEstVisible()
+    {
+        return $this->vitessemaxstatestvisible;
+    }
+
+    /**
+     * Set vitessemaxstatestvisible
+     *
+     * @param boolean $vitessemaxstatestvisible
+     *
+     * @return Statistiques
+     */
+    public function setVitesseMaxStatEstVisible($vitessemaxstatestvisible)
+    {
+        $this->vitessemaxstatestvisible = $vitessemaxstatestvisible;
+
+        return $this;
+    }
+
+
+    /**
+     * Get distancetotaleparcourueestvisible
+     *
+     * @return boolean
+     */
+    public function getDistanceTotaleParcourueEstVisible()
+    {
+        return $this->distancetotaleparcourueestvisible;
+    }
+
+    /**
+     * Set distancetotaleparcourueestvisible
+     *
+     * @param boolean $distancetotaleparcourueestvisible
+     *
+     * @return Statistiques
+     */
+    public function setDistanceTotaleParcourueEstVisible($distancetotaleparcourueestvisible)
+    {
+        $this->distancetotaleparcourueestvisible = $distancetotaleparcourueestvisible;
+
+        return $this;
+    }
+
+
+    /**
+     * Get distancemoyenneparcourueestvisible
+     *
+     * @return boolean
+     */
+    public function getDistanceMoyenneParcourueEstVisible()
+    {
+        return $this->distancemoyenneparcourueestvisible;
+    }
+
+    /**
+     * Set distancemoyenneparcourueestvisible
+     *
+     * @param boolean distancemoyenneparcourueestvisible
+     *
+     * @return Statistiques
+     */
+    public function setDistanceMoyenneParcourueEstVisible($distancemoyenneparcourueestvisible)
+    {
+        $this->distancemoyenneparcourueestvisible = $distancemoyenneparcourueestvisible;
+
+        return $this;
+    }
+
+
+
+}

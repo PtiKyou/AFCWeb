@@ -21,3 +21,20 @@ creer_defis:
 afficher_defis:
     path:    /defis/afficherdefis
     defaults: { _controller: AFCRunningPlatformBundle:Defis:afficherDefis}
+
+profil_user:
+    path: /profile/user/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Profile:showUser }
+
+profil_user_stats:
+    path: /profile/user/{id}/stats
+    defaults: { _controller: AFCRunningPlatformBundle:Profile:showUserStats }
+
+profil_stats:
+    path: /stats
+    defaults: { _controller: AFCRunningPlatformBundle:Profile:showStats }
+
+afc_admin_gdefiAction:
+    path: /admin/gdefi
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }
+

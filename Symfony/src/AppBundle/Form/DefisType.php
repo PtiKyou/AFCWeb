@@ -15,7 +15,7 @@ class DefisType extends AbstractType
     {
         $builder->add('temps')->add('distance')->add('idparcours');
     }
-    
+
     /**
      * {@inheritdoc}
      */

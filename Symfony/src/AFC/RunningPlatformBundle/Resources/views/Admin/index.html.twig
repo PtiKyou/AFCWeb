@@ -2,11 +2,17 @@
 
 {% extends "AFCRunningPlatformBundle::layout.html.twig" %}
 
+{% block title %}
+AFCRunning - Administration
+{%endblock title %}
+
 {% block name %}
+  <div class="row">
    <span class="text-info">
        <h1>Administration</h1>
    </span>
    <hr/>
+ </div>
 {% endblock name %}
 
 {% block container %}
@@ -14,7 +20,7 @@
   <ul class="nav nav-pills nav-stacked">
     {% for listMenu in listMenus %}
       <li>
-        <a href="admin/{{ listMenu.url }}">
+        <a href="{{ listMenu.url }}">
           {{ listMenu.title }}
         </a>
       </li>
