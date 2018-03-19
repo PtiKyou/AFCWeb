@@ -23,5 +23,21 @@ profil_stats:
     defaults: { _controller: AFCRunningPlatformBundle:Profile:showStats }
 
 afc_admin_gdefiAction:
-    path: /admin/gdefi
+    path: /admin/gdefi/{action}
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }
+
+afc_admin_gentrainement:
+    path: /admin/gentrainement/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gentrainement }
+
+afc_admin_gConstantes:
+    path: /admin/gconstante/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gconstante }
+
+afc_admin_gSports:
+    path: /admin/gsport/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gsport }
+
+afc_admin_gProgramme:
+    path: /admin/gprogramme/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gprogramme }

@@ -3,13 +3,15 @@
 {% extends "AFCRunningPlatformBundle::layout.html.twig" %}
 
 {% block title %}
-AFCRunning - Administration
+AFCRunning - {{name.nom}}
 {%endblock title %}
 
 {% block name %}
   <div class="row">
    <span class="text-info">
-       <h1>Administration</h1>
+   {% for names in name %}
+       <h1> {{name.nom}} </h1>
+  {% endfor %}
    </span>
    <hr/>
  </div>
@@ -20,9 +22,13 @@ AFCRunning - Administration
   <ul class="nav nav-pills nav-stacked">
     {% for listMenu in listMenus %}
       <li>
-        <a href="{{ listMenu.url }}">
-          {{ listMenu.title }}
-        </a>
+        <h2>    {{ listMenu.title }} </h2>
+      <a href="{{ listMenu.url }}/view">
+        <button type="button" class="btn btn-primary">Voir</button>
+      </a>
+      <a href="{{ listMenu.url }}/add">
+        <button type="button" class="btn btn-primary">Créer</button>
+      </a>
       </li>
     {% endfor %}
 </ul>

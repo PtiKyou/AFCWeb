@@ -1,0 +1,49 @@
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+AFCRunning - {{name.nom}}
+{%endblock title %}
+
+{% block name %}
+  <div class="row">
+   <span class="text-info">
+   {% for names in name %}
+       <h1> {{name.nom}} </h1>
+  {% endfor %}
+   </span>
+   <hr/>
+ </div>
+{% endblock name %}
+
+{% block container %}
+{% if action == 'add' %}
+    <div class="row">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+    </div>
+{% endif %}
+{% if action == 'view' %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Temps</th>
+      <th scope="col">Distance</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+    {% for defi in defis %}
+      <tbody>
+        <tr>
+          <th scope="row">{{defi.IDDefis}}</th>
+          <td>{{defi.temps}}</td>
+          <td>{{defi.distance}}</td>
+          <td><button type="button" class="btn btn-danger">Supprimer</button></td>
+        </tr>
+      </tbody>
+    {% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}
