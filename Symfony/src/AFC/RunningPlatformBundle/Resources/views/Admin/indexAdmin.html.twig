@@ -1,0 +1,36 @@
+{# src/OC/PlatformBundle/Resources/views/Default/index.html.twig #}
+
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+AFCRunning - {{name.nom}}
+{%endblock title %}
+
+{% block name %}
+  <div class="row">
+   <span class="text-info">
+   {% for names in name %}
+       <h1> {{name.nom}} </h1>
+  {% endfor %}
+   </span>
+   <hr/>
+ </div>
+{% endblock name %}
+
+{% block container %}
+  <div class="row">
+  <ul class="nav nav-pills nav-stacked">
+    {% for listMenu in listMenus %}
+      <li>
+        <h2>    {{ listMenu.title }} </h2>
+      <a href="{{ listMenu.url }}/view">
+        <button type="button" class="btn btn-primary">Voir</button>
+      </a>
+      <a href="{{ listMenu.url }}/add">
+        <button type="button" class="btn btn-primary">Créer</button>
+      </a>
+      </li>
+    {% endfor %}
+</ul>
+  </div>
+{% endblock %}

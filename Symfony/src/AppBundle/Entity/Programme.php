@@ -91,5 +91,212 @@ class Programme
         $this->id = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-}
 
+    /**
+     * Set nomprogramme
+     *
+     * @param string $nomprogramme
+     *
+     * @return Programme
+     */
+    public function setNomprogramme($nomprogramme)
+    {
+        $this->nomprogramme = $nomprogramme;
+
+        return $this;
+    }
+
+    /**
+     * Get nomprogramme
+     *
+     * @return string
+     */
+    public function getNomprogramme()
+    {
+        return $this->nomprogramme;
+    }
+
+    /**
+     * Set dureetotaleprogramme
+     *
+     * @param integer $dureetotaleprogramme
+     *
+     * @return Programme
+     */
+    public function setDureetotaleprogramme($dureetotaleprogramme)
+    {
+        $this->dureetotaleprogramme = $dureetotaleprogramme;
+
+        return $this;
+    }
+
+    /**
+     * Get dureetotaleprogramme
+     *
+     * @return integer
+     */
+    public function getDureetotaleprogramme()
+    {
+        return $this->dureetotaleprogramme;
+    }
+
+    /**
+     * Set typeprogramme
+     *
+     * @param string $typeprogramme
+     *
+     * @return Programme
+     */
+    public function setTypeprogramme($typeprogramme)
+    {
+        $this->typeprogramme = $typeprogramme;
+
+        return $this;
+    }
+
+    /**
+     * Get typeprogramme
+     *
+     * @return string
+     */
+    public function getTypeprogramme()
+    {
+        return $this->typeprogramme;
+    }
+
+    /**
+     * Get idprogramme
+     *
+     * @return integer
+     */
+    public function getIdprogramme()
+    {
+        return $this->idprogramme;
+    }
+
+    /**
+     * Set idsport
+     *
+     * @param \AppBundle\Entity\Sport $idsport
+     *
+     * @return Programme
+     */
+    public function setIdsport(\AppBundle\Entity\Sport $idsport = null)
+    {
+        $this->idsport = $idsport;
+
+        return $this;
+    }
+
+    /**
+     * Get idsport
+     *
+     * @return \AppBundle\Entity\Sport
+     */
+    public function getIdsport()
+    {
+        return $this->idsport;
+    }
+
+    /**
+     * Add idnutrition
+     *
+     * @param \AppBundle\Entity\Nutrition $idnutrition
+     *
+     * @return Programme
+     */
+    public function addIdnutrition(\AppBundle\Entity\Nutrition $idnutrition)
+    {
+        $this->idnutrition[] = $idnutrition;
+
+        return $this;
+    }
+
+    /**
+     * Remove idnutrition
+     *
+     * @param \AppBundle\Entity\Nutrition $idnutrition
+     */
+    public function removeIdnutrition(\AppBundle\Entity\Nutrition $idnutrition)
+    {
+        $this->idnutrition->removeElement($idnutrition);
+    }
+
+    /**
+     * Get idnutrition
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdnutrition()
+    {
+        return $this->idnutrition;
+    }
+
+    /**
+     * Add identrainement
+     *
+     * @param \AppBundle\Entity\Entrainement $identrainement
+     *
+     * @return Programme
+     */
+    public function addIdentrainement(\AppBundle\Entity\Entrainement $identrainement)
+    {
+        $this->identrainement[] = $identrainement;
+
+        return $this;
+    }
+
+    /**
+     * Remove identrainement
+     *
+     * @param \AppBundle\Entity\Entrainement $identrainement
+     */
+    public function removeIdentrainement(\AppBundle\Entity\Entrainement $identrainement)
+    {
+        $this->identrainement->removeElement($identrainement);
+    }
+
+    /**
+     * Get identrainement
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdentrainement()
+    {
+        return $this->identrainement;
+    }
+
+    /**
+     * Add id
+     *
+     * @param \AppBundle\Entity\Utilisateur $id
+     *
+     * @return Programme
+     */
+    public function addId(\AppBundle\Entity\Utilisateur $id)
+    {
+        $this->id[] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Remove id
+     *
+     * @param \AppBundle\Entity\Utilisateur $id
+     */
+    public function removeId(\AppBundle\Entity\Utilisateur $id)
+    {
+        $this->id->removeElement($id);
+    }
+
+    /**
+     * Get id
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

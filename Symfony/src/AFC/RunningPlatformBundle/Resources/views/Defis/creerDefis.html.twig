@@ -1,0 +1,25 @@
+{# src/AFC/RunningPlatformBundle/Resources/views/Defis/creerDefis.html.twig #}
+
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+AFCRunning - Défis
+{%endblock title %}
+
+{% block name %}
+   <span class="text-info">
+       <h1>Création d'un défi</h1>
+   </span>
+   <hr/>
+{% endblock name %}
+
+{% block container %}
+
+    <div class="row">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+    </div>
+
+
+{% endblock %}

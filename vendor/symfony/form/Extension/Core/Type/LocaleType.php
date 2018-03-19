@@ -15,6 +15,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
 use Symfony\Component\Form\ChoiceList\Loader\ChoiceLoaderInterface;
 use Symfony\Component\Intl\Intl;
+use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class LocaleType extends AbstractType implements ChoiceLoaderInterface
@@ -36,7 +37,15 @@ class LocaleType extends AbstractType implements ChoiceLoaderInterface
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'choice_loader' => $this,
+            'choice_loader' => function (Options $options) {
+                if ($options['choices']) {
+                    @trigger_error(sprintf('Using the "choices" option in %s has been deprecated since Symfony 3.3 and will be ignored in 4.0. Override the "choice_loader" option instead or set it to null.', __CLASS__), E_USER_DEPRECATED);
+
+                    return null;
+                }
+
+                return $this;
+            },
             'choice_translation_domain' => false,
         ));
     }

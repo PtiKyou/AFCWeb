@@ -770,4 +770,28 @@ class Utilisateur extends BaseUser
 
 
 
+
+    /**
+     * Set ageuilisateur
+     *
+     * @param integer $ageuilisateur
+     *
+     * @return Utilisateur
+     */
+    public function setAgeuilisateur($ageuilisateur)
+    {
+        $this->ageuilisateur = $ageuilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get ageuilisateur
+     *
+     * @return integer
+     */
+    public function getAgeuilisateur()
+    {
+        return $this->ageuilisateur;
+    }
 }

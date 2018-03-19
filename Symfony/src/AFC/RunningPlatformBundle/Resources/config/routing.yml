@@ -9,6 +9,18 @@ afc_running_platform_admin:
 test_vues:
     path: /test
     defaults: { _controller: AFCRunningPlatformBundle:Default:testView }
+    
+afc_defis:
+    path:    /defis
+    defaults: { _controller: AFCRunningPlatformBundle:Defis:index }
+    
+creer_defis:
+    path:    /defis/creerdefis
+    defaults: { _controller: AFCRunningPlatformBundle:Defis:addDefis}
+
+afficher_defis:
+    path:    /defis/afficherdefis
+    defaults: { _controller: AFCRunningPlatformBundle:Defis:afficherDefis}
 
 profil_user:
     path: /profile/user/{id}
@@ -22,10 +34,6 @@ profil_stats:
     path:   /stats
     defaults: { _controller: AFCRunningPlatformBundle:Profile:showStats }
 
-afc_admin_gdefiAction:
-    path: /admin/gdefi
-    defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }
-
 social_show:
     path: /social
     defaults: { _controller: AFCRunningPlatformBundle:Social:index }
@@ -37,3 +45,36 @@ social_amis:
 social_add_amis:
     path: /social/addAmis/{id}
     defaults: { _controller: AFCRunningPlatformBundle:Social:addAmis }
+
+afc_admin_gdefiAction:
+    path: /admin/gdefi/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }
+
+afc_admin_gentrainement:
+    path: /admin/gentrainement/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gentrainement }
+
+afc_admin_gConstantes:
+    path: /admin/gconstante/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gconstante }
+
+afc_admin_gSports:
+    path: /admin/gsport/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gsport }
+
+afc_admin_gProgramme:
+    path: /admin/gprogramme/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gprogramme }
+
+afc_admin_gStatistique:
+    path: /admin/gstatistique/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gstatistique }
+
+afc_admin_gParcours:
+    path: /admin/gparcours/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gparcours }
+
+afc_admin_gUser:
+    path: /admin/gmember/{action}
+    defaults: { _controller: AFCRunningPlatformBundle:Admin:gmember }
+

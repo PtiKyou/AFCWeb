@@ -1,0 +1,83 @@
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+AFCRunning - {{name.nom}}
+{%endblock title %}
+
+{% block name %}
+  <div class="row">
+   <span class="text-info">
+   {% for names in name %}
+       <h1> {{name.nom}} </h1>
+  {% endfor %}
+   </span>
+   <hr/>
+ </div>
+{% endblock name %}
+
+{% block container %}
+{% if action == 'add' %}
+    <div class="row">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+    </div>
+{% endif %}
+{% if action == 'view' %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Etat compte</th>
+      <th scope="col">Email</th>
+      <th scope="col">Visibilité Mail</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Visibilité Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Visibilité Prénom</th>
+      <th scope="col">Age</th>
+      <th scope="col">Visibilité Age</th>
+      <th scope="col">Sexe</th>
+      <th scope="col">Visibilité Sexe</th>
+      <th scope="col">taille</th>
+      <th scope="col">Visibilité Taille</th>
+      <th scope="col">Poid</th>
+      <th scope="col">Visibilité Poid</th>
+      <th scope="col">Pseudo</th>
+      <th scope="col">Photo</th>
+      <th scope="col">FaceBook</th>
+      <th scope="col">Google</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+    {% for user in users %}
+      <tbody>
+        <tr>
+          <th scope="row">{{user.id}}</th>
+          <td>{{user.enabled }}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.emailEstVisible }}</td>
+          <td>{{user.nomUtilisateur }}</td>
+          <td>{{user.nomEstVisible }}</td>
+          <td>{{user.prenomUtilisateur }}</td>
+          <td>{{user.prenomEstVisible }}</td>
+          <td>{{user.ageUtilisateur }}</td>
+          <td>{{user.ageEstVisible }}</td>
+          <td>{{user.sexeUtilisateur }}</td>
+          <td>{{user.sexeEstVisible }}</td>
+          <td>{{user.tailleUtilisateur }}</td>
+          <td>{{user.tailleEstVisible }}</td>
+          <td>{{user.poidsUtilisateur }}</td>
+          <td>{{user.poidsEstVisible }}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.photo }}</td>
+          <td>{{user.facebookId }}</td>
+          <td>{{user.googleId }}</td>
+          <td><button type="button" class="btn btn-danger">Supprimer</button></td>
+        </tr>
+      </tbody>
+    {% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

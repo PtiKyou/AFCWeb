@@ -410,7 +410,13 @@ EODUMP
         ), $this->dataExtractor->extractViewVariables($view));
     }
 
-    private function createBuilder(string $name, array $options = array()): FormBuilder
+    /**
+     * @param string $name
+     * @param array  $options
+     *
+     * @return FormBuilder
+     */
+    private function createBuilder($name, array $options = array())
     {
         return new FormBuilder($name, null, $this->dispatcher, $this->factory, $options);
     }

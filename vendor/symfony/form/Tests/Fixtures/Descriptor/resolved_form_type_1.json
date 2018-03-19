@@ -10,6 +10,7 @@
             "choice_translation_domain",
             "choice_value",
             "choices",
+            "choices_as_values",
             "expanded",
             "group_by",
             "multiple",

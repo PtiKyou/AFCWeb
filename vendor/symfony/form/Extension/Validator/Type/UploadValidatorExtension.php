@@ -25,7 +25,11 @@ class UploadValidatorExtension extends AbstractTypeExtension
     private $translator;
     private $translationDomain;
 
-    public function __construct(TranslatorInterface $translator, string $translationDomain = null)
+    /**
+     * @param TranslatorInterface $translator        The translator for translating error messages
+     * @param null|string         $translationDomain The translation domain for translating
+     */
+    public function __construct(TranslatorInterface $translator, $translationDomain = null)
     {
         $this->translator = $translator;
         $this->translationDomain = $translationDomain;

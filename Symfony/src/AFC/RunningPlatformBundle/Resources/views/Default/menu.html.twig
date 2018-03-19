@@ -33,9 +33,9 @@
             </li>
             <li>
               {% if is_granted('ROLE_ADMIN') %}
-                <a class="color_white" href="#">Admin</a>
+                <a class="color_white" href="/admin">Administration</a>
               {% else %}
-                <a class="hide color_white" href="#">Admin</a>
+                <a class="hide color_white" href="/admin">Administration</a>
               {% endif %}
             </li>
           {% endif %}

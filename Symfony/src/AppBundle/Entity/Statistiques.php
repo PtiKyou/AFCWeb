@@ -367,4 +367,38 @@ class Statistiques
 
 
 
+
+    /**
+     * Get idstat
+     *
+     * @return integer
+     */
+    public function getIdstat()
+    {
+        return $this->idstat;
+    }
+
+    /**
+     * Set id
+     *
+     * @param \AppBundle\Entity\Utilisateur $id
+     *
+     * @return Statistiques
+     */
+    public function setId(\AppBundle\Entity\Utilisateur $id = null)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return \AppBundle\Entity\Utilisateur
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
