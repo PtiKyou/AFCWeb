@@ -14,8 +14,28 @@ class SocialController extends Controller
     public function indexAction()
     {
       $user = $this->getUser();
+
+      $em = $this->getDoctrine()->getManager();
+      $connection = $em->getConnection();
+      $statement = $connection->prepare("
+        SELECT faitE.id, u2.username, u2.nomUtilisateur, u2.nomEstVisible, u2.prenomUtilisateur, u2.prenomEstVisible , faitE.IDEntrainement, Entrainement.nomEntrainement, Entrainement.dateDebutEntrainement, Entrainement.dateFinEntrainement, Entrainement.descriptionEntrainement, Entrainement.estVisible
+        FROM Utilisateur u1
+        JOIN amis on amis.id = u1.id
+        JOIN faitE on faitE.id = amis.id_Utilisateur
+        JOIN Entrainement on Entrainement.IDEntrainement = faitE.IDEntrainement
+        JOIN Utilisateur as u2 on u2.id = faitE.id
+        where u1.id = ".$user->getId()."
+        ORDER BY Entrainement.dateFinEntrainement DESC
+        ;");
+      $statement->execute();
+      $listeEntrainements = $statement->fetchAll();
+
+
+
+
+
       return $this->render('AFCRunningPlatformBundle:Social:social.html.twig', array(
-        'user' => $user
+        'user' => $user, 'listeEntrainements' => $listeEntrainements
       ));
     }
 
@@ -123,8 +143,6 @@ class SocialController extends Controller
       $em = $this->getDoctrine()->getManager();
       $connection = $em->getConnection();
       $statement = $connection->prepare("INSERT INTO `amis` (`id`, `id_Utilisateur`) VALUES ('".$idCurrentUser."', '".$id."');");
-      $statement->execute();
-      $statement = $connection->prepare("INSERT INTO `amis` (`id`, `id_Utilisateur`) VALUES ('".$id."', '".$idCurrentUser."');");
       $statement->execute();
 
 

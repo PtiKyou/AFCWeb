@@ -28,26 +28,30 @@
       <a class="btn btn-primary" href="social/amis">Voir les amis</a>
     </div>
 
-    <!-- tableau activités des amis -->
+    <!-- tableau activités des amis (affiche les 5 derniers entrainements)-->
     <div class="col-md-9">
       <ul class="list-group">
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-md-10">Pierre : 03/04/18 - Muscu 30 min</div>
-            <div class="col-md-2 btn btn_historique_entrainement btn-primary">Afficher</div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-md-10">Jean : 01/02/18 - Vélo 1H</div>
-            <div class="col-md-2 btn btn_historique_entrainement btn-primary">Afficher</div>
-          </div>
-        </li>
-        <li class="list-group-item">...</li>
-        <li class="list-group-item">...</li>
-        <li class="list-group-item">...</li>
+        {% for l in listeEntrainements %}
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-10">
+                {{l.username}} :
+                {{l.dateFinEntrainement|date("d/m/Y")}} -
+                {{l.descriptionEntrainement}}
+              </div>
+              <a class="col-md-2 btn btn_historique_entrainement btn-primary" href="#">Afficher</a>
+            </div>
+          </li>
+        {% endfor %}
+{# dans le for
+l.
+id, username, nomUtilisateur, nomEstVisible,
+prenomUtilisateur, prenomEstVisible, IDEntrainement, nomEntrainement,
+dateDebutEntrainement, dateFinEntrainement, descriptionEntrainement, estVisible
+#}
+
       </ul>
-      <nav class="social_row_nav">
+      <!--nav class="social_row_nav">
         <ul class="pagination">
           <li><a arial-label="Previous"><<</a></li>
           <li><a>1</a></li>
@@ -57,7 +61,7 @@
           <li><a>5</a></li>
           <li><a arial-label="Previous">>></a></li>
         </ul>
-      <nav>
+      <nav-->
     </div>
   </div>
 
@@ -70,6 +74,7 @@
     <div class="col-md-3">
       <h2>Groupes</h2>
       <a class="btn btn-primary" href="#">Voir les groupes</a>
+      <p>TODO</p>
     </div>
 
     <!-- tableau des défis des groupes -->
