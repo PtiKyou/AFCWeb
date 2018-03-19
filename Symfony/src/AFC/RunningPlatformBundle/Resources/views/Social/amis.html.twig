@@ -1,0 +1,122 @@
+{# src/OC/PlatformBundle/Resources/views/Default/social.html.twig #}
+
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block name %}
+  <div class="row">
+   <span class="text-info">
+       <h1>Amis</h1>
+   </span>
+   <hr/>
+ </div>
+{% endblock name %}
+
+{% block container %}
+
+  <!-- liste amis -->
+  <div class="row social_row">
+
+    <!-- "titre" -->
+    <div class="row">
+      <h2>Liste d'amis :</h2>
+    </div>
+
+    <!-- liste des amis -->
+    <div class="row col-md-offset-1 col-md-10">
+      <br/>
+      <div class="div_scroll">
+        <ul class="list-group">
+          {% for a in amis %}
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-10">
+                  {{a.username}}
+                  {% if a.nomEstVisible or a.prenomEstVisible %} - {% endif %}
+                  {% if a.prenomEstVisible %}
+                    {{ a.prenomUtilisateur | capitalize }}
+                  {% endif %}
+                  {% if a.nomEstVisible %}
+                    {{ a.nomUtilisateur | upper }}
+                  {% endif %}
+                </div>
+                <a class="col-md-2 btn btn_historique_entrainement btn-primary" href="/profile/user/{{a.id}}">Afficher</a>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!-- ajout amis -->
+  <div class="row social_row">
+
+    <!-- "titre" -->
+    <div class="row">
+      <h2>Ajouter des amis :</h2>
+    </div>
+
+    <!-- partie recherche -->
+    <div class="row">
+
+      <div class="col-md-6">
+        {{ form_start(form, { 'action': path('social_amis'), 'attr': { 'class': 'social_amis' } }) }}
+          <form>
+            {{ form_widget(form) }}
+            <input class="btn btn-primary profil_btn" type="submit" value="Rechercher" />
+          </form>
+        {{ form_end(form) }}
+      </div>
+
+      <div class="col-md-6">
+        <span>Liste des personnes trouvées :</span>
+        <ul class="list-group">
+          {% for list in listSearch %}
+
+            {# test si déjà amis #}
+            {% set isFriend = false %}
+            {% for a in amis %}
+              {% if list.id == a.id %}
+                {% set isFriend = true %}
+              {% endif %}
+            {% endfor %}
+
+            {# test si utilisateur lui meme #}
+            {% if user.id == list.id %}
+              {% set isFriend = true %}
+            {% endif %}
+
+            {% if isFriend == false %}
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-md-9">
+                    {{list.username}}
+                    {% if list.nomEstVisible or list.prenomEstVisible %} - {% endif %}
+                    {% if list.prenomEstVisible %}
+                      {{ list.prenomUtilisateur | capitalize }}
+                    {% endif %}
+                    {% if list.nomEstVisible %}
+                      {{ list.nomUtilisateur | upper }}
+                    {% endif %}
+                  </div>
+                  <a class="col-md-3 btn btn_historique_entrainement btn-success" href="/social/addAmis/{{list.id}}">Ajouter</a>
+                </div>
+              </li>
+            {% endif %}
+
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+    <!-- /row partie recherche -->
+
+  </div>
+  <!-- /row ajout amis -->
+
+  <!-- permet de faire un peu de place en bas de page pour pouvoir  center un peu plus la partie basse de la page-->
+  <div id="social_end_space"></div>
+{% endblock %}

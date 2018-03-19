@@ -25,3 +25,15 @@ profil_stats:
 afc_admin_gdefiAction:
     path: /admin/gdefi
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }
+
+social_show:
+    path: /social
+    defaults: { _controller: AFCRunningPlatformBundle:Social:index }
+
+social_amis:
+    path: /social/amis
+    defaults: { _controller: AFCRunningPlatformBundle:Social:amis }
+
+social_add_amis:
+    path: /social/addAmis/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:addAmis }

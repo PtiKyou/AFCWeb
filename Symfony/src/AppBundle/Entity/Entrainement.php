@@ -17,7 +17,7 @@ class Entrainement
      *
      * @ORM\Column(name="nomEntrainement", type="string", length=25, nullable=true)
      */
-    private $nomentrainement;
+    public $nomentrainement;
 
     /**
      * @var \DateTime
@@ -102,4 +102,3 @@ class Entrainement
     }
 
 }
-
