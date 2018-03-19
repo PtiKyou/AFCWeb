@@ -21,7 +21,11 @@ class RelativePath extends PropertyPath
 {
     private $root;
 
-    public function __construct(FormInterface $root, string $propertyPath)
+    /**
+     * @param FormInterface $root
+     * @param string        $propertyPath
+     */
+    public function __construct(FormInterface $root, $propertyPath)
     {
         parent::__construct($propertyPath);
 

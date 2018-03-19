@@ -1,0 +1,59 @@
+{# src/OC/PlatformBundle/Resources/views/Default/Menus/menu.html.twig #}
+
+
+<div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header" id="menu_navbar_header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">AFC</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <!-- Menu partie gauche -->
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/profile">Profil</a>
+          </li>
+          <li>
+            <a href="#">Stats</a>
+          </li>
+          <li>
+            <a href="#">Social</a>
+          </li>
+          <li>
+            {% if is_granted('ROLE_ADMIN') %}
+              <a href="#">Admin</a>
+            {% else %}
+              <a class="hide" href="#">Admin</a>
+            {% endif %}
+          </li>
+          <li>
+            {% if app.user %}
+            <a href="/defis">défis</a>
+            {% endif %}
+          </li>
+        </ul>
+
+
+        <!-- Menu partie droite -->
+        <ul class="nav navbar-nav navbar-right">
+          {% if app.user %}
+            <li><a class="hide btn_login" href="/login">Login</a></li>
+            <li><a class="hide btn_login" href="/register">Signup</a></li>
+            <li><a class="btn_logout" href="/logout">Logout</a></li>
+          {% else %}
+            <li><a class="btn_login" href="/login">Login</a></li>
+            <li><a class="btn_login" href="/register">Signup</a></li>
+            <li><a class="hide btn_logout" href="/logout">Logout</a></li>
+          {% endif %}
+				</ul>
+    </div>
+    <!-- /.navbar-collapse -->
+</div>
+<!-- /.container -->

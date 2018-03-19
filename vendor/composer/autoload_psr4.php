@@ -7,7 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
+    'Symfony\\Polyfill\\Util\\' => array($vendorDir . '/symfony/polyfill-util'),
+    'Symfony\\Polyfill\\Php70\\' => array($vendorDir . '/symfony/polyfill-php70'),
+    'Symfony\\Polyfill\\Php56\\' => array($vendorDir . '/symfony/polyfill-php56'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
+    'Symfony\\Polyfill\\Apcu\\' => array($vendorDir . '/symfony/polyfill-apcu'),
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Symfony\\Component\\Templating\\' => array($vendorDir . '/symfony/templating'),
     'Symfony\\Component\\Stopwatch\\' => array($vendorDir . '/symfony/stopwatch'),
@@ -26,6 +30,7 @@ return array(
     'Symfony\\Component\\DependencyInjection\\' => array($vendorDir . '/symfony/dependency-injection'),
     'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'Symfony\\Component\\Config\\' => array($vendorDir . '/symfony/config'),
+    'Symfony\\Component\\ClassLoader\\' => array($vendorDir . '/symfony/class-loader'),
     'Symfony\\Component\\Cache\\' => array($vendorDir . '/symfony/cache'),
     'Symfony\\Bundle\\SecurityBundle\\' => array($vendorDir . '/symfony/security-bundle'),
     'Symfony\\Bundle\\FrameworkBundle\\' => array($vendorDir . '/symfony/framework-bundle'),

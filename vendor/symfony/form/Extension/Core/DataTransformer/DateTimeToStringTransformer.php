@@ -12,6 +12,7 @@
 namespace Symfony\Component\Form\Extension\Core\DataTransformer;
 
 use Symfony\Component\Form\Exception\TransformationFailedException;
+use Symfony\Component\Form\Exception\UnexpectedTypeException;
 
 /**
  * Transforms between a date string and a DateTime object.
@@ -47,8 +48,10 @@ class DateTimeToStringTransformer extends BaseDateTimeTransformer
      * @param string $inputTimezone  The name of the input timezone
      * @param string $outputTimezone The name of the output timezone
      * @param string $format         The date format
+     *
+     * @throws UnexpectedTypeException if a timezone is not a string
      */
-    public function __construct(string $inputTimezone = null, string $outputTimezone = null, string $format = 'Y-m-d H:i:s')
+    public function __construct($inputTimezone = null, $outputTimezone = null, $format = 'Y-m-d H:i:s')
     {
         parent::__construct($inputTimezone, $outputTimezone);
 

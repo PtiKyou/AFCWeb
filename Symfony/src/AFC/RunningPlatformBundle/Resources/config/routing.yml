@@ -9,6 +9,18 @@ afc_running_platform_admin:
 test_vues:
     path: /test
     defaults: { _controller: AFCRunningPlatformBundle:Default:testView }
+    
+afc_defis:
+    path:    /defis
+    defaults: { _controller: AFCRunningPlatformBundle:Defis:index }
+    
+creer_defis:
+    path:    /defis/creerdefis
+    defaults: { _controller: AFCRunningPlatformBundle:Defis:addDefis}
+
+afficher_defis:
+    path:    /defis/afficherdefis
+    defaults: { _controller: AFCRunningPlatformBundle:Defis:afficherDefis}
 
 profil_user:
     path: /profile/user/{id}
@@ -25,7 +37,6 @@ profil_stats:
 afc_admin_gdefiAction:
     path: /admin/gdefi/{action}
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }
-
 afc_admin_gentrainement:
     path: /admin/gentrainement/{action}
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gentrainement }
