@@ -1,0 +1,54 @@
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+AFCRunning - {{name.nom}}
+{%endblock title %}
+
+{% block name %}
+  <div class="row">
+   <span class="text-info">
+   {% for names in name %}
+       <h1> {{name.nom}} </h1>
+  {% endfor %}
+   </span>
+   <hr/>
+ </div>
+{% endblock name %}
+
+{% block container %}
+{% if action == 'add' %}
+    <div class="row">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+    </div>
+{% endif %}
+{% if action == 'view' %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom parcours</th>
+      <th scope="col">Denivele Positif</th>
+      <th scope="col">Denivele Négatif</th>
+      <th scope="col">Id de l'entrainement</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+    {% for parcour in parcours %}
+      <tbody>
+        <tr>
+          <th scope="row">{{parcour.IDParcours}}</th>
+          <td>{{parcour.nomParcours }}</td>
+          <td>{{parcour.denivelePosParcours }}</td>
+          <td>{{parcour.deniveleNegParcours  }}</td>
+          <td>{#{parcour.IDEntrainement }#}</td>
+
+          <td><button type="button" class="btn btn-danger">Supprimer</button></td>
+        </tr>
+      </tbody>
+    {% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

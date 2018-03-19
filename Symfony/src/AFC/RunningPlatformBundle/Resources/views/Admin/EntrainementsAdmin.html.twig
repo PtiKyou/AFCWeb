@@ -1,0 +1,57 @@
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+AFCRunning - {{name.nom}}
+{%endblock title %}
+
+{% block name %}
+  <div class="row">
+   <span class="text-info">
+   {% for names in name %}
+       <h1> {{name.nom}} </h1>
+  {% endfor %}
+   </span>
+   <hr/>
+ </div>
+{% endblock name %}
+
+{% block container %}
+{% if action == 'add' %}
+    <div class="row">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+    </div>
+{% endif %}
+{% if action == 'view' %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Date début</th>
+      <th scope="col">Date Fin</th>
+      <th scope="col">Description</th>
+      <th scope="col">Difficulté</th>
+      <th scope="col">Record</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+    {% for entrainement in entrainements %}
+      <tbody>
+        <tr>
+          <th scope="row">{{entrainement.IDEntrainement}}</th>
+          <th scope="col">{{entrainement.nomEntrainement}}</th>
+          <th scope="col">{{entrainement.dateDebutEntrainement|date('d-m-Y') }}</th>
+          <th scope="col">{{entrainement.dateFinEntrainement|date('d-m-Y')}}</th>
+          <th scope="col">{{entrainement.descriptionEntrainement}}</th>
+          <th scope="col">{{entrainement.niveauDifficulte}}</th>
+          <th scope="col">{{entrainement.recordEntrainement|date('d-m-Y H:i:s')}}</th>
+          <td><button type="button" class="btn btn-danger">Supprimer</button></td>
+        </tr>
+      </tbody>
+    {% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

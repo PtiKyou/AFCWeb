@@ -39,5 +39,62 @@ class Constante
     private $idsport;
 
 
-}
 
+    /**
+     * Set caloriesterrainplat
+     *
+     * @param integer $caloriesterrainplat
+     *
+     * @return Constante
+     */
+    public function setCaloriesterrainplat($caloriesterrainplat)
+    {
+        $this->caloriesterrainplat = $caloriesterrainplat;
+
+        return $this;
+    }
+
+    /**
+     * Get caloriesterrainplat
+     *
+     * @return integer
+     */
+    public function getCaloriesterrainplat()
+    {
+        return $this->caloriesterrainplat;
+    }
+
+    /**
+     * Get idconstante
+     *
+     * @return integer
+     */
+    public function getIdconstante()
+    {
+        return $this->idconstante;
+    }
+
+    /**
+     * Set idsport
+     *
+     * @param \AppBundle\Entity\Sport $idsport
+     *
+     * @return Constante
+     */
+    public function setIdsport(\AppBundle\Entity\Sport $idsport = null)
+    {
+        $this->idsport = $idsport;
+
+        return $this;
+    }
+
+    /**
+     * Get idsport
+     *
+     * @return \AppBundle\Entity\Sport
+     */
+    public function getIdsport()
+    {
+        return $this->idsport;
+    }
+}
