@@ -136,7 +136,42 @@ class SocialController extends Controller
       ));
     }
 
+    /*envoie une invitation*/
+    public function askAmisAction($id){
+      $idCurrentUser = $this->getUser()->getId();
 
+      $em = $this->getDoctrine()->getManager();
+      $connection = $em->getConnection();
+      $statement = $connection->prepare("INSERT INTO `demandeAmis` (`id`, `id_Utilisateur`) VALUES ('".$idCurrentUser."', '".$id."');");
+      $statement->execute();
+
+      return $this->redirectToRoute('social_amis');
+    }
+    /*refuse une invitation reçue*/
+    public function denyAmisAction($id){
+      $idCurrentUser = $this->getUser()->getId();
+
+      $em = $this->getDoctrine()->getManager();
+      $connection = $em->getConnection();
+      $statement = $connection->prepare("DELETE FROM `demandeAmis` WHERE `demandeAmis`.`id` = ".$id." AND `demandeAmis`.`id_Utilisateur` = ".$idCurrentUser.";");
+      $statement->execute();
+
+      return $this->redirectToRoute('social_amis');
+    }
+
+    /*annule une invitation envoyée*/
+    public function cancelAmisAction($id){
+      $idCurrentUser = $this->getUser()->getId();
+
+      $em = $this->getDoctrine()->getManager();
+      $connection = $em->getConnection();
+      $statement = $connection->prepare("DELETE FROM `demandeAmis` WHERE `demandeAmis`.`id` = ".$idCurrentUser." AND `demandeAmis`.`id_Utilisateur` = ".$id.";");
+      $statement->execute();
+
+      return $this->redirectToRoute('social_amis');
+    }
+
+    /*ajoute un ami (et est ajouté en tant qu'ami)*/
     public function addAmisAction($id){
       $idCurrentUser = $this->getUser()->getId();
 
@@ -144,11 +179,17 @@ class SocialController extends Controller
       $connection = $em->getConnection();
       $statement = $connection->prepare("INSERT INTO `amis` (`id`, `id_Utilisateur`) VALUES ('".$idCurrentUser."', '".$id."');");
       $statement->execute();
+      $statement = $connection->prepare("INSERT INTO `amis` (`id`, `id_Utilisateur`) VALUES ('".$id."', '".$idCurrentUser."');");
+      $statement->execute();
 
+      //retire l'invitation une fois celle ci acceptée
+      $statement = $connection->prepare("DELETE FROM `demandeAmis` WHERE `demandeAmis`.`id` = ".$id." AND `demandeAmis`.`id_Utilisateur` = ".$idCurrentUser.";");
+      $statement->execute();
 
       return $this->redirectToRoute('social_amis');
     }
 
+    /*retire un amis (et est retiré en tant qu'ami)*/
     public function removeAmisAction($id){
       $idCurrentUser = $this->getUser()->getId();
 
@@ -156,11 +197,41 @@ class SocialController extends Controller
       $connection = $em->getConnection();
       $statement = $connection->prepare("DELETE FROM `amis` WHERE `amis`.`id` = ".$idCurrentUser." AND `amis`.`id_Utilisateur` = ".$id.";");
       $statement->execute();
-
+      $statement = $connection->prepare("DELETE FROM `amis` WHERE `amis`.`id` = ".$id." AND `amis`.`id_Utilisateur` = ".$idCurrentUser.";");
+      $statement->execute();
 
       return $this->redirectToRoute('social_amis');
     }
 
+
+    public function showDemandesAmisAction(){
+      $user = $this->getUser();
+
+      $em = $this->getDoctrine()->getManager();
+      $connection = $em->getConnection();
+
+      //recherche des demandes envoyées
+      $statement = $connection->prepare("
+        SELECT Utilisateur.id, Utilisateur.nomUtilisateur, Utilisateur.nomEstVisible, Utilisateur.prenomUtilisateur, Utilisateur.prenomEstVisible, Utilisateur.username FROM demandeAmis
+        JOIN Utilisateur on Utilisateur.id = demandeAmis.id_Utilisateur
+        where demandeAmis.id = ".$user->getId()."
+        ;");
+      $statement->execute();
+      $demandesEnvoyeur = $statement->fetchAll();
+
+      //recherche des demandes recues
+      $statement = $connection->prepare("
+        SELECT Utilisateur.id, Utilisateur.nomUtilisateur, Utilisateur.nomEstVisible, Utilisateur.prenomUtilisateur, Utilisateur.prenomEstVisible, Utilisateur.username FROM demandeAmis
+        JOIN Utilisateur on Utilisateur.id = demandeAmis.id
+        where demandeAmis.id_Utilisateur = ".$user->getId()."
+        ;");
+      $statement->execute();
+      $demandesRecepteur = $statement->fetchAll();
+
+      return $this->render('AFCRunningPlatformBundle:Social:demandesAmis.html.twig', array(
+        'demandesEnvoyeur' => $demandesEnvoyeur, 'demandesRecepteur' => $demandesRecepteur
+      ));
+    }
 
 
 }
