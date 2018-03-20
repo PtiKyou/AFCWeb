@@ -266,7 +266,7 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $request = $em->getRepository(Utilisateur::class)->findAll();
       //definition du nom
-      $names = array('nom' => "Gestion des Programmes");
+      $names = array('nom' => "Gestion des Membres");
       //création du formulaire d'ajout
       $task = new Utilisateur();
       $tr= new Utilisateur();

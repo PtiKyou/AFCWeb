@@ -109,11 +109,11 @@ class SocialController extends Controller
             where 1";
 
           if($username != "")
-            $query .= " and Utilisateur.username like '".$username."'";
+            $query .= " and Utilisateur.username like '%".$username."%'";
           if($nom != "")
-            $query .= " and Utilisateur.nomUtilisateur like '".$nom."'";
+            $query .= " and Utilisateur.nomUtilisateur like '%".$nom."%'";
           if($prenom != "")
-            $query .= " and Utilisateur.prenomUtilisateur like '".$prenom."'";
+            $query .= " and Utilisateur.prenomUtilisateur like '%".$prenom."%'";
 
           $query .= ";";
 
@@ -143,6 +143,18 @@ class SocialController extends Controller
       $em = $this->getDoctrine()->getManager();
       $connection = $em->getConnection();
       $statement = $connection->prepare("INSERT INTO `amis` (`id`, `id_Utilisateur`) VALUES ('".$idCurrentUser."', '".$id."');");
+      $statement->execute();
+
+
+      return $this->redirectToRoute('social_amis');
+    }
+
+    public function removeAmisAction($id){
+      $idCurrentUser = $this->getUser()->getId();
+
+      $em = $this->getDoctrine()->getManager();
+      $connection = $em->getConnection();
+      $statement = $connection->prepare("DELETE FROM `amis` WHERE `amis`.`id` = ".$idCurrentUser." AND `amis`.`id_Utilisateur` = ".$id.";");
       $statement->execute();
 
 
