@@ -1,0 +1,80 @@
+{# src/OC/PlatformBundle/Resources/views/Default/social.html.twig #}
+
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block name %}
+  <div class="row">
+   <span class="text-info">
+       <h1>Groupes {{groupe.nomGroupe}}#{{groupe.IDGroupe}}</h1>
+   </span>
+   <hr/>
+ </div>
+{% endblock name %}
+
+{% block container %}
+
+  <div class="row social_row">
+    <!-- "titre" -->
+    <div class="row">
+      <h2>Liste des membres :</h2>
+    </div>
+    <!-- liste des membres du groupe -->
+    <div class="row col-md-offset-1 col-md-10">
+      <br/>
+      <div class="div_scroll">
+        <ul class="list-group">
+          {% for l in listeMembres %}
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-10">
+                  {{l.username}}
+                  {% if l.nomEstVisible or l.prenomEstVisible %} - {% endif %}
+                  {% if l.prenomEstVisible %}
+                    {{ l.prenomUtilisateur | capitalize }}
+                  {% endif %}
+                  {% if l.nomEstVisible %}
+                    {{ l.nomUtilisateur | upper }}
+                  {% endif %}
+                </div>
+                <a class="col-md-2 btn btn_historique_entrainement btn-primary" href="/profile/user/{{l.id}}">Afficher</a>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row social_row">
+    <!-- "titre" -->
+    <div class="row">
+      <h2>Liste des défis :</h2>
+    </div>
+    <!-- liste des défis du groupe -->
+    <div class="row col-md-offset-1 col-md-10">
+      <br/>
+      <div class="div_scroll">
+        <ul class="list-group">
+          {% for d in listeDefis %}
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-10">
+                  Défis#{{d.IDDefis}} de {{d.username}} : {{d.distance}} m en {{d.temps}} min
+                </div>
+                <a class="col-md-2 btn btn_historique_entrainement btn-primary" href="#/profile/user/{#{l.id}#}">Accepter</a>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- bouton retour -->
+  <div class="row">
+    <br/>
+    <a class="btn btn-default" href="/social/groupes">< Retour</a>
+  </div>
+  <!-- permet de faire un peu de place en bas de page pour pouvoir  center un peu plus la partie basse de la page-->
+  <div id="social_end_space"></div>
+{% endblock %}

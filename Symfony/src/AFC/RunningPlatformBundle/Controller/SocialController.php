@@ -349,7 +349,7 @@ class SocialController extends Controller
     }
 
 
-    //crée un groupe
+    //créer un groupe
     public function groupeCreateAction(Request $request){
       $user = $this->getUser();
       $em = $this->getDoctrine()->getManager();
@@ -363,8 +363,6 @@ class SocialController extends Controller
       if ($form->isSubmitted() && $form->isValid()) {
         //on recupere les infos du form
         $nom = $form->getData()->getNomGroupe();
-
-
 
         //on crée un nouveau groupe
         $newGroupe = new Groupe();
@@ -392,6 +390,73 @@ class SocialController extends Controller
       return $this->render('AFCRunningPlatformBundle:Social:groupeCreate.html.twig', array(
         'form' => $form->createView()
       ));
+    }
+
+
+    public function showGroupeAction($id){
+      $user = $this->getUser();
+      $em = $this->getDoctrine()->getManager();
+
+      //on recupere les infos du groupe
+      $connection = $em->getConnection();
+      $statement = $connection->prepare("
+        SELECT * FROM Groupe
+        WHERE Groupe.IDGroupe = ".$id."
+        ;");
+      $statement->execute();
+      $groupe = $statement->fetchAll();
+      $groupe = $groupe[0];
+
+      //on recupere la liste des membres
+      $connection = $em->getConnection();
+      $statement = $connection->prepare("
+        SELECT * FROM appartientG
+        JOIN Utilisateur on Utilisateur.id = appartientG.id
+        WHERE appartientG.IDGroupe = ".$id."
+        ;");
+      $statement->execute();
+      $listeMembres = $statement->fetchAll();
+
+      //on recupere la liste des defis
+      $connection = $em->getConnection();
+      $statement = $connection->prepare("
+        SELECT Defis.IDDefis,Defis.distance, Defis.temps, Utilisateur.username
+        FROM creerDefis
+        JOIN Defis on Defis.IDDefis = creerDefis.IDDefis
+        JOIN Groupe on Groupe.IDGroupe = creerDefis.IDGroupe
+        JOIN Utilisateur on Utilisateur.id = creerDefis.id
+        WHERE Groupe.IDGroupe = ".$id."
+        ;");
+      $statement->execute();
+      $listeDefis = $statement->fetchAll();
+
+      return $this->render('AFCRunningPlatformBundle:Social:showGroupe.html.twig', array(
+        'groupe' => $groupe, 'listeMembres' => $listeMembres, 'listeDefis' => $listeDefis
+      ));
+    }
+
+    /*rejoins un groupe*/
+    public function joinGroupeAction($id){
+      $userId = $this->getUser()->getId();
+
+      $em = $this->getDoctrine()->getManager();
+      $connection = $em->getConnection();
+      $statement = $connection->prepare("INSERT INTO `appartientG` (`id`, `IDGroupe`) VALUES ('".$userId."', '".$id."')");
+      $statement->execute();
+
+      return $this->redirectToRoute('social_groupes');
+    }
+
+    /*quitte un groupe*/
+    public function quitGroupeAction($id){
+      $userId = $this->getUser()->getId();
+
+      $em = $this->getDoctrine()->getManager();
+      $connection = $em->getConnection();
+      $statement = $connection->prepare("DELETE FROM `appartientG` WHERE `appartientG`.`id` = ".$userId." AND `appartientG`.`IDGroupe` = ".$id.";");
+      $statement->execute();
+
+      return $this->redirectToRoute('social_groupes');
     }
 
 

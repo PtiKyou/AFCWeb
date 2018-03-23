@@ -70,6 +70,18 @@ social_groupe_create:
     path: /social/groupes/create
     defaults: { _controller: AFCRunningPlatformBundle:Social:groupeCreate }
 
+social_groupe_join:
+    path: /social/groupes/join/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:joinGroupe }
+
+social_groupe_quit:
+    path: /social/groupes/quit/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:quitGroupe }
+
+social_groupe_show:
+    path: /social/groupes/show/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:showGroupe }
+
 afc_admin_gdefiAction:
     path: /admin/gdefi/{action}
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }
