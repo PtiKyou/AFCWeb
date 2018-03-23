@@ -62,6 +62,14 @@ social_rm_amis:
     path: /social/rmAmis/{id}
     defaults: { _controller: AFCRunningPlatformBundle:Social:removeAmis }
 
+social_groupes:
+    path: /social/groupes
+    defaults: { _controller: AFCRunningPlatformBundle:Social:groupes }
+
+social_groupe_create:
+    path: /social/groupes/create
+    defaults: { _controller: AFCRunningPlatformBundle:Social:groupeCreate }
+
 afc_admin_gdefiAction:
     path: /admin/gdefi/{action}
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }

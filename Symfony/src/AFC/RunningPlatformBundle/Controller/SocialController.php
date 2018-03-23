@@ -7,10 +7,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\Utilisateur;
 use AppBundle\Form\AmisType;
+use AppBundle\Entity\Groupe;
+use AppBundle\Form\GroupesType;
+use AppBundle\Form\GroupeCreateType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class SocialController extends Controller
 {
+
+    /**********************************/
+    /* Affichage de la partie sociale */
+    /**********************************/
     public function indexAction()
     {
       $user = $this->getUser();
@@ -30,22 +38,22 @@ class SocialController extends Controller
       $statement->execute();
       $listeEntrainements = $statement->fetchAll();
 
-
-
-
-
       return $this->render('AFCRunningPlatformBundle:Social:social.html.twig', array(
         'user' => $user, 'listeEntrainements' => $listeEntrainements
       ));
     }
 
 
+
+    /**********************************/
+    /********** Partie amis  **********/
+    /**********************************/
+
     public function amisAction(Request $request)
     {
-      /* partie liste d'amis */
+      /** partie liste d'amis **/
 
       $user = $this->getUser();
-
       $em = $this->getDoctrine()->getManager();
       $connection = $em->getConnection();
       $statement = $connection->prepare("
@@ -78,12 +86,10 @@ class SocialController extends Controller
       }
 
 
-
-      /**
-       *partie ajout amis
-       *la page pourrait être diviser en 2 et cette partie
+      /** partie ajout amis **/
+      /*la page pourrait peut-être être diviser en 2 et cette partie
        *pourrait être mise dans une autre fonction
-       *(même principe que pour l'encadré de droite qui affiche les conseils de nutrition)
+       *en utilisant {{ render(controller("bundle:controller:action")) }}
        */
 
       $listSearch = array();
@@ -135,6 +141,8 @@ class SocialController extends Controller
         'amis' => $amisInfos, 'form' => $form->createView(), 'listSearch' => $listSearch, 'user' => $user
       ));
     }
+
+
 
     /*envoie une invitation*/
     public function askAmisAction($id){
@@ -230,6 +238,159 @@ class SocialController extends Controller
 
       return $this->render('AFCRunningPlatformBundle:Social:demandesAmis.html.twig', array(
         'demandesEnvoyeur' => $demandesEnvoyeur, 'demandesRecepteur' => $demandesRecepteur
+      ));
+    }
+
+
+
+    /**********************************/
+    /********* Partie groupe  *********/
+    /**********************************/
+
+    public function groupesAction(Request $request){
+      $user = $this->getUser();
+      $em = $this->getDoctrine()->getManager();
+      $connection = $em->getConnection();
+
+
+
+
+      /**
+       * Partie "Liste des groupes"
+       */
+
+      //recherche des groupes rejoints
+      $statement = $connection->prepare("
+        SELECT Groupe.IDGroupe, Groupe.nomGroupe,
+        (SELECT COUNT(*) from appartientG WHERE appartientG.IDGroupe = Groupe.IDGroupe) as nbMembres
+        from Groupe
+        JOIN appartientG on appartientG.IDGroupe = Groupe.IDGroupe
+        WHERE appartientG.id = ".$user->getId()."
+        ;");
+      $statement->execute();
+      $groupesRejoints = $statement->fetchAll();
+
+
+
+
+      /**
+       * Partie "Rejoindre un groupe"
+       */
+
+      //on cherche tout els groupes contenant l'utilisateur
+      $connection = $em->getConnection();
+      $statement = $connection->prepare("
+        SELECT appartientG.id, appartientG.IDGroupe from appartientG
+        where appartientG.id = ".$user->getId()."
+        ;");
+      $statement->execute();
+      $query = $statement->fetchAll();
+
+      //on recupere l'id de ces groupes
+      $listeGroupes = array();
+      for ($i = 0; $i < sizeof($query); $i++) {
+        $listeGroupes[$i] = $query[$i]['IDGroupe'];
+      }
+      //echo print_r($listeGroupes);
+
+      //on recupere les infos de ces groupes
+      $groupesInfos = array();
+      for($i = 0; $i < sizeof($listeGroupes); $i++){
+        //echo $listeGroupes[$i];
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("
+          SELECT Groupe.IDGroupe, Groupe.nomGroupe
+          from Groupe
+          where Groupe.IDGroupe = ".$listeGroupes[$i]."
+          ;");
+        $statement->execute();
+        $query = $statement->fetchAll();
+        $groupesInfos[$i] = $query[0];
+      }
+
+
+      $listSearch = array();
+      $groupesSearch = new Groupe;
+
+      //create form
+      $form = $this->createForm(GroupesType::class, $groupesSearch);
+      $form->handleRequest($request);
+
+      //handle form
+      if ($form->isSubmitted() && $form->isValid()) {
+
+        //on recupere les infos du form
+        $nom = $form->getData()->getNomGroupe();
+
+        //on crée la query
+        $query = "
+          SELECT Groupe.IDGroupe, Groupe.nomGroupe
+          from Groupe
+          where Groupe.nomGroupe like '%".$nom."%';
+          ";
+
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($query);
+        $statement->execute();
+        $response = $statement->fetchAll();
+        for($i=0; $i < sizeof($response); $i++){
+          $listSearch[$i] = $response[$i];
+        }
+
+        return $this->render('AFCRunningPlatformBundle:Social:groupe.html.twig', array(
+          'form' => $form->createView(), 'listSearch' => $listSearch, 'user' => $user, 'groupes' => $groupesInfos, 'groupesRejoints' => $groupesRejoints
+        ));
+      }
+
+
+      return $this->render('AFCRunningPlatformBundle:Social:groupe.html.twig', array(
+        'form' => $form->createView(), 'listSearch' => $listSearch, 'user' => $user, 'groupes' => $groupesInfos, 'groupesRejoints' => $groupesRejoints
+      ));
+    }
+
+
+    //crée un groupe
+    public function groupeCreateAction(Request $request){
+      $user = $this->getUser();
+      $em = $this->getDoctrine()->getManager();
+
+
+      $groupe = new Groupe;
+      $form = $this->createForm(GroupeCreateType::class, $groupe);
+      $form->handleRequest($request);
+
+      //handle form
+      if ($form->isSubmitted() && $form->isValid()) {
+        //on recupere les infos du form
+        $nom = $form->getData()->getNomGroupe();
+
+
+
+        //on crée un nouveau groupe
+        $newGroupe = new Groupe();
+        $newGroupe->setNomGroupe($nom);
+
+        //on crée ce nouveau groupe en base de données
+        $em->persist($newGroupe);
+        $em->flush();
+
+        //on recupere les infos du form
+        $nom = $form->getData()->getNomGroupe();
+
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("
+          INSERT INTO `appartientG` (`id`, `IDGroupe`) VALUES ('".$user->getId()."', '".$newGroupe->getIdGroupe()."')
+          ;");
+        $statement->execute();
+
+        $this->render('AFCRunningPlatformBundle:Social:groupeCreate.html.twig', array(
+          'form' => $form->createView()
+        ));
+        return $this->redirectToRoute('social_groupes');
+      }
+
+      return $this->render('AFCRunningPlatformBundle:Social:groupeCreate.html.twig', array(
+        'form' => $form->createView()
       ));
     }
 
