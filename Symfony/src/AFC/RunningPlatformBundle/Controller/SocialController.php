@@ -22,8 +22,9 @@ class SocialController extends Controller
     public function indexAction()
     {
       $user = $this->getUser();
-
       $em = $this->getDoctrine()->getManager();
+
+      //on recupere les derniers entrainements des amis
       $connection = $em->getConnection();
       $statement = $connection->prepare("
         SELECT faitE.id, u2.username, u2.nomUtilisateur, u2.nomEstVisible, u2.prenomUtilisateur, u2.prenomEstVisible , faitE.IDEntrainement, Entrainement.nomEntrainement, Entrainement.dateDebutEntrainement, Entrainement.dateFinEntrainement, Entrainement.descriptionEntrainement, Entrainement.estVisible
@@ -38,8 +39,21 @@ class SocialController extends Controller
       $statement->execute();
       $listeEntrainements = $statement->fetchAll();
 
+      //on recupere les derniers defis des groupes
+      $connection = $em->getConnection();
+      $statement = $connection->prepare("
+        SELECT Utilisateur.username, Defis.IDDefis, Defis.distance, Defis.temps FROM appartientG
+        JOIN creerDefis ON creerDefis.IDGroupe = appartientG.IDGroupe
+        JOIN Utilisateur ON Utilisateur.id = creerDefis.id
+        JOIN Defis on Defis.IDDefis = creerDefis.IDDefis
+        WHERE appartientG.id = ".$user->getId()."
+        ORDER BY Defis.IDDefis DESC
+        ;");
+      $statement->execute();
+      $listeDefis = $statement->fetchAll();
+
       return $this->render('AFCRunningPlatformBundle:Social:social.html.twig', array(
-        'user' => $user, 'listeEntrainements' => $listeEntrainements
+        'user' => $user, 'listeEntrainements' => $listeEntrainements, 'listeDefis' => $listeDefis
       ));
     }
 

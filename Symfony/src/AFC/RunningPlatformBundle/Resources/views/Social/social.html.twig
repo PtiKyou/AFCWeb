@@ -30,6 +30,7 @@
 
     <!-- tableau activités des amis (affiche les 5 derniers entrainements)-->
     <div class="col-md-9">
+      <h3>Derniers entrainements des amis :</h3>
       <ul class="list-group">
         {% if listeEntrainements|length == 0 %}
           <li class="list-group-item">
@@ -52,13 +53,6 @@
             </div>
           </li>
         {% endfor %}
-{# dans le for
-l.
-id, username, nomUtilisateur, nomEstVisible,
-prenomUtilisateur, prenomEstVisible, IDEntrainement, nomEntrainement,
-dateDebutEntrainement, dateFinEntrainement, descriptionEntrainement, estVisible
-#}
-
       </ul>
       <!--nav class="social_row_nav">
         <ul class="pagination">
@@ -87,24 +81,29 @@ dateDebutEntrainement, dateFinEntrainement, descriptionEntrainement, estVisible
 
     <!-- tableau des défis des groupes -->
     <div class="col-md-9">
+      <h3>Derniers défis des groupes :</h3>
       <ul class="list-group">
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-md-10">Goupe rando : 03/04/18 - Calanque en 2H</div>
-            <div class="col-md-2 btn btn_historique_entrainement btn-primary">Afficher</div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-md-10">Groupe basket : 01/02/18 - max paniers en 5min</div>
-            <div class="col-md-2 btn btn_historique_entrainement btn-primary">Afficher</div>
-          </div>
-        </li>
-        <li class="list-group-item">...</li>
-        <li class="list-group-item">...</li>
-        <li class="list-group-item">...</li>
+        {% if listeDefis|length == 0 %}
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-10">
+                Aucun défi disponible.
+              </div>
+            </div>
+          </li>
+        {% endif %}
+        {% for d in listeDefis %}
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-10">
+                Défis#{{d.IDDefis}} de {{d.username}} : {{d.distance}} m en {{d.temps}} min
+              </div>
+              <a class="col-md-2 btn btn_historique_entrainement btn-primary" href="#">Afficher</a>
+            </div>
+          </li>
+        {% endfor %}
       </ul>
-      <nav class="social_row_nav">
+      <!--nav class="social_row_nav">
         <ul class="pagination">
           <li><a arial-label="Previous"><<</a></li>
           <li><a>1</a></li>
@@ -114,7 +113,7 @@ dateDebutEntrainement, dateFinEntrainement, descriptionEntrainement, estVisible
           <li><a>5</a></li>
           <li><a arial-label="Previous">>></a></li>
         </ul>
-      <nav>
+      <nav-->
     </div>
   </div>
 
