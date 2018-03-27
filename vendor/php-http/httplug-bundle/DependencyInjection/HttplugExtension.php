@@ -208,6 +208,12 @@ class HttplugExtension extends Extension
                 ]);
 
                 break;
+            case 'add_path':
+                $pathUriService = $serviceId.'.path_uri';
+                $this->createUri($container, $pathUriService, $config['path']);
+                $definition->replaceArgument(0, new Reference($pathUriService));
+
+                break;
             case 'base_uri':
                 $baseUriService = $serviceId.'.base_uri';
                 $this->createUri($container, $baseUriService, $config['uri']);
@@ -300,12 +306,16 @@ class HttplugExtension extends Extension
             }
         }
 
-        $container
-            ->register($serviceId.'.client', HttpClient::class)
-            ->setFactory([new Reference($arguments['factory']), 'createClient'])
-            ->addArgument($arguments['config'])
-            ->setPublic(false)
-        ;
+        if (empty($arguments['service'])) {
+            $container
+                ->register($serviceId.'.client', HttpClient::class)
+                ->setFactory([new Reference($arguments['factory']), 'createClient'])
+                ->addArgument($arguments['config'])
+                ->setPublic(false);
+        } else {
+            $container
+                ->setAlias($serviceId.'.client', new Alias($arguments['service'], false));
+        }
 
         $container
             ->register($serviceId, PluginClient::class)

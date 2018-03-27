@@ -32,7 +32,7 @@ class AdminController extends Controller
         array('url' => 'admin/gdefi', 'title' => 'Gestion des défis'),
         array('url' => 'admin/gentrainement', 'title' => 'Gestion des entrainements'),
         array('url' => 'admin/gconstante', 'title' => 'Gestion des constantes'),
-        array('url' => 'admin/gsport', 'title' => 'Gestion des Sports'),
+        array('url' => 'admin/gsport', 'title' => 'Gestion des sports'),
         array('url' => 'admin/gprogramme', 'title' => 'Gestion des programmes'),
         array('url' => 'admin/gstatistique', 'title' => 'Gestion des statistiques'),
         array('url' => 'admin/gparcours', 'title' => 'Gestion des parcours'),
@@ -60,7 +60,7 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $request = $em->getRepository(Defis::class)->findAll();
       //definition du nom
-      $names = array('nom' => "Gestion des Defis");
+      $names = array('nom' => "Gestion des défis");
       //création du formulaire d'ajout
       $task = new Defis();
       $tr= new Defis();
@@ -169,12 +169,12 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $request = $em->getRepository(Programme::class)->findAll();
       //definition du nom
-      $names = array('nom' => "Gestion des Programmes");
+      $names = array('nom' => "Gestion des programmes");
       //création du formulaire d'ajout
       $task = new Programme();
       $tr= new Programme();
       $form = $this->createFormBuilder($task)
-      ->add('nomProgramme', TextType::class, array('label' => 'Nom du Prgramme'))
+      ->add('nomProgramme', TextType::class, array('label' => 'Nom du Programme'))
       ->add('dureeTotaleProgramme', TextType::class, array('label' => 'Durée du Programme'))
       ->add('typeProgramme', TextType::class, array('label' => 'Type du programme'))
       //->add('IdSport', TextType::class, array('label' => 'Id du sport'))                                                       !  !!! !! !! TODO
@@ -198,7 +198,7 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $request = $em->getRepository(Statistiques::class)->findAll();
       //definition du nom
-      $names = array('nom' => "Gestion des Statistiques");
+      $names = array('nom' => "Gestion des statistiques");
       //création du formulaire d'ajout
       $task = new Statistiques();
       $tr= new Statistiques();
@@ -211,7 +211,7 @@ class AdminController extends Controller
               'Amis' => 1,
               'Public' => 2,
       )))
-      ->add('vitesseMoyennneStat', TextType::class, array('label' => 'Durée du Programme'))
+      ->add('vitesseMoyennneStat', TextType::class, array('label' => 'Vitesse moyenne'))
       ->add('vitesseMoyennneStatEstVisible', ChoiceType::class, array(
       'label'    => 'Visibilité du temps moyen',
       'choices'  => array(
@@ -219,7 +219,7 @@ class AdminController extends Controller
               'Amis' => 1,
               'Public' => 2,
       )))
-      ->add('VitesseMaxStat', TextType::class, array('label' => 'Durée du Programme'))
+      ->add('VitesseMaxStat', TextType::class, array('label' => 'Vitesse Max'))
       ->add('VitesseMaxStatEstVisible', ChoiceType::class, array(
       'label'    => 'Visibilité du temps moyen',
       'choices'  => array(
@@ -227,7 +227,7 @@ class AdminController extends Controller
               'Amis' => 1,
               'Public' => 2,
       )))
-      ->add('distanceTotaleParcourue', TextType::class, array('label' => 'Durée du Programme'))
+      ->add('distanceTotaleParcourue', TextType::class, array('label' => 'Distance totale parcourue'))
       ->add('distanceTotaleParcourueEstVisible', ChoiceType::class, array(
       'label'    => 'Visibilité du temps moyen',
       'choices'  => array(
@@ -235,7 +235,7 @@ class AdminController extends Controller
               'Amis' => 1,
               'Public' => 2,
       )))
-      ->add('distanceMoyenneParcourue', TextType::class, array('label' => 'Durée du Programme'))
+      ->add('distanceMoyenneParcourue', TextType::class, array('label' => 'Distance Moyenne parcourue'))
       ->add('distanceMoyenneParcourueEstVisible', ChoiceType::class, array(
       'label'    => 'Visibilité du temps moyen',
       'choices'  => array(
@@ -243,7 +243,7 @@ class AdminController extends Controller
               'Amis' => 1,
               'Public' => 2,
       )))
-      ->add('id', TextType::class, array('label' => 'Durée du Programme'))
+      ->add('id', TextType::class, array('label' => 'Id'))
       ->add('save', SubmitType::class, array('label' => 'Créer'))
       ->getForm();
       //return de la vue
@@ -266,7 +266,7 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $request = $em->getRepository(Utilisateur::class)->findAll();
       //definition du nom
-      $names = array('nom' => "Gestion des Membres");
+      $names = array('nom' => "Gestion des membres");
       //création du formulaire d'ajout
       $task = new Utilisateur();
       $tr= new Utilisateur();
@@ -358,7 +358,7 @@ public function gparcoursAction($action)
     $em = $this->getDoctrine()->getManager();
     $request = $em->getRepository(Parcours::class)->findAll();
     //definition du nom
-    $names = array('nom' => "Gestion des Parcours");
+    $names = array('nom' => "Gestion des parcours");
     //création du formulaire d'ajout
     $task = new Parcours();
     $tr= new Parcours();
