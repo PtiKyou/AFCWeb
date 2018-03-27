@@ -42,6 +42,18 @@ social_amis:
     path: /social/amis
     defaults: { _controller: AFCRunningPlatformBundle:Social:amis }
 
+social_ask_amis:
+    path: /social/askAmis/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:askAmis }
+
+social_cancel_amis:
+    path: /social/cancelAmis/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:cancelAmis }
+
+social_deny_amis:
+    path: /social/denyAmis/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:denyAmis }
+
 social_add_amis:
     path: /social/addAmis/{id}
     defaults: { _controller: AFCRunningPlatformBundle:Social:addAmis }
@@ -49,6 +61,30 @@ social_add_amis:
 social_rm_amis:
     path: /social/rmAmis/{id}
     defaults: { _controller: AFCRunningPlatformBundle:Social:removeAmis }
+
+social_groupes:
+    path: /social/groupes
+    defaults: { _controller: AFCRunningPlatformBundle:Social:groupes }
+
+social_groupe_create:
+    path: /social/groupes/create
+    defaults: { _controller: AFCRunningPlatformBundle:Social:groupeCreate }
+
+social_groupe_join:
+    path: /social/groupes/join/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:joinGroupe }
+
+social_groupe_quit:
+    path: /social/groupes/quit/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:quitGroupe }
+
+social_groupe_show:
+    path: /social/groupes/show/{id}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:showGroupe }
+
+social_groupe_challenge:
+    path: /social/groupes/challenge/{idGroupe}/{idDefi}/{idUser}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:lancerDefis }
 
 afc_admin_gdefiAction:
     path: /admin/gdefi/{action}

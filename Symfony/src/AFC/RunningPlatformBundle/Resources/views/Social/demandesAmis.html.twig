@@ -1,0 +1,67 @@
+<!-- "titre" -->
+<div class="row">
+  <h2>Gestion des demandes :</h2>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>Demandes reçues</h3>
+    <br/>
+    <div class="div_scroll">
+      <ul class="list-group">
+        {% for d in demandesRecepteur %}
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-9">
+                <a class="link_users_demandes" href="/profile/user/{{d.id}}">
+                  {{d.username}}
+                  {% if d.nomEstVisible or d.prenomEstVisible %} - {% endif %}
+                  {% if d.prenomEstVisible %}
+                    {{ d.prenomUtilisateur | capitalize }}
+                  {% endif %}
+                  {% if d.nomEstVisible %}
+                    {{ d.nomUtilisateur | upper }}
+                  {% endif %}
+                </a>
+              </div>
+              <a class="col-md-2 btn btn_historique_entrainement btn-success right_15 btn_add_amis" href="/social/addAmis/{{d.id}}">Ajouter</a>
+              <a class="col-md-1 btn btn_historique_entrainement btn-danger" href="/social/denyAmis/{{d.id}}">X</a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <!-- /col-md-6 -->
+
+  <div class="col-md-6">
+    <h3>Demandes envoyées</h3>
+    <br/>
+    <div class="div_scroll">
+      <ul class="list-group">
+        {% for d in demandesEnvoyeur %}
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-9">
+                <a class="link_users_demandes" href="/profile/user/{{d.id}}">
+                  {{d.username}}
+                  {% if d.nomEstVisible or d.prenomEstVisible %} - {% endif %}
+                  {% if d.prenomEstVisible %}
+                    {{ d.prenomUtilisateur | capitalize }}
+                  {% endif %}
+                  {% if d.nomEstVisible %}
+                    {{ d.nomUtilisateur | upper }}
+                  {% endif %}
+                </a>
+              </div>
+              <a class="col-md-2 btn btn_historique_entrainement btn-warning right_15 btn_add_amis" href="/profile/user/{{d.id}}">Attente</a>
+              <a class="col-md-1 btn btn_historique_entrainement btn-danger" href="/social/cancelAmis/{{d.id}}">X</a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <!-- /col-md-6 -->
+</div>
+<!-- /row -->

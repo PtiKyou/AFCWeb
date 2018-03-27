@@ -1,0 +1,114 @@
+{# src/OC/PlatformBundle/Resources/views/Default/social.html.twig #}
+
+{% extends "AFCRunningPlatformBundle::layout.html.twig" %}
+
+{% block name %}
+  <div class="row">
+   <span class="text-info">
+       <h1>Groupes</h1>
+   </span>
+   <hr/>
+ </div>
+{% endblock name %}
+
+{% block container %}
+
+  <!-- liste groupes -->
+  <div class="row social_row">
+
+    <!-- "titre" -->
+    <div class="row">
+      <h2>Liste des groupes :</h2>
+    </div>
+
+    <!-- liste des groupes -->
+    <div class="row col-md-offset-1 col-md-10">
+      <br/>
+      <div class="div_scroll">
+        <ul class="list-group">
+          {% for g in groupesRejoints %}
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-9">
+                  {{g.nomGroupe}}#{{g.IDGroupe}} - {{ g.nbMembres }} membres
+                </div>
+                <a class="col-md-2 btn btn_historique_entrainement btn-primary right_15" href="/social/groupes/show/{{g.IDGroupe}}">Afficher</a>
+                <a class="col-md-1 btn btn_historique_entrainement btn-danger" href="/social/groupes/quit/{{g.IDGroupe}}">X</a>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!-- rejoindre groupe -->
+  <div class="row social_row">
+    <!-- "titre" -->
+    <div class="row">
+      <h2>Rejoindre un groupe :</h2>
+    </div>
+
+    <!-- recherche de groupe -->
+    <div class="row col-md-offset-1 col-md-10">
+      <br/>
+
+      <div class="col-md-4">
+        {{ form_start(form, { 'action': path('social_groupes'), 'attr': { 'class': 'social_groupes' } }) }}
+          <form>
+            {{ form_widget(form) }}
+            <input class="btn btn-primary profil_btn" type="submit" value="Rechercher" />
+          </form>
+        {{ form_end(form) }}
+      </div>
+
+      <div class="col-md-8">
+        <span>Liste des groupes trouvés :</span>
+        <ul class="list-group">
+          {% for list in listSearch %}
+            {# test si déjà dans le groupe #}
+            {% set alreadyIn = false %}
+            {% for g in groupes %}
+              {% if list.IDGroupe == g.IDGroupe %}
+                {% set alreadyIn = true %}
+              {% endif %}
+            {% endfor %}
+            {% if alreadyIn == false %}
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-md-9">
+                    {{list.nomGroupe}}#{{list.IDGroupe}}
+                  </div>
+                  <a class="col-md-3 btn btn_historique_entrainement btn-success" href="/social/groupes/join/{{list.IDGroupe}}">Rejoindre</a>
+                </div>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <!-- /row ajout amis -->
+
+
+  <!-- création d'un groupe -->
+  <div class="row social_row">
+    {{ render(controller("AFCRunningPlatformBundle:Social:groupeCreate")) }}
+  </div>
+  <!-- /row gestions demandes amis -->
+
+
+
+
+  <!-- bouton retour -->
+  <div class="row social_row">
+    <br/>
+    <a class="btn btn-default" href="/social">< Retour</a>
+  </div>
+  <!-- permet de faire un peu de place en bas de page pour pouvoir  center un peu plus la partie basse de la page-->
+  <div id="social_end_space"></div>
+{% endblock %}
