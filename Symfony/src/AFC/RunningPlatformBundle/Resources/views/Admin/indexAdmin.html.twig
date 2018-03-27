@@ -19,18 +19,36 @@ AFCRunning - {{name.nom}}
 
 {% block container %}
   <div class="row">
-  <ul class="nav nav-pills nav-stacked">
+      <table class="table">
+          <thead>
+          <tr>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+          </tr>
+          </thead>
+
+          <tbody>
     {% for listMenu in listMenus %}
-      <li>
-        <h2>    {{ listMenu.title }} </h2>
-      <a href="{{ listMenu.url }}/view">
-        <button type="button" class="btn btn-primary">Voir</button>
-      </a>
-      <a href="{{ listMenu.url }}/add">
-        <button type="button" class="btn btn-primary">Créer</button>
-      </a>
-      </li>
+
+
+
+
+            <tr>
+                <td>{{ listMenu.title }}</td>
+                <td> <a href="{{ listMenu.url }}/view">
+                        <button type="button" class="btn btn-primary">Voir</button>
+                    </a></td>
+                <td> <a href="{{ listMenu.url }}/add">
+                        <button type="button" class="btn btn-primary">Créer</button>
+                    </a></td>
+            </tr>
+
+
+
     {% endfor %}
-</ul>
+          </tbody>
+      </table>
+
   </div>
 {% endblock %}
