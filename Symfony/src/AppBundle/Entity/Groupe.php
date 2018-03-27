@@ -43,5 +43,35 @@ class Groupe
         $this->id = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-}
 
+    /**
+     * Get nomgroupe
+     *
+     * @return string
+     */
+    public function getNomGroupe()
+    {
+        return $this->nomgroupe;
+    }
+
+    /**
+    * @param string $nomgroupe
+    * @return Groupe
+    */
+    public function setNomGroupe($nomgroupe)
+    {
+      $this->nomgroupe = $nomgroupe;
+
+      return $this;
+    }
+
+    /**
+     * Get idgoupre
+     *
+     * @return integer
+     */
+    public function getIdGroupe()
+    {
+        return $this->idgroupe;
+    }
+}

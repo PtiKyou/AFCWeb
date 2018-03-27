@@ -1,0 +1,18 @@
+
+<!-- "titre" -->
+<div class="row">
+  <h2>Créer un groupe :</h2>
+</div>
+
+<!-- liste des groupes -->
+<div class="row col-md-offset-1 col-md-10">
+  <br/>
+  {{ form_start(form, { 'action': path('social_groupe_create'), 'attr': { 'class': 'social_groupe_create' } }) }}
+    <form>
+      <label>Nom du groupe a créé :</label>
+      {{ form_widget(form.nomGroupe) }}
+      <input class="btn btn-primary profil_btn" type="submit" value="Créer" />
+      {{ form_rest(form) }}
+    {{ form_end(form) }}
+  </form>
+</div>

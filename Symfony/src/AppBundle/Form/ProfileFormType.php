@@ -81,7 +81,7 @@ class ProfileFormType extends AbstractType
       'choices'  => array(
               'Homme' => 0,
               'Femme' => 1,
-              'Neutre' => 2,
+              'Autre' => 2,
       )))
       ->add('sexeEstVisible', ChoiceType::class, array(
       'label'    => 'Visibilité du Sexe',

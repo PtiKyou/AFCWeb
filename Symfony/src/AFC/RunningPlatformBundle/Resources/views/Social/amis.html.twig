@@ -103,7 +103,7 @@
                       {{ list.nomUtilisateur | upper }}
                     {% endif %}
                   </div>
-                  <a class="col-md-3 btn btn_historique_entrainement btn-success" href="/social/addAmis/{{list.id}}">Ajouter</a>
+                  <a class="col-md-3 btn btn_historique_entrainement btn-success" href="/social/askAmis/{{list.id}}">Demander</a>
                 </div>
               </li>
             {% endif %}
@@ -115,12 +115,24 @@
     </div>
     <!-- /row partie recherche -->
 
-    <br/>
-    <a class="btn btn-default" href="/social">< Retour</a>
   </div>
   <!-- /row ajout amis -->
 
 
+
+  <!-- gestions demandes amis -->
+  <div class="row social_row">
+    {{ render(controller("AFCRunningPlatformBundle:Social:showDemandesAmis")) }}
+  </div>
+  <!-- /row gestions demandes amis -->
+
+
+
+  <!-- bouton retour -->
+  <div class="row social_row">
+    <br/>
+    <a class="btn btn-default" href="/social">< Retour</a>
+  </div>
   <!-- permet de faire un peu de place en bas de page pour pouvoir  center un peu plus la partie basse de la page-->
   <div id="social_end_space"></div>
 {% endblock %}
