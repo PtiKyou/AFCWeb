@@ -61,7 +61,7 @@
                 <div class="col-md-10">
                   Défis#{{d.IDDefis}} de {{d.username}} : {{d.distance}} m en {{d.temps}} min
                 </div>
-                <a class="col-md-2 btn btn_historique_entrainement btn-primary" href="#/profile/user/{#{l.id}#}">Accepter</a>
+                <a class="col-md-2 btn btn_historique_entrainement btn-primary" href="#">Accepter</a>
               </div>
             </li>
           {% endfor %}
@@ -70,8 +70,14 @@
     </div>
   </div>
 
+  <!-- lancer un défis -->
+  <div class="row social_row">
+    {{ render(controller("AFCRunningPlatformBundle:Social:showLancerDefis",{ 'idGroupe': groupe.IDGroupe })) }}
+  </div>
+
   <!-- bouton retour -->
   <div class="row">
+    <br/>
     <br/>
     <a class="btn btn-default" href="/social/groupes">< Retour</a>
   </div>

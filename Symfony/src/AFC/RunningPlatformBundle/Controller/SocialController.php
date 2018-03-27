@@ -474,4 +474,40 @@ class SocialController extends Controller
     }
 
 
+    /**
+     * Partie "lancer un défis"
+     */
+     /*affiche la partie "lancer défis"*/
+     public function showLancerDefisAction($idGroupe){
+       $user = $this->getUser();
+       $em = $this->getDoctrine()->getManager();
+
+       //on recupere la liste des defis
+       $connection = $em->getConnection();
+       $statement = $connection->prepare("
+        SELECT * FROM Defis
+        WHERE not EXISTS (
+          SELECT * FROM creerDefis
+          WHERE creerDefis.IDDefis = Defis.IDDefis AND creerDefis.IDGroupe = ".$idGroupe."
+        );");
+       $statement->execute();
+       $listeDefis = $statement->fetchAll();
+
+       return $this->render('AFCRunningPlatformBundle:Social:lancerDefis.html.twig', array(
+         'listeDefis' => $listeDefis, 'user' => $user, 'idGroupe' =>$idGroupe
+       ));
+     }
+
+     /*utilisateur idUser lance le défi idDefi au groupe idGroupe*/
+     public function lancerDefisAction($idGroupe, $idDefi, $idUser){
+       $em = $this->getDoctrine()->getManager();
+       $connection = $em->getConnection();
+       $statement = $connection->prepare("INSERT INTO `creerDefis` (`IDGroupe`, `IDDefis`, `id`) VALUES ('".$idGroupe."', '".$idDefi."', '".$idUser."')");
+       $statement->execute();
+
+       return $this->redirectToRoute('social_groupe_show', array('id' => $idGroupe));
+     }
+
+
+
 }

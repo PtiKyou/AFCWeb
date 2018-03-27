@@ -1,0 +1,21 @@
+<div class="row">
+  <h2>Lancer des défis :</h2>
+</div>
+<!-- liste des défis du groupe -->
+<div class="row col-md-offset-1 col-md-10">
+  <br/>
+  <div class="div_scroll">
+    <ul class="list-group">
+      {% for d in listeDefis %}
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-10">
+              Défis#{{d.IDDefis}} : {{d.distance}} m en {{d.temps}} min
+            </div>
+            <a class="col-md-2 btn btn_historique_entrainement btn-success" href="/social/groupes/challenge/{{idGroupe}}/{{d.IDDefis}}/{{user.id}}">Lancer</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

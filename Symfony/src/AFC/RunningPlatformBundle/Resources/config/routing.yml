@@ -82,6 +82,10 @@ social_groupe_show:
     path: /social/groupes/show/{id}
     defaults: { _controller: AFCRunningPlatformBundle:Social:showGroupe }
 
+social_groupe_challenge:
+    path: /social/groupes/challenge/{idGroupe}/{idDefi}/{idUser}
+    defaults: { _controller: AFCRunningPlatformBundle:Social:lancerDefis }
+
 afc_admin_gdefiAction:
     path: /admin/gdefi/{action}
     defaults: { _controller: AFCRunningPlatformBundle:Admin:gdefi }
